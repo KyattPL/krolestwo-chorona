@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://5kd2hrg6rd08"]
+[gd_scene load_steps=17 format=3 uid="uid://5kd2hrg6rd08"]
 
 [ext_resource type="Texture2D" uid="uid://srflb0e5fabf" path="res://Assets/crosshair/crosshair.png" id="1_gwjtt"]
 [ext_resource type="Script" path="res://Scenes/Player/Root.gd" id="1_wswtw"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="5_8hotu"]
 [ext_resource type="Texture2D" uid="uid://bfhvtjkfmikf3" path="res://icon.svg" id="5_fm02j"]
 [ext_resource type="PackedScene" uid="uid://cp8s8pdcgakky" path="res://Scenes/Spells/EarthSpell/earth_spell.tscn" id="6_vspi1"]
+[ext_resource type="Texture2D" uid="uid://cl8nfs5pcnn40" path="res://Assets/wizard/shield.png" id="11_lou0y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4uico"]
 animations = [{
@@ -26,6 +27,17 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s4i60"]
 size = Vector2(123, 182)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_dci2e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_lou0y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eek7y"]
 size = Vector2(1147, 20)
 
@@ -38,7 +50,7 @@ lightningSpell = ExtResource("5_4vqt1")
 earthSpell = ExtResource("6_vspi1")
 
 [node name="Crosshair" type="Sprite2D" parent="."]
-z_index = 1
+z_index = 2
 scale = Vector2(0.0416667, 0.0416667)
 texture = ExtResource("1_gwjtt")
 script = ExtResource("2_68fma")
@@ -72,6 +84,13 @@ sprite_frames = SubResource("SpriteFrames_4uico")
 position = Vector2(-19.5, 1)
 shape = SubResource("RectangleShape2D_s4i60")
 debug_color = Color(0, 0.564706, 0.662745, 0.419608)
+
+[node name="Shield" type="AnimatedSprite2D" parent="Player"]
+visible = false
+z_index = 1
+position = Vector2(-15, -4)
+scale = Vector2(0.446043, 0.451439)
+sprite_frames = SubResource("SpriteFrames_dci2e")
 
 [node name="Platform" type="StaticBody2D" parent="."]
 position = Vector2(278, 454)

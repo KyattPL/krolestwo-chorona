@@ -7,6 +7,7 @@ extends CharacterBody2D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jumping = false
+var facingLeft = false
 
 enum SPELLS { NONE, FIRE, WATER, LIGHTNING, EARTH }
 var selectedSpell: SPELLS = SPELLS.NONE
@@ -16,6 +17,8 @@ var isWaterOnCD: bool = false
 var isLightningOnCD: bool = false
 var isEarthOnCD: bool = false
 var isNormalOnCD: bool = false
+
+var isShielded: bool = false
 
 func select_spell():
 	if Input.is_action_just_pressed("select_fire") and not isFireOnCD:
@@ -44,13 +47,27 @@ func get_input():
 	var right = Input.is_action_pressed('move_right')
 	var left = Input.is_action_pressed('move_left')
 	var jump = Input.is_action_just_pressed('jump')
+	var shield = Input.is_action_pressed("shield")
 
+	if shield and is_on_floor():
+		isShielded = true
+		$Shield.visible = true
+		return
+	else:
+		$Shield.visible = false
+		isShielded = false
+	
 	if jump and is_on_floor():
 		jumping = true
 		velocity.y = jump_speed
-	if right:
+		
+	if right and left:
+		pass
+	elif right:
+		facingLeft = false
 		velocity.x += run_speed
-	if left:
+	elif left:
+		facingLeft = true
 		velocity.x -= run_speed
 
 func _physics_process(delta):
@@ -64,7 +81,7 @@ func _process(delta):
 	select_spell()
 	joystick_aim(delta)
 	get_input()
-	$AnimatedSprite2D.flip_h = velocity.x < 0
+	$AnimatedSprite2D.flip_h = facingLeft
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)

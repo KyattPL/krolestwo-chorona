@@ -19,7 +19,7 @@ func spawn_bullet(bulletInstance: CharacterBody2D):
 func shoot():
 	var isShot = Input.is_action_just_pressed('shoot')
 	
-	if isShot:
+	if isShot and not $Player.isShielded:
 		match $Player.selectedSpell:
 			SPELL.FIRE:
 				var fireBullet: CharacterBody2D = fireSpell.instantiate()
