@@ -72,3 +72,15 @@ func _ready():
 
 func _on_fire_spell_cd_timeout():
 	isFireOnCD = false
+
+
+func _on_water_spell_cd_timeout():
+	isWaterOnCD = false
+
+
+func _on_lightning_spell_cd_timeout():
+	isLightningOnCD = false
+
+
+func _on_earth_spell_cd_timeout():
+	isEarthOnCD = false

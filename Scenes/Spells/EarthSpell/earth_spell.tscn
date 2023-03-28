@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cp8s8pdcgakky"]
+
+[ext_resource type="Script" path="res://Scenes/Spells/EarthSpell/earth_spell.gd" id="1_tsmeg"]
+[ext_resource type="Texture2D" uid="uid://bfhvtjkfmikf3" path="res://icon.svg" id="2_ibkig"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0diyn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ibkig")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_60n52"]
+radius = 65.9242
+
+[node name="EarthSpell" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_tsmeg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.615686, 0.294118, 0.0235294, 1)
+sprite_frames = SubResource("SpriteFrames_0diyn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_60n52")

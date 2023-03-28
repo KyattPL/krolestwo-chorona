@@ -1,12 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://5kd2hrg6rd08"]
+[gd_scene load_steps=15 format=3 uid="uid://5kd2hrg6rd08"]
 
 [ext_resource type="Texture2D" uid="uid://srflb0e5fabf" path="res://Assets/crosshair/crosshair.png" id="1_gwjtt"]
 [ext_resource type="Script" path="res://Scenes/Player/Root.gd" id="1_wswtw"]
 [ext_resource type="Script" path="res://Scenes/Player/Crosshair.gd" id="2_68fma"]
-[ext_resource type="PackedScene" uid="uid://db525qryedno2" path="res://Scenes/NormalSpell/normal_spell.tscn" id="2_o8ue7"]
+[ext_resource type="PackedScene" uid="uid://db525qryedno2" path="res://Scenes/Spells/NormalSpell/normal_spell.tscn" id="2_n40jh"]
+[ext_resource type="PackedScene" uid="uid://w6c44mseldyw" path="res://Scenes/Spells/FireSpell/fire_spell.tscn" id="3_neg4g"]
 [ext_resource type="Texture2D" uid="uid://crlvi5r65wygj" path="res://Assets/wizard/wizard_pixels.png" id="4_haccr"]
+[ext_resource type="PackedScene" uid="uid://c66gymaw873n7" path="res://Scenes/Spells/WaterSpell/water_spell.tscn" id="4_yg7du"]
+[ext_resource type="PackedScene" uid="uid://h4no2tr0ic6e" path="res://Scenes/Spells/LightningSpell/lightning_spell.tscn" id="5_4vqt1"]
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="5_8hotu"]
 [ext_resource type="Texture2D" uid="uid://bfhvtjkfmikf3" path="res://icon.svg" id="5_fm02j"]
+[ext_resource type="PackedScene" uid="uid://cp8s8pdcgakky" path="res://Scenes/Spells/EarthSpell/earth_spell.tscn" id="6_vspi1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4uico"]
 animations = [{
@@ -27,7 +31,11 @@ size = Vector2(1147, 20)
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_wswtw")
-normalSpell = ExtResource("2_o8ue7")
+normalSpell = ExtResource("2_n40jh")
+fireSpell = ExtResource("3_neg4g")
+waterSpell = ExtResource("4_yg7du")
+lightningSpell = ExtResource("5_4vqt1")
+earthSpell = ExtResource("6_vspi1")
 
 [node name="Crosshair" type="Sprite2D" parent="."]
 z_index = 1
@@ -97,3 +105,6 @@ scale = Vector2(8.96875, 0.179688)
 texture = ExtResource("5_fm02j")
 
 [connection signal="timeout" from="FireSpellCD" to="Player" method="_on_fire_spell_cd_timeout"]
+[connection signal="timeout" from="WaterSpellCD" to="Player" method="_on_water_spell_cd_timeout"]
+[connection signal="timeout" from="LightningSpellCD" to="Player" method="_on_lightning_spell_cd_timeout"]
+[connection signal="timeout" from="EarthSpellCD" to="Player" method="_on_earth_spell_cd_timeout"]

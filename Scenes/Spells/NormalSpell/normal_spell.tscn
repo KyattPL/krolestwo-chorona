@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://db525qryedno2"]
 
-[ext_resource type="Script" path="res://Scenes/NormalSpell/normal_spell.gd" id="1_4f2gr"]
-[ext_resource type="Texture2D" uid="uid://bfhvtjkfmikf3" path="res://icon.svg" id="2_ykggi"]
+[ext_resource type="Script" path="res://Scenes/Spells/NormalSpell/normal_spell.gd" id="1_lcad5"]
+[ext_resource type="Texture2D" uid="uid://bfhvtjkfmikf3" path="res://icon.svg" id="2_siio8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1sgft"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ykggi")
+"texture": ExtResource("2_siio8")
 }],
 "loop": true,
 "name": &"default",
@@ -20,7 +20,7 @@ radius = 65.5134
 [node name="Bullet" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_4f2gr")
+script = ExtResource("1_lcad5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1sgft")

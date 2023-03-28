@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://h4no2tr0ic6e"]
+
+[ext_resource type="Script" path="res://Scenes/Spells/LightningSpell/lightning_spell.gd" id="1_0ugku"]
+[ext_resource type="Texture2D" uid="uid://bfhvtjkfmikf3" path="res://icon.svg" id="2_byl35"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ku6nb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_byl35")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dcu6v"]
+radius = 63.5059
+
+[node name="LightningSpell" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_0ugku")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0.996078, 0.427451, 1)
+sprite_frames = SubResource("SpriteFrames_ku6nb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dcu6v")
