@@ -7,17 +7,24 @@ extends CharacterBody2D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jumping = false
+
 enum SPELLS { NONE, FIRE, WATER, LIGHTNING, EARTH }
 var selectedSpell: SPELLS = SPELLS.NONE
 
+var isFireOnCD: bool = false
+var isWaterOnCD: bool = false
+var isLightningOnCD: bool = false
+var isEarthOnCD: bool = false
+var isNormalOnCD: bool = false
+
 func select_spell():
-	if Input.is_action_just_pressed("select_fire"):
+	if Input.is_action_just_pressed("select_fire") and not isFireOnCD:
 		selectedSpell = SPELLS.FIRE if selectedSpell != SPELLS.FIRE else SPELLS.NONE
-	if Input.is_action_just_pressed("select_water"):
+	if Input.is_action_just_pressed("select_water") and not isWaterOnCD:
 		selectedSpell = SPELLS.WATER if selectedSpell != SPELLS.WATER else SPELLS.NONE
-	if Input.is_action_just_pressed("select_lightning"):
+	if Input.is_action_just_pressed("select_lightning") and not isLightningOnCD:
 		selectedSpell = SPELLS.LIGHTNING if selectedSpell != SPELLS.LIGHTNING else SPELLS.NONE
-	if Input.is_action_just_pressed("select_earth"):
+	if Input.is_action_just_pressed("select_earth") and not isEarthOnCD:
 		selectedSpell = SPELLS.EARTH if selectedSpell != SPELLS.EARTH else SPELLS.NONE
 
 func joystick_aim(delta):
@@ -61,3 +68,7 @@ func _process(delta):
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
+
+func _on_fire_spell_cd_timeout():
+	isFireOnCD = false
