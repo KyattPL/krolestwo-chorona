@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var speed = 200
+@export var bulletSpeed = 200
+@export var bulletScene: PackedScene
 
 var facingLeft: bool = false
 
@@ -15,6 +17,12 @@ func _physics_process(delta):
 	match currentState:
 		STATE.PATROL:
 			patrol(delta)
+		STATE.SHOOT:
+			shoot()
+		STATE.FIGHT_MOVE:
+			fight_move()
+		STATE.SHIELD:
+			shield()
 
 func patrol(delta):
 	velocity.x = -speed if facingLeft else speed
@@ -24,11 +32,19 @@ func patrol(delta):
 	detect_turn_around()
 
 func shoot():
-	# idk play shoot animation and spawn 0.5s timer of idling
-	# after the timer is done the state should be changed to FIGHT_MOVE	
-	pass
+	var playerObj: CharacterBody2D = get_tree().get_root().get_node("Player")
+	var bulletInstance: CharacterBody2D = bulletScene.instantiate()
+	var aimPlayerVec  = Vector2(playerObj.position.x - position.x, playerObj.position.y - position.y)
+	
+	bulletInstance.position = position
+	bulletInstance.velocity = aimPlayerVec * bulletSpeed
+	add_child(bulletInstance)
+	$StateChangeTimer.start()
 
 func fight_move():
+	pass
+	
+func shield():
 	pass
 
 func detect_turn_around():
@@ -36,6 +52,19 @@ func detect_turn_around():
 		facingLeft = !facingLeft
 		scale.x = -scale.x
 
-func _on_player_detector_body_entered(body):
+func _on_player_detector_body_entered(body: CharacterBody2D):
+	
 	currentState = STATE.SHOOT
-	print("Shoot!")
+
+func _on_player_detector_body_exited(body):
+	currentState = STATE.PATROL
+
+func _on_state_change_timer_timeout():
+	var choice = randf()
+	
+	if choice < 0.8:
+		currentState = STATE.FIGHT_MOVE
+	elif choice < 0.9:
+		currentState = STATE.SHOOT
+	else:
+		currentState = STATE.SHIELD

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dce3rar6quyen"]
+[gd_scene load_steps=6 format=3 uid="uid://cdni5b3n7ui7n"]
 
 [ext_resource type="Texture2D" uid="uid://crlvi5r65wygj" path="res://Assets/wizard/wizard_pixels.png" id="1_5q0aa"]
 [ext_resource type="Script" path="res://Scenes/Enemy/enemy.gd" id="1_j26kl"]
+[ext_resource type="PackedScene" uid="uid://b4uprsp8koujh" path="res://Scenes/Enemy/enemy_basic_bullet.tscn" id="2_2vjwg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cgjnm"]
 size = Vector2(103, 174)
@@ -13,6 +14,7 @@ size = Vector2(745, 272.5)
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_j26kl")
+bulletScene = ExtResource("2_2vjwg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0.356863, 0.564706, 1)
@@ -36,4 +38,9 @@ shape = SubResource("RectangleShape2D_wbt2x")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
+[node name="StateChangeTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
+[connection signal="timeout" from="StateChangeTimer" to="." method="_on_state_change_timer_timeout"]
