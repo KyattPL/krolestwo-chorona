@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dce3rar6quyen"]
+
+[ext_resource type="Texture2D" uid="uid://crlvi5r65wygj" path="res://Assets/wizard/wizard_pixels.png" id="1_5q0aa"]
+[ext_resource type="Script" path="res://Scenes/Enemy/enemy.gd" id="1_j26kl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgjnm"]
+size = Vector2(103, 174)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbt2x"]
+size = Vector2(745, 272.5)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_j26kl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.356863, 0.564706, 1)
+texture = ExtResource("1_5q0aa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-15.5, -2)
+shape = SubResource("RectangleShape2D_cgjnm")
+
+[node name="GroundRayCast" type="RayCast2D" parent="."]
+position = Vector2(47, 13)
+scale = Vector2(2, 2)
+collision_mask = 2
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(411, -53)
+shape = SubResource("RectangleShape2D_wbt2x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

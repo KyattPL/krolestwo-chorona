@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://5kd2hrg6rd08"]
+[gd_scene load_steps=18 format=3 uid="uid://5kd2hrg6rd08"]
 
 [ext_resource type="Texture2D" uid="uid://srflb0e5fabf" path="res://Assets/crosshair/crosshair.png" id="1_gwjtt"]
 [ext_resource type="Script" path="res://Scenes/Player/Root.gd" id="1_wswtw"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bfhvtjkfmikf3" path="res://icon.svg" id="5_fm02j"]
 [ext_resource type="PackedScene" uid="uid://cp8s8pdcgakky" path="res://Scenes/Spells/EarthSpell/earth_spell.tscn" id="6_vspi1"]
 [ext_resource type="Texture2D" uid="uid://cl8nfs5pcnn40" path="res://Assets/wizard/shield.png" id="11_lou0y"]
+[ext_resource type="PackedScene" uid="uid://dce3rar6quyen" path="res://Scenes/Enemy/enemy.tscn" id="13_fmipx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4uico"]
 animations = [{
@@ -73,7 +74,7 @@ one_shot = true
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(82, 90)
-collision_mask = 2
+collision_mask = 10
 script = ExtResource("5_8hotu")
 metadata/_edit_group_ = true
 
@@ -92,8 +93,10 @@ position = Vector2(-15, -4)
 scale = Vector2(0.446043, 0.451439)
 sprite_frames = SubResource("SpriteFrames_dci2e")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+
 [node name="Platform" type="StaticBody2D" parent="."]
-position = Vector2(278, 454)
+position = Vector2(9.99998, 332)
 scale = Vector2(0.48, 1)
 collision_layer = 2
 collision_mask = 0
@@ -107,8 +110,23 @@ texture_repeat = 2
 scale = Vector2(8.96875, 0.179688)
 texture = ExtResource("5_fm02j")
 
+[node name="Platform3" type="StaticBody2D" parent="."]
+position = Vector2(849, 193)
+scale = Vector2(0.48, 1)
+collision_layer = 2
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3"]
+shape = SubResource("RectangleShape2D_eek7y")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform3"]
+texture_repeat = 2
+scale = Vector2(8.96875, 0.179688)
+texture = ExtResource("5_fm02j")
+
 [node name="Platform2" type="StaticBody2D" parent="."]
-position = Vector2(795, 341)
+position = Vector2(223, 307)
 rotation = -0.428547
 scale = Vector2(0.48, 1)
 collision_layer = 2
@@ -122,6 +140,9 @@ shape = SubResource("RectangleShape2D_eek7y")
 texture_repeat = 2
 scale = Vector2(8.96875, 0.179688)
 texture = ExtResource("5_fm02j")
+
+[node name="Enemy" parent="." instance=ExtResource("13_fmipx")]
+position = Vector2(866, 95)
 
 [connection signal="timeout" from="FireSpellCD" to="Player" method="_on_fire_spell_cd_timeout"]
 [connection signal="timeout" from="WaterSpellCD" to="Player" method="_on_water_spell_cd_timeout"]
