@@ -9,6 +9,9 @@ var facingLeft: bool = false
 var fightVelocity: float = 0.0
 var isShielded: bool = false
 
+
+enum SHIELD_TYPE { FIRE, WATER, LIGHTNING, EARTH }
+var currentShield: SHIELD_TYPE
 # PATROL - out of combat movement, FIGHT_MOVE - in combat with player tracking
 # SHIELD - put on shield animation, SHOOT - stand still and shoot animation
 enum STATE { PATROL, SHOOT, FIGHT_MOVE, SHIELD }
@@ -41,27 +44,45 @@ func shoot():
 
 func fight_move():
 	velocity.x = fightVelocity
-	move_and_slide()
 	if not $GroundRayCast.is_colliding() and is_on_floor():
-		velocity.x = -fightVelocity
+		velocity.x = 30 if facingLeft else -30
+		
+	move_and_slide()
 
 func fight_move_change_velocity():
-	var sign = -1 if randf() < 0.5 else 1
-	fightVelocity = sign * randf_range(50, 100)
+	var velocitySign = -1 if randf() < 0.5 else 1
+	fightVelocity = velocitySign * randf_range(50, 100)
 	
 func shield():
-	pass
+	var randomShield = randi_range(1, 4)
+	match randomShield:
+		1:
+			$Shield.modulate = Color.RED
+			currentShield = SHIELD_TYPE.FIRE
+		2:
+			$Shield.modulate = Color.BLUE
+			currentShield = SHIELD_TYPE.WATER
+		3:
+			$Shield.modulate = Color.YELLOW
+			currentShield = SHIELD_TYPE.LIGHTNING
+		_:
+			$Shield.modulate = Color.GREEN
+			currentShield = SHIELD_TYPE.EARTH
+	isShielded = true
+	$Shield.visible = true
 
 func detect_turn_around():
 	if not $GroundRayCast.is_colliding() and is_on_floor():
 		facingLeft = !facingLeft
 		scale.x = -scale.x
 
-func _on_player_detector_body_entered(body: CharacterBody2D):
+func _on_player_detector_body_entered(_body: CharacterBody2D):
+	currentState = STATE.FIGHT_MOVE
 	$StateChangeTimer.start()
+	$LoseAggroTimer.stop()
 
-func _on_player_detector_body_exited(body):
-	currentState = STATE.PATROL
+func _on_player_detector_body_exited(_body):
+	$LoseAggroTimer.start()
 
 func _on_state_change_timer_timeout():
 	var choice = randf()
@@ -75,3 +96,8 @@ func _on_state_change_timer_timeout():
 	else:
 		currentState = STATE.SHOOT
 		shoot()
+
+
+func _on_lose_aggro_timer_timeout():
+	currentState = STATE.PATROL
+	$StateChangeTimer.stop()
