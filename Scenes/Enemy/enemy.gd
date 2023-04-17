@@ -2,13 +2,14 @@ extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var speed = 200
-@export var health = 130
+@export var maxHealth = 130
 @export var bulletSpeed = 200
 @export var bulletScene: PackedScene
 
 var facingLeft: bool = false
 var fightVelocity: float = 0.0
 var isShielded: bool = false
+var health: float
 
 enum SPELL { NONE, FIRE, WATER, LIGHTNING, EARTH }
 
@@ -19,6 +20,12 @@ var currentShield: SHIELD_TYPE
 enum STATE { PATROL, SHOOT, FIGHT_MOVE, SHIELD }
 
 var currentState: STATE = STATE.PATROL
+
+func _init():
+	health = maxHealth
+
+func _ready():
+	$HealthUI/Healthbar.set_modulate(Color.from_hsv(100 / 255.0, 1, 0.72))
 
 func _physics_process(delta):
 	match currentState:
@@ -76,7 +83,9 @@ func shield():
 func detect_turn_around():
 	if not $GroundRayCast.is_colliding() and is_on_floor():
 		facingLeft = !facingLeft
-		scale.x = -scale.x
+		$Sprite2D.flip_h = facingLeft
+		$GroundRayCast.position.x = 47 if !facingLeft else -77
+		$PlayerDetector.position.x = 0 if !facingLeft else -475
 
 func got_hit(damage, spellType):
 	if isShielded:
@@ -88,6 +97,11 @@ func got_hit(damage, spellType):
 				$Shield.visible = false
 	else:
 		health -= damage
+		var percentRemaining = round((health / maxHealth) * 100)
+		print(percentRemaining)
+		var newHue = percentRemaining / 255.0
+		$HealthUI/Healthbar.value = percentRemaining
+		$HealthUI/Healthbar.set_modulate(Color.from_hsv(newHue, 1, 0.72))
 		if health <= 0:
 			queue_free()
 
