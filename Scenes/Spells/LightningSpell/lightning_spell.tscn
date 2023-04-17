@@ -19,11 +19,11 @@ radius = 63.5059
 
 [node name="LightningSpell" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 10
 script = ExtResource("1_0ugku")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0.996078, 0.427451, 1)
+modulate = Color(0.803922, 0, 0.929412, 1)
 sprite_frames = SubResource("SpriteFrames_ku6nb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

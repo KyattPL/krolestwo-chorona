@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var speed = 200
+@export var health = 130
 @export var bulletSpeed = 200
 @export var bulletScene: PackedScene
 
@@ -9,6 +10,7 @@ var facingLeft: bool = false
 var fightVelocity: float = 0.0
 var isShielded: bool = false
 
+enum SPELL { NONE, FIRE, WATER, LIGHTNING, EARTH }
 
 enum SHIELD_TYPE { FIRE, WATER, LIGHTNING, EARTH }
 var currentShield: SHIELD_TYPE
@@ -63,7 +65,7 @@ func shield():
 			$Shield.modulate = Color.BLUE
 			currentShield = SHIELD_TYPE.WATER
 		3:
-			$Shield.modulate = Color.YELLOW
+			$Shield.modulate = Color.PURPLE
 			currentShield = SHIELD_TYPE.LIGHTNING
 		_:
 			$Shield.modulate = Color.GREEN
@@ -75,6 +77,19 @@ func detect_turn_around():
 	if not $GroundRayCast.is_colliding() and is_on_floor():
 		facingLeft = !facingLeft
 		scale.x = -scale.x
+
+func got_hit(damage, spellType):
+	if isShielded:
+		if currentShield == SHIELD_TYPE.FIRE and spellType == SPELL.FIRE \
+			or currentShield == SHIELD_TYPE.WATER and spellType == SPELL.WATER \
+			or currentShield == SHIELD_TYPE.LIGHTNING and spellType == SPELL.LIGHTNING \
+			or currentShield == SHIELD_TYPE.EARTH and spellType == SPELL.EARTH:
+				isShielded = false
+				$Shield.visible = false
+	else:
+		health -= damage
+		if health <= 0:
+			queue_free()
 
 func _on_player_detector_body_entered(_body: CharacterBody2D):
 	currentState = STATE.FIGHT_MOVE
@@ -96,7 +111,6 @@ func _on_state_change_timer_timeout():
 	else:
 		currentState = STATE.SHOOT
 		shoot()
-
 
 func _on_lose_aggro_timer_timeout():
 	currentState = STATE.PATROL

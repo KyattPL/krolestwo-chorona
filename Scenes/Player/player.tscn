@@ -63,6 +63,10 @@ one_shot = true
 wait_time = 3.0
 one_shot = true
 
+[node name="NormalSpellCD" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [node name="EarthSpellCD" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
@@ -93,4 +97,5 @@ sprite_frames = SubResource("SpriteFrames_dci2e")
 [connection signal="timeout" from="FireSpellCD" to="Player" method="_on_fire_spell_cd_timeout"]
 [connection signal="timeout" from="WaterSpellCD" to="Player" method="_on_water_spell_cd_timeout"]
 [connection signal="timeout" from="LightningSpellCD" to="Player" method="_on_lightning_spell_cd_timeout"]
+[connection signal="timeout" from="NormalSpellCD" to="Player" method="_on_normal_spell_cd_timeout"]
 [connection signal="timeout" from="EarthSpellCD" to="Player" method="_on_earth_spell_cd_timeout"]

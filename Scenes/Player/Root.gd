@@ -46,8 +46,11 @@ func shoot():
 				$Player.selectedSpell = SPELL.NONE
 				spawn_bullet(earthBullet)
 			_:			
-				var normalBullet: CharacterBody2D = normalSpell.instantiate()
-				spawn_bullet(normalBullet)
+				if not $Player.isNormalOnCD:
+					var normalBullet: CharacterBody2D = normalSpell.instantiate()
+					$NormalSpellCD.start()
+					$Player.isNormalOnCD = true
+					spawn_bullet(normalBullet)
 
 func _process(delta):
 	shoot()

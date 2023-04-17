@@ -19,11 +19,11 @@ radius = 65.9242
 
 [node name="EarthSpell" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 10
 script = ExtResource("1_tsmeg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.615686, 0.294118, 0.0235294, 1)
+modulate = Color(0.219608, 0.898039, 0, 1)
 sprite_frames = SubResource("SpriteFrames_0diyn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -12,6 +12,8 @@ var facingLeft = false
 enum SPELLS { NONE, FIRE, WATER, LIGHTNING, EARTH }
 var selectedSpell: SPELLS = SPELLS.NONE
 
+var health = 100
+
 var isFireOnCD: bool = false
 var isWaterOnCD: bool = false
 var isLightningOnCD: bool = false
@@ -70,6 +72,13 @@ func get_input():
 		facingLeft = true
 		velocity.x -= run_speed
 
+func got_hit(damage):
+	if not isShielded:
+		health -= damage
+		print(health)
+		if health <= 0:
+			get_tree().reload_current_scene()
+
 func _physics_process(delta):
 	velocity.y += gravity * delta
 	if jumping and is_on_floor():
@@ -101,3 +110,7 @@ func _on_lightning_spell_cd_timeout():
 
 func _on_earth_spell_cd_timeout():
 	isEarthOnCD = false
+
+
+func _on_normal_spell_cd_timeout():
+	isNormalOnCD = false

@@ -48,6 +48,7 @@ one_shot = true
 
 [node name="Shield" type="Sprite2D" parent="."]
 visible = false
+modulate = Color(1, 0.207843, 0.878431, 1)
 scale = Vector2(0.476619, 0.476619)
 texture = ExtResource("4_or6bx")
 
