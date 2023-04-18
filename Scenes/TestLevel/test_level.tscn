@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://j8ini2f42l7w"]
+[gd_scene load_steps=6 format=3 uid="uid://j8ini2f42l7w"]
 
 [ext_resource type="PackedScene" uid="uid://5kd2hrg6rd08" path="res://Scenes/Player/player.tscn" id="1_7cn22"]
 [ext_resource type="Texture2D" uid="uid://bfhvtjkfmikf3" path="res://icon.svg" id="2_c2rng"]
 [ext_resource type="PackedScene" uid="uid://cdni5b3n7ui7n" path="res://Scenes/Enemy/enemy.tscn" id="3_gjqp0"]
+[ext_resource type="PackedScene" uid="uid://bvnvm63w85654" path="res://Scenes/Coin/coin.tscn" id="4_j2vni"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evys1"]
 size = Vector2(125, 125)
@@ -25,7 +26,7 @@ shape = SubResource("RectangleShape2D_evys1")
 texture = ExtResource("2_c2rng")
 
 [node name="Platform2" type="StaticBody2D" parent="."]
-position = Vector2(912, 305)
+position = Vector2(1235, 305)
 scale = Vector2(6, 0.16)
 collision_layer = 2
 collision_mask = 0
@@ -39,3 +40,7 @@ texture = ExtResource("2_c2rng")
 
 [node name="Enemy" parent="." instance=ExtResource("3_gjqp0")]
 position = Vector2(1141, 180)
+
+[node name="Coin" parent="." instance=ExtResource("4_j2vni")]
+position = Vector2(695, 348)
+scale = Vector2(-0.0800003, -0.0800003)

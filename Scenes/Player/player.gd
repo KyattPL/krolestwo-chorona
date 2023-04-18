@@ -13,6 +13,10 @@ enum SPELLS { NONE, FIRE, WATER, LIGHTNING, EARTH }
 var selectedSpell: SPELLS = SPELLS.NONE
 
 var health = 100
+signal health_lost(oldVal, newVal)
+
+var coins = 0
+signal coins_changed(oldVal, newVal)
 
 var isFireOnCD: bool = false
 var isWaterOnCD: bool = false
@@ -75,9 +79,13 @@ func get_input():
 func got_hit(damage):
 	if not isShielded:
 		health -= damage
-		print(health)
+		health_lost.emit(health + damage, health)
 		if health <= 0:
 			get_tree().reload_current_scene()
+
+func got_coin():
+	coins_changed.emit(coins, coins + 10)
+	coins += 10
 
 func _physics_process(delta):
 	velocity.y += gravity * delta

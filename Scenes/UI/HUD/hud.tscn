@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://von5xtuebuww"]
+
+[ext_resource type="Script" path="res://Scenes/UI/HUD/hud.gd" id="1_m5h7p"]
+[ext_resource type="Texture2D" uid="uid://cplyko1cl3y85" path="res://Assets/HUD/under.png" id="1_mq2eu"]
+[ext_resource type="Texture2D" uid="uid://bwalmo4v72cgl" path="res://Assets/HUD/over.png" id="2_287qb"]
+[ext_resource type="Texture2D" uid="uid://c14bho4ctikhk" path="res://Assets/HUD/progress.png" id="3_wirlu"]
+[ext_resource type="Texture2D" uid="uid://c6ypy5hsp8yov" path="res://Assets/HUD/avatar.png" id="4_037t5"]
+[ext_resource type="FontFile" uid="uid://dabu02j6atprm" path="res://Assets/fonts/MinimalPixel v2.ttf" id="6_1c27h"]
+
+[node name="RootCanvas" type="CanvasLayer"]
+script = ExtResource("1_m5h7p")
+
+[node name="HUD" type="GridContainer" parent="."]
+offset_right = 1147.0
+offset_bottom = 604.0
+
+[node name="Stats" type="Control" parent="HUD"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlayerHPBar" type="TextureProgressBar" parent="HUD/Stats"]
+layout_mode = 1
+offset_left = 103.0
+offset_top = -116.0
+offset_right = 359.0
+offset_bottom = 140.0
+texture_under = ExtResource("1_mq2eu")
+texture_over = ExtResource("2_287qb")
+texture_progress = ExtResource("3_wirlu")
+texture_progress_offset = Vector2(1, 0)
+
+[node name="AvatarTexture" type="TextureRect" parent="HUD/Stats"]
+layout_mode = 1
+offset_right = 194.0
+offset_bottom = 194.0
+texture = ExtResource("4_037t5")
+
+[node name="CoinsText" type="RichTextLabel" parent="HUD/Stats"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 63.0
+offset_right = 244.0
+offset_bottom = 85.0
+theme_override_fonts/normal_font = ExtResource("6_1c27h")
+theme_override_font_sizes/normal_font_size = 21
+text = "0"

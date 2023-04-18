@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://5kd2hrg6rd08"]
+[gd_scene load_steps=16 format=3 uid="uid://5kd2hrg6rd08"]
 
 [ext_resource type="Texture2D" uid="uid://srflb0e5fabf" path="res://Assets/crosshair/crosshair.png" id="1_gwjtt"]
 [ext_resource type="Script" path="res://Scenes/Player/Root.gd" id="1_wswtw"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://h4no2tr0ic6e" path="res://Scenes/Spells/LightningSpell/lightning_spell.tscn" id="5_4vqt1"]
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="5_8hotu"]
 [ext_resource type="PackedScene" uid="uid://cp8s8pdcgakky" path="res://Scenes/Spells/EarthSpell/earth_spell.tscn" id="6_vspi1"]
+[ext_resource type="PackedScene" uid="uid://von5xtuebuww" path="res://Scenes/UI/HUD/hud.tscn" id="9_3136r"]
 [ext_resource type="Texture2D" uid="uid://cl8nfs5pcnn40" path="res://Assets/wizard/shield.png" id="11_lou0y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4uico"]
@@ -71,6 +72,8 @@ one_shot = true
 wait_time = 3.0
 one_shot = true
 
+[node name="HUD" parent="." instance=ExtResource("9_3136r")]
+
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(82, 90)
 collision_mask = 10
@@ -94,8 +97,13 @@ sprite_frames = SubResource("SpriteFrames_dci2e")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = -10
+
 [connection signal="timeout" from="FireSpellCD" to="Player" method="_on_fire_spell_cd_timeout"]
 [connection signal="timeout" from="WaterSpellCD" to="Player" method="_on_water_spell_cd_timeout"]
 [connection signal="timeout" from="LightningSpellCD" to="Player" method="_on_lightning_spell_cd_timeout"]
 [connection signal="timeout" from="NormalSpellCD" to="Player" method="_on_normal_spell_cd_timeout"]
 [connection signal="timeout" from="EarthSpellCD" to="Player" method="_on_earth_spell_cd_timeout"]
+[connection signal="coins_changed" from="Player" to="HUD" method="_on_player_coins_changed"]
+[connection signal="health_lost" from="Player" to="HUD" method="_on_player_health_lost"]
