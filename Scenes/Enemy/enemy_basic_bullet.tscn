@@ -1,21 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://b4uprsp8koujh"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy/enemy_basic_bullet.gd" id="1_0seo7"]
-[ext_resource type="Texture2D" uid="uid://bfhvtjkfmikf3" path="res://icon.svg" id="1_27dqo"]
+[ext_resource type="Texture2D" uid="uid://csc68cnofprb1" path="res://Assets/bullets/regularSpell.png" id="2_jl8yo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4yr6e"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_27dqo")
+"texture": ExtResource("2_jl8yo")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_im30u"]
-size = Vector2(128, 127)
+[sub_resource type="CircleShape2D" id="CircleShape2D_oovym"]
+radius = 68.09
 
 [node name="EnemyBasicBullet" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
@@ -25,8 +25,9 @@ script = ExtResource("1_0seo7")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.0980392, 0.0627451, 0.00392157, 1)
+scale = Vector2(0.527344, 0.527344)
 sprite_frames = SubResource("SpriteFrames_4yr6e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_im30u")
+shape = SubResource("CircleShape2D_oovym")
