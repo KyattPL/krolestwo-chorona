@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://von5xtuebuww"]
+[gd_scene load_steps=12 format=3 uid="uid://von5xtuebuww"]
 
 [ext_resource type="Script" path="res://Scenes/UI/HUD/hud.gd" id="1_m5h7p"]
 [ext_resource type="Texture2D" uid="uid://cplyko1cl3y85" path="res://Assets/HUD/under.png" id="1_mq2eu"]
@@ -6,6 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://c14bho4ctikhk" path="res://Assets/HUD/progress.png" id="3_wirlu"]
 [ext_resource type="Texture2D" uid="uid://c6ypy5hsp8yov" path="res://Assets/HUD/avatar.png" id="4_037t5"]
 [ext_resource type="FontFile" uid="uid://dabu02j6atprm" path="res://Assets/fonts/MinimalPixel v2.ttf" id="6_1c27h"]
+[ext_resource type="Texture2D" uid="uid://dhnj56hlpokrg" path="res://Assets/HUD/spellBackground.png" id="7_au50h"]
+[ext_resource type="Texture2D" uid="uid://bkippkhrsjb4h" path="res://Assets/HUD/spellFireIcon.png" id="8_7jyvk"]
+[ext_resource type="Texture2D" uid="uid://bf360du4uv41m" path="res://Assets/HUD/spellEarthIcon.png" id="9_dig4c"]
+[ext_resource type="Texture2D" uid="uid://c3iks8qextmwu" path="res://Assets/HUD/spellLightningIcon.png" id="10_0ipm1"]
+[ext_resource type="Texture2D" uid="uid://bcehnidqgqui2" path="res://Assets/HUD/spellWaterIcon.png" id="11_i1h1m"]
 
 [node name="RootCanvas" type="CanvasLayer"]
 script = ExtResource("1_m5h7p")
@@ -45,3 +50,191 @@ offset_bottom = 85.0
 theme_override_fonts/normal_font = ExtResource("6_1c27h")
 theme_override_font_sizes/normal_font_size = 21
 text = "0"
+
+[node name="FireSpellBox" type="Control" parent="HUD/Stats"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FireSpellCD" type="RichTextLabel" parent="HUD/Stats/FireSpellBox"]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = 100.0
+offset_right = 149.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.479999, 0.479999)
+theme_override_fonts/normal_font = ExtResource("6_1c27h")
+theme_override_font_sizes/normal_font_size = 92
+bbcode_enabled = true
+text = "[center]6[/center]"
+
+[node name="FireSpellIcon" type="TextureRect" parent="HUD/Stats/FireSpellBox"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 100.0
+offset_right = 266.0
+offset_bottom = 356.0
+scale = Vector2(0.32, 0.32)
+texture = ExtResource("7_au50h")
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Stats/FireSpellBox/FireSpellIcon"]
+offset_left = 18.75
+offset_top = 6.25
+offset_right = 274.75
+offset_bottom = 262.25
+scale = Vector2(0.874999, 0.874999)
+texture = ExtResource("8_7jyvk")
+
+[node name="FireSpellTimer" type="Timer" parent="HUD/Stats/FireSpellBox"]
+
+[node name="WaterSpellBox" type="Control" parent="HUD/Stats"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="WaterSpellCD" type="RichTextLabel" parent="HUD/Stats/WaterSpellBox"]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 89.0
+offset_top = 100.0
+offset_right = 243.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.479999, 0.479999)
+theme_override_fonts/normal_font = ExtResource("6_1c27h")
+theme_override_font_sizes/normal_font_size = 92
+bbcode_enabled = true
+text = "[center]6[/center]"
+
+[node name="WaterSpellTimer" type="Timer" parent="HUD/Stats/WaterSpellBox"]
+
+[node name="WaterSpellIcon" type="TextureRect" parent="HUD/Stats/WaterSpellBox"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 100.0
+offset_right = 361.0
+offset_bottom = 356.0
+scale = Vector2(0.32, 0.32)
+texture = ExtResource("7_au50h")
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Stats/WaterSpellBox/WaterSpellIcon"]
+layout_mode = 0
+offset_left = 15.625
+offset_top = 15.625
+offset_right = 271.625
+offset_bottom = 271.625
+scale = Vector2(0.875, 0.875)
+texture = ExtResource("11_i1h1m")
+
+[node name="LightningSpellBox" type="Control" parent="HUD/Stats"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LightningSpellCD" type="RichTextLabel" parent="HUD/Stats/LightningSpellBox"]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 185.0
+offset_top = 100.0
+offset_right = 339.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.479999, 0.479999)
+theme_override_fonts/normal_font = ExtResource("6_1c27h")
+theme_override_font_sizes/normal_font_size = 92
+bbcode_enabled = true
+text = "[center]6[/center]"
+
+[node name="LightningSpellTimer" type="Timer" parent="HUD/Stats/LightningSpellBox"]
+
+[node name="LightningSpellIcon" type="TextureRect" parent="HUD/Stats/LightningSpellBox"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 100.0
+offset_right = 456.0
+offset_bottom = 356.0
+scale = Vector2(0.32, 0.32)
+texture = ExtResource("7_au50h")
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Stats/LightningSpellBox/LightningSpellIcon"]
+layout_mode = 0
+offset_left = 21.8751
+offset_top = 18.75
+offset_right = 277.875
+offset_bottom = 274.75
+scale = Vector2(0.875, 0.875)
+texture = ExtResource("10_0ipm1")
+
+[node name="EarthSpellBox" type="Control" parent="HUD/Stats"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EarthSpellCD" type="RichTextLabel" parent="HUD/Stats/EarthSpellBox"]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 280.0
+offset_top = 100.0
+offset_right = 434.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.479999, 0.479999)
+theme_override_fonts/normal_font = ExtResource("6_1c27h")
+theme_override_font_sizes/normal_font_size = 92
+bbcode_enabled = true
+text = "[center]6[/center]"
+
+[node name="EarthSpellTimer" type="Timer" parent="HUD/Stats/EarthSpellBox"]
+
+[node name="EarthSpellIcon" type="TextureRect" parent="HUD/Stats/EarthSpellBox"]
+layout_mode = 0
+offset_left = 295.0
+offset_top = 100.0
+offset_right = 551.0
+offset_bottom = 356.0
+scale = Vector2(0.32, 0.32)
+texture = ExtResource("7_au50h")
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Stats/EarthSpellBox/EarthSpellIcon"]
+layout_mode = 0
+offset_left = 12.5
+offset_top = 18.75
+offset_right = 268.5
+offset_bottom = 274.75
+scale = Vector2(0.875, 0.875)
+texture = ExtResource("9_dig4c")
+
+[connection signal="timeout" from="HUD/Stats/FireSpellBox/FireSpellTimer" to="." method="_on_fire_spell_timer_timeout"]
+[connection signal="timeout" from="HUD/Stats/WaterSpellBox/WaterSpellTimer" to="." method="_on_water_spell_timer_timeout"]
+[connection signal="timeout" from="HUD/Stats/LightningSpellBox/LightningSpellTimer" to="." method="_on_lightning_spell_timer_timeout"]
+[connection signal="timeout" from="HUD/Stats/EarthSpellBox/EarthSpellTimer" to="." method="_on_earth_spell_timer_timeout"]

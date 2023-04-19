@@ -10,6 +10,11 @@ extends Node2D
 
 enum SPELL { NONE, FIRE, WATER, LIGHTNING, EARTH }
 
+signal fireOnCD(waitTime)
+signal waterOnCD(waitTime)
+signal lightningOnCD(waitTime)
+signal earthOnCD(waitTime)
+
 func spawn_bullet(bulletInstance: CharacterBody2D):
 	var mousePos = $Player.get_local_mouse_position().normalized()
 	bulletInstance.position = $Player.position
@@ -24,24 +29,28 @@ func shoot():
 			SPELL.FIRE:
 				var fireBullet: CharacterBody2D = fireSpell.instantiate()
 				$FireSpellCD.start()
+				fireOnCD.emit($FireSpellCD.wait_time)
 				$Player.isFireOnCD = true
 				$Player.selectedSpell = SPELL.NONE
 				spawn_bullet(fireBullet)
 			SPELL.WATER:
 				var waterBullet: CharacterBody2D = waterSpell.instantiate()
 				$WaterSpellCD.start()
+				waterOnCD.emit($WaterSpellCD.wait_time)
 				$Player.isWaterOnCD = true
 				$Player.selectedSpell = SPELL.NONE
 				spawn_bullet(waterBullet)
 			SPELL.LIGHTNING:
 				var lightningBullet: CharacterBody2D = lightningSpell.instantiate()
 				$LightningSpellCD.start()
+				lightningOnCD.emit($LightningSpellCD.wait_time)
 				$Player.isLightningOnCD = true
 				$Player.selectedSpell = SPELL.NONE
 				spawn_bullet(lightningBullet)
 			SPELL.EARTH:
 				var earthBullet: CharacterBody2D = earthSpell.instantiate()
 				$EarthSpellCD.start()
+				earthOnCD.emit($EarthSpellCD.wait_time)
 				$Player.isEarthOnCD = true
 				$Player.selectedSpell = SPELL.NONE
 				spawn_bullet(earthBullet)

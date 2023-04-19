@@ -46,12 +46,6 @@ waterSpell = ExtResource("4_yg7du")
 lightningSpell = ExtResource("5_4vqt1")
 earthSpell = ExtResource("6_vspi1")
 
-[node name="Crosshair" type="Sprite2D" parent="."]
-z_index = 2
-scale = Vector2(0.0416667, 0.0416667)
-texture = ExtResource("1_gwjtt")
-script = ExtResource("2_68fma")
-
 [node name="FireSpellCD" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
@@ -100,6 +94,18 @@ sprite_frames = SubResource("SpriteFrames_dci2e")
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = -10
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Crosshair" type="Sprite2D" parent="CanvasLayer"]
+z_index = 3
+scale = Vector2(0.0416667, 0.0416667)
+texture = ExtResource("1_gwjtt")
+script = ExtResource("2_68fma")
+
+[connection signal="earthOnCD" from="." to="HUD" method="_on_player_root_earth_on_cd"]
+[connection signal="fireOnCD" from="." to="HUD" method="_on_player_root_fire_on_cd"]
+[connection signal="lightningOnCD" from="." to="HUD" method="_on_player_root_lightning_on_cd"]
+[connection signal="waterOnCD" from="." to="HUD" method="_on_player_root_water_on_cd"]
 [connection signal="timeout" from="FireSpellCD" to="Player" method="_on_fire_spell_cd_timeout"]
 [connection signal="timeout" from="WaterSpellCD" to="Player" method="_on_water_spell_cd_timeout"]
 [connection signal="timeout" from="LightningSpellCD" to="Player" method="_on_lightning_spell_cd_timeout"]
