@@ -1473,6 +1473,7 @@ physics_layer_0/collision_mask = 61
 sources/1 = SubResource("TileSetAtlasSource_f41ka")
 
 [node name="Level1" type="Node2D"]
+position = Vector2(1440, 0)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -1420.0
@@ -1542,3 +1543,7 @@ scale = Vector2(-0.25, -0.25)
 [node name="PlayerRoot" parent="." instance=ExtResource("3_dj0wq")]
 position = Vector2(-74, 125)
 scale = Vector2(0.25, 0.25)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Node2" type="Node" parent="."]

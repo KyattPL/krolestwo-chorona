@@ -44,8 +44,11 @@ func patrol(delta):
 func shoot():
 	var playerObj: CharacterBody2D = get_node("../PlayerRoot/Player")
 	var bulletInstance: CharacterBody2D = bulletScene.instantiate()
-	var aimPlayerVec  = Vector2(playerObj.position.x - position.x, playerObj.position.y - position.y)
+	var aimPlayerVec  = Vector2(playerObj.global_position.x - global_position.x, \
+		playerObj.global_position.y - global_position.y)
 	
+	print("Player: ", playerObj.global_position.x, ", me:", global_position.x)
+
 	bulletInstance.position = position
 	bulletInstance.velocity = aimPlayerVec.normalized() * bulletSpeed
 	add_sibling(bulletInstance)
