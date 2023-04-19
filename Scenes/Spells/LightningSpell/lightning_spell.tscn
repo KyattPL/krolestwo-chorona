@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://h4no2tr0ic6e"]
 
 [ext_resource type="Script" path="res://Scenes/Spells/LightningSpell/lightning_spell.gd" id="1_0ugku"]
-[ext_resource type="Texture2D" uid="uid://bfhvtjkfmikf3" path="res://icon.svg" id="2_byl35"]
+[ext_resource type="Texture2D" uid="uid://f1c6wqv0npfn" path="res://Assets/bullets/lightningSpell.png" id="2_wa15u"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ku6nb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_byl35")
+"texture": ExtResource("2_wa15u")
 }],
 "loop": true,
 "name": &"default",
@@ -23,7 +23,7 @@ collision_mask = 10
 script = ExtResource("1_0ugku")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.803922, 0, 0.929412, 1)
+scale = Vector2(0.494141, 0.494141)
 sprite_frames = SubResource("SpriteFrames_ku6nb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

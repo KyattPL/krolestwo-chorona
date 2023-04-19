@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://cp8s8pdcgakky"]
 
 [ext_resource type="Script" path="res://Scenes/Spells/EarthSpell/earth_spell.gd" id="1_tsmeg"]
-[ext_resource type="Texture2D" uid="uid://bfhvtjkfmikf3" path="res://icon.svg" id="2_ibkig"]
+[ext_resource type="Texture2D" uid="uid://cu2tb6dv7ud5l" path="res://Assets/bullets/earthSpell.png" id="2_dcv5m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0diyn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ibkig")
+"texture": ExtResource("2_dcv5m")
 }],
 "loop": true,
 "name": &"default",
@@ -23,7 +23,8 @@ collision_mask = 10
 script = ExtResource("1_tsmeg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.219608, 0.898039, 0, 1)
+position = Vector2(7.62939e-06, 7.62939e-06)
+scale = Vector2(0.480469, 0.480469)
 sprite_frames = SubResource("SpriteFrames_0diyn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
