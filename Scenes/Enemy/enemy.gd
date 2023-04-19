@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-@export var speed = 200
+@export var speed = 80
 @export var maxHealth = 130
 @export var bulletSpeed = 200
 @export var bulletScene: PackedScene
