@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://db525qryedno2"]
 
 [ext_resource type="Script" path="res://Scenes/Spells/NormalSpell/normal_spell.gd" id="1_lcad5"]
-[ext_resource type="Texture2D" uid="uid://cm3502mil7xqm" path="res://Assets/bullets/regularSpell.png" id="2_3kqi7"]
+[ext_resource type="Texture2D" uid="uid://bfhvtjkfmikf3" path="res://icon.svg" id="2_siio8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1sgft"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_3kqi7")
+"texture": ExtResource("2_siio8")
 }],
 "loop": true,
 "name": &"default",
@@ -23,8 +23,6 @@ collision_mask = 10
 script = ExtResource("1_lcad5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 1)
-scale = Vector2(0.494141, 0.494141)
 sprite_frames = SubResource("SpriteFrames_1sgft")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

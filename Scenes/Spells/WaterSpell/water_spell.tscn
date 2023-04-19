@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://c66gymaw873n7"]
 
 [ext_resource type="Script" path="res://Scenes/Spells/WaterSpell/water_spell.gd" id="1_f2g00"]
-[ext_resource type="Texture2D" uid="uid://bkk817kir3s6j" path="res://Assets/bullets/waterSpell.png" id="2_bpv4n"]
+[ext_resource type="Texture2D" uid="uid://bfhvtjkfmikf3" path="res://icon.svg" id="1_jqqak"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1ekae"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_bpv4n")
+"texture": ExtResource("1_jqqak")
 }],
 "loop": true,
 "name": &"default",
@@ -23,7 +23,7 @@ collision_mask = 10
 script = ExtResource("1_f2g00")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.505859, 0.505859)
+modulate = Color(0.254902, 0.47451, 1, 1)
 sprite_frames = SubResource("SpriteFrames_1ekae")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

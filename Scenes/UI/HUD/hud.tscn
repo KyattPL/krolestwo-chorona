@@ -87,7 +87,6 @@ scale = Vector2(0.32, 0.32)
 texture = ExtResource("7_au50h")
 
 [node name="TextureRect" type="TextureRect" parent="HUD/Stats/FireSpellBox/FireSpellIcon"]
-layout_mode = 0
 offset_left = 18.75
 offset_top = 6.25
 offset_right = 274.75
