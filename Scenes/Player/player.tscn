@@ -92,7 +92,6 @@ sprite_frames = SubResource("SpriteFrames_dci2e")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-limit_left = -10
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
