@@ -93,11 +93,12 @@ func _on_player_spell_selected(oldVal, newVal):
 	elif oldVal == SPELL.EARTH:
 		$HUD/Stats/EarthSpellBox/EarthSpellIcon.modulate = Color.from_hsv(0,0,1)
 
-	if newVal == SPELL.FIRE:
-		$HUD/Stats/FireSpellBox/FireSpellIcon.modulate = Color.hex(0xffd500)
-	elif newVal == SPELL.WATER:
-		$HUD/Stats/WaterSpellBox/WaterSpellIcon.modulate = Color.hex(0xffd500)
-	elif newVal == SPELL.LIGHTNING:
-		$HUD/Stats/LightningSpellBox/LightningSpellIcon.modulate = Color.hex(0xffd500)
-	elif newVal == SPELL.EARTH:
-		$HUD/Stats/EarthSpellBox/EarthSpellIcon.modulate = Color.hex(0xffd500)
+	if oldVal != newVal:
+		if newVal == SPELL.FIRE:
+			$HUD/Stats/FireSpellBox/FireSpellIcon.modulate = Color.from_hsv(0.14, 1, 1)
+		elif newVal == SPELL.WATER:
+			$HUD/Stats/WaterSpellBox/WaterSpellIcon.modulate = Color.from_hsv(0.14, 1, 1)
+		elif newVal == SPELL.LIGHTNING:
+			$HUD/Stats/LightningSpellBox/LightningSpellIcon.modulate = Color.from_hsv(0.14, 1, 1)
+		elif newVal == SPELL.EARTH:
+			$HUD/Stats/EarthSpellBox/EarthSpellIcon.modulate = Color.from_hsv(0.14, 1, 1)
