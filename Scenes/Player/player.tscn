@@ -25,7 +25,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s4i60"]
-size = Vector2(123, 182)
+size = Vector2(80, 182)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dci2e"]
 animations = [{
@@ -75,10 +75,12 @@ script = ExtResource("5_8hotu")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(-22, 4)
+scale = Vector2(0.851562, 0.96875)
 sprite_frames = SubResource("SpriteFrames_4uico")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-19.5, 1)
+position = Vector2(-23, 1)
 shape = SubResource("RectangleShape2D_s4i60")
 debug_color = Color(0, 0.564706, 0.662745, 0.419608)
 
