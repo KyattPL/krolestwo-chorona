@@ -116,3 +116,4 @@ script = ExtResource("2_68fma")
 [connection signal="timeout" from="EarthSpellCD" to="Player" method="_on_earth_spell_cd_timeout"]
 [connection signal="coins_changed" from="Player" to="HUD" method="_on_player_coins_changed"]
 [connection signal="health_lost" from="Player" to="HUD" method="_on_player_health_lost"]
+[connection signal="spell_selected" from="Player" to="HUD" method="_on_player_spell_selected"]

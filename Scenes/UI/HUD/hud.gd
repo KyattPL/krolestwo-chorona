@@ -5,6 +5,8 @@ var waterSpellWaitTime
 var lightningSpellWaitTime
 var earthSpellWaitTime
 
+enum SPELL { NONE, FIRE, WATER, LIGHTNING, EARTH }
+
 func _ready():
 	$HUD/Stats/PlayerHPBar.value = 100
 
@@ -80,3 +82,22 @@ func _on_earth_spell_timer_timeout():
 		$HUD/Stats/EarthSpellBox/EarthSpellTimer.stop()
 	else:
 		$HUD/Stats/EarthSpellBox/EarthSpellCD.text = "[center]" + str(earthSpellWaitTime) + "[/center]"
+
+func _on_player_spell_selected(oldVal, newVal):
+	if oldVal == SPELL.FIRE:
+		$HUD/Stats/FireSpellBox/FireSpellIcon.modulate = Color.from_hsv(0,0,1)
+	elif oldVal == SPELL.WATER:
+		$HUD/Stats/WaterSpellBox/WaterSpellIcon.modulate = Color.from_hsv(0,0,1)
+	elif oldVal == SPELL.LIGHTNING:
+		$HUD/Stats/LightningSpellBox/LightningSpellIcon.modulate = Color.from_hsv(0,0,1)
+	elif oldVal == SPELL.EARTH:
+		$HUD/Stats/EarthSpellBox/EarthSpellIcon.modulate = Color.from_hsv(0,0,1)
+
+	if newVal == SPELL.FIRE:
+		$HUD/Stats/FireSpellBox/FireSpellIcon.modulate = Color.hex(0xffd500)
+	elif newVal == SPELL.WATER:
+		$HUD/Stats/WaterSpellBox/WaterSpellIcon.modulate = Color.hex(0xffd500)
+	elif newVal == SPELL.LIGHTNING:
+		$HUD/Stats/LightningSpellBox/LightningSpellIcon.modulate = Color.hex(0xffd500)
+	elif newVal == SPELL.EARTH:
+		$HUD/Stats/EarthSpellBox/EarthSpellIcon.modulate = Color.hex(0xffd500)
