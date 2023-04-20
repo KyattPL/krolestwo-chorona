@@ -1512,12 +1512,12 @@ rotation = 3.14159
 scale = Vector2(-0.25, -0.25)
 
 [node name="Enemy2" parent="." instance=ExtResource("6_0uk0x")]
-position = Vector2(-890, 122)
+position = Vector2(-1221, 118)
 rotation = 3.14159
 scale = Vector2(-0.25, -0.25)
 
 [node name="PlayerRoot" parent="." instance=ExtResource("3_dj0wq")]
-position = Vector2(-74, 125)
+position = Vector2(-1355, 73)
 scale = Vector2(0.25, 0.25)
 metadata/_edit_group_ = true
 

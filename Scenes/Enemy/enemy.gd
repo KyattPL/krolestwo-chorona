@@ -46,8 +46,6 @@ func shoot():
 	var bulletInstance: CharacterBody2D = bulletScene.instantiate()
 	var aimPlayerVec  = Vector2(playerObj.global_position.x - global_position.x, \
 		playerObj.global_position.y - global_position.y)
-	
-	print("Player: ", playerObj.global_position.x, ", me:", global_position.x)
 
 	bulletInstance.position = position
 	bulletInstance.velocity = aimPlayerVec.normalized() * bulletSpeed
@@ -56,8 +54,27 @@ func shoot():
 
 func fight_move():
 	velocity.x = fightVelocity
+	var playerObj: CharacterBody2D = get_node("../PlayerRoot/Player")
+	var isPlayerOnLeft = playerObj.global_position.x < global_position.x
+	if isPlayerOnLeft and not facingLeft:
+		facingLeft = true
+		$Sprite2D.flip_h = facingLeft
+		$GroundRayCast.position.x = 47 if !facingLeft else -77
+		$GroundRayCast2.position.x = -77 if !facingLeft else 47
+		$PlayerDetector.position.x = 0 if !facingLeft else -475
+		
+	if not isPlayerOnLeft and facingLeft:
+		facingLeft = false
+		$Sprite2D.flip_h = facingLeft
+		$GroundRayCast.position.x = 47 if !facingLeft else -77
+		$GroundRayCast2.position.x = -77 if !facingLeft else 47
+		$PlayerDetector.position.x = 0 if !facingLeft else -475
+		
 	if not $GroundRayCast.is_colliding() and is_on_floor():
 		velocity.x = 30 if facingLeft else -30
+		
+	if not $GroundRayCast2.is_colliding() and is_on_floor():
+		velocity.x = -30 if facingLeft else 30
 		
 	move_and_slide()
 
@@ -88,6 +105,7 @@ func detect_turn_around():
 		facingLeft = !facingLeft
 		$Sprite2D.flip_h = facingLeft
 		$GroundRayCast.position.x = 47 if !facingLeft else -77
+		$GroundRayCast2.position.x = -77 if !facingLeft else 47
 		$PlayerDetector.position.x = 0 if !facingLeft else -475
 
 func got_hit(damage, spellType):
@@ -101,7 +119,6 @@ func got_hit(damage, spellType):
 	else:
 		health -= damage
 		var percentRemaining = round((health / maxHealth) * 100)
-		print(percentRemaining)
 		var newHue = percentRemaining / 255.0
 		$HealthUI/Healthbar.value = percentRemaining
 		$HealthUI/Healthbar.set_modulate(Color.from_hsv(newHue, 1, 0.72))
@@ -119,7 +136,10 @@ func _on_player_detector_body_exited(_body):
 func _on_state_change_timer_timeout():
 	var choice = randf()
 	
-	if choice < 0.8:
+	if choice < 0.4:
+		currentState = STATE.FIGHT_MOVE
+		fightVelocity = 0
+	elif choice < 0.8:
 		currentState = STATE.FIGHT_MOVE
 		fight_move_change_velocity()
 	elif choice < 0.9 and !isShielded:
