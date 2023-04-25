@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct6d68mkwg2bq"]
+
+[ext_resource type="Texture2D" uid="uid://cv0cllvoshxfm" path="res://Assets/scroll/scroll.png" id="1_qbhmo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kr4ur"]
+size = Vector2(640, 476)
+
+[node name="Scroll" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qbhmo")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_kr4ur")
