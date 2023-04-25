@@ -98,6 +98,7 @@ zoom = Vector2(2.5, 2.5)
 limit_left = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="Crosshair" type="Sprite2D" parent="CanvasLayer"]
 z_index = 3

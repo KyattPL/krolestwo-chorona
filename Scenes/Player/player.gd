@@ -46,12 +46,13 @@ func joystick_aim(delta):
 	direction.x = Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left")
 	direction.y = Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up")
 	
-	if abs(direction.x) == 1 and abs(direction.y) == 1:
-		direction = direction.normalized()
+	direction = direction.normalized()
+	#if abs(direction.x) == 1 and abs(direction.y) == 1:
+	#	direction = direction.normalized()
 
 	var movement = joystick_sens * direction * delta
-	if (movement):  
-		get_viewport().warp_mouse(get_global_mouse_position() + movement) 
+	if (movement):
+		get_viewport().warp_mouse(get_viewport().get_mouse_position() + movement) 
 
 func get_input():
 	velocity.x = 0

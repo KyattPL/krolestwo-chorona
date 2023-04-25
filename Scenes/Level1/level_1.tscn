@@ -1527,5 +1527,8 @@ metadata/_edit_group_ = true
 [node name="Node2" type="Node" parent="."]
 
 [node name="Scroll" parent="." instance=ExtResource("7_uc64q")]
-position = Vector2(-728, 347)
+position = Vector2(-1372, 103)
 scale = Vector2(0.0799975, 0.0799975)
+
+[connection signal="pause_game" from="Scroll" to="PlayerRoot" method="_on_scroll_pause_game"]
+[connection signal="resume_game" from="Scroll" to="PlayerRoot" method="_on_scroll_resume_game"]

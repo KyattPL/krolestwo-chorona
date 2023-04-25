@@ -15,3 +15,5 @@ func _physics_process(delta):
 			if character.get_collision_layer() == ENEMY_COLLISION_LAYER:
 				character.got_hit(damage, SPELL.WATER)
 				queue_free()
+		if collision.get_collider().is_class("TileMap") and not is_queued_for_deletion():
+			queue_free()

@@ -63,3 +63,11 @@ func shoot():
 
 func _process(delta):
 	shoot()
+
+
+func _on_scroll_pause_game():
+	$HUD.visible = false
+
+
+func _on_scroll_resume_game():
+	$HUD.visible = true
