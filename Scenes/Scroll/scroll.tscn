@@ -18,6 +18,7 @@ visible = false
 [node name="Scrollbox" parent="." instance=ExtResource("3_nh8nt")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
 texture = ExtResource("1_qbhmo")
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -71,3 +71,11 @@ func _on_scroll_pause_game():
 
 func _on_scroll_resume_game():
 	$HUD.visible = true
+
+
+func _on_shop_pause_game():
+	$HUD.visible = false
+
+
+func _on_shop_resume_game():
+	$HUD.visible = true

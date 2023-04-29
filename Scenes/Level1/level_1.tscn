@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bvnvm63w85654" path="res://Scenes/Coin/coin.tscn" id="2_y2nvd"]
 [ext_resource type="PackedScene" uid="uid://5kd2hrg6rd08" path="res://Scenes/Player/player.tscn" id="3_dj0wq"]
 [ext_resource type="Texture2D" uid="uid://da626s1qxv6io" path="res://Assets/tiles/village_props/TX Village Props.png" id="4_d8fth"]
-[ext_resource type="Texture2D" uid="uid://duy7sp4rwrct1" path="res://Assets/tiles/oak_wood/shop.png" id="4_kj54b"]
 [ext_resource type="PackedScene" uid="uid://cdni5b3n7ui7n" path="res://Scenes/Enemy/enemy.tscn" id="6_0uk0x"]
+[ext_resource type="PackedScene" uid="uid://cpymtgbwlju1m" path="res://Scenes/Shop/shop.tscn" id="7_duunm"]
 [ext_resource type="PackedScene" uid="uid://ct6d68mkwg2bq" path="res://Scenes/Scroll/scroll.tscn" id="7_uc64q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8fxjx"]
@@ -1492,10 +1492,6 @@ scale = Vector2(-0.02, -0.02)
 position = Vector2(601, 274)
 scale = Vector2(-0.02, -0.02)
 
-[node name="Shop" type="Sprite2D" parent="."]
-position = Vector2(-461, 117)
-texture = ExtResource("4_kj54b")
-
 [node name="TileMap2" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_vwskt")
 cell_quadrant_size = 32
@@ -1530,5 +1526,11 @@ metadata/_edit_group_ = true
 position = Vector2(-1372, 103)
 scale = Vector2(0.0799975, 0.0799975)
 
+[node name="Shop" parent="." instance=ExtResource("7_duunm")]
+position = Vector2(-539, 93)
+scale = Vector2(0.479998, 0.479998)
+
 [connection signal="pause_game" from="Scroll" to="PlayerRoot" method="_on_scroll_pause_game"]
 [connection signal="resume_game" from="Scroll" to="PlayerRoot" method="_on_scroll_resume_game"]
+[connection signal="pause_game" from="Shop" to="PlayerRoot" method="_on_shop_pause_game"]
+[connection signal="resume_game" from="Shop" to="PlayerRoot" method="_on_shop_resume_game"]
