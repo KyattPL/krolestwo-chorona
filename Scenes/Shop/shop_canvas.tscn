@@ -216,6 +216,7 @@ theme_override_constants/margin_bottom = 200
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
+focus_mode = 0
 theme_override_fonts/font = ExtResource("2_atpxu")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxTexture_jkj6k")

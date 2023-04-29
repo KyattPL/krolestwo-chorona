@@ -76,6 +76,6 @@ func _on_scroll_resume_game():
 func _on_shop_pause_game():
 	$HUD.visible = false
 
-
+	
 func _on_shop_resume_game():
 	$HUD.visible = true
