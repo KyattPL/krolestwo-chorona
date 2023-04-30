@@ -2,11 +2,27 @@ extends CanvasLayer
 
 @export var joystick_sens = 700
 
-signal resume_game
+var items = {
+	1: {
+		"name": "Health potion",
+		"desc": "Restores 20HP",
+		"price": 25
+	},
+	2: {
+		"name": "Speed potion",
+		"desc": "Increases speed for 10s",
+		"price": 30
+	},
+	3: {
+		"name": "Cooldown potion",
+		"desc": "Reduces cooldown of spells by 30%",
+		"price": 50
+	}
+}
 
-func _on_close_shop_pressed():
-	get_tree().paused = false
-	resume_game.emit()
+var currentItem = 1
+
+signal resume_game
 
 func joystick_aim(delta):
 	var direction: Vector2
@@ -21,6 +37,12 @@ func joystick_aim(delta):
 	if (movement):
 		get_viewport().warp_mouse(get_viewport().get_mouse_position() + movement)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _ready():
+	pass
+
 func _process(delta):
 	joystick_aim(delta)
+
+func _on_close_shop_pressed():
+	get_tree().paused = false
+	resume_game.emit()
