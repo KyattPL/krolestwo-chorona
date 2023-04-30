@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://von5xtuebuww"]
+[gd_scene load_steps=16 format=3 uid="uid://von5xtuebuww"]
 
 [ext_resource type="Script" path="res://Scenes/UI/HUD/hud.gd" id="1_m5h7p"]
 [ext_resource type="Texture2D" uid="uid://cplyko1cl3y85" path="res://Assets/HUD/under.png" id="1_mq2eu"]
@@ -11,13 +11,20 @@
 [ext_resource type="Texture2D" uid="uid://bf360du4uv41m" path="res://Assets/HUD/spellEarthIcon.png" id="9_dig4c"]
 [ext_resource type="Texture2D" uid="uid://c3iks8qextmwu" path="res://Assets/HUD/spellLightningIcon.png" id="10_0ipm1"]
 [ext_resource type="Texture2D" uid="uid://bcehnidqgqui2" path="res://Assets/HUD/spellWaterIcon.png" id="11_i1h1m"]
+[ext_resource type="Texture2D" uid="uid://cvsqf8sade6bi" path="res://Assets/shop/item_bg.png" id="12_l6b6f"]
+[ext_resource type="Texture2D" uid="uid://2t26vm7v8p8f" path="res://Assets/shop/potion_0.png" id="13_gq2e2"]
+[ext_resource type="Texture2D" uid="uid://c51od1fs67aol" path="res://Assets/shop/potion_1.png" id="14_3530t"]
+[ext_resource type="Texture2D" uid="uid://doua461h7sjce" path="res://Assets/shop/potion_2.png" id="15_3qucr"]
 
 [node name="RootCanvas" type="CanvasLayer"]
 script = ExtResource("1_m5h7p")
 
-[node name="HUD" type="GridContainer" parent="."]
-offset_right = 1147.0
-offset_bottom = 604.0
+[node name="HUD" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Stats" type="Control" parent="HUD"]
 layout_mode = 2
@@ -234,6 +241,155 @@ offset_right = 268.5
 offset_bottom = 274.75
 scale = Vector2(0.875, 0.875)
 texture = ExtResource("9_dig4c")
+
+[node name="Items" type="Control" parent="HUD"]
+layout_mode = 2
+
+[node name="HealthPotionBox" type="MarginContainer" parent="HUD/Items"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -85.0
+offset_right = 85.0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HealthPotionBg" type="TextureRect" parent="HUD/Items/HealthPotionBox"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("12_l6b6f")
+expand_mode = 1
+
+[node name="HealthPotionIcon" type="TextureRect" parent="HUD/Items/HealthPotionBox/HealthPotionBg"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_gq2e2")
+expand_mode = 1
+
+[node name="HealthPotionTextBox" type="MarginContainer" parent="HUD/Items/HealthPotionBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 56
+theme_override_constants/margin_top = 48
+
+[node name="HealthPotionCount" type="RichTextLabel" parent="HUD/Items/HealthPotionBox/HealthPotionTextBox"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/normal_font = ExtResource("6_1c27h")
+theme_override_font_sizes/normal_font_size = 24
+text = "4"
+
+[node name="SpeedPotionBox" type="MarginContainer" parent="HUD/Items"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -85.0
+offset_right = 75.0
+grow_vertical = 0
+theme_override_constants/margin_left = 110
+theme_override_constants/margin_bottom = 10
+
+[node name="SpeedPotionBg" type="TextureRect" parent="HUD/Items/SpeedPotionBox"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("12_l6b6f")
+expand_mode = 1
+
+[node name="SpeedPotionIcon" type="TextureRect" parent="HUD/Items/SpeedPotionBox/SpeedPotionBg"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_3530t")
+expand_mode = 1
+
+[node name="SpeedPotionTextBox" type="MarginContainer" parent="HUD/Items/SpeedPotionBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 56
+theme_override_constants/margin_top = 48
+
+[node name="SpeedPotionCount" type="RichTextLabel" parent="HUD/Items/SpeedPotionBox/SpeedPotionTextBox"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/normal_font = ExtResource("6_1c27h")
+theme_override_font_sizes/normal_font_size = 24
+text = "4"
+
+[node name="CooldownPotionBox" type="MarginContainer" parent="HUD/Items"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -85.0
+offset_right = 75.0
+grow_vertical = 0
+theme_override_constants/margin_left = 210
+theme_override_constants/margin_bottom = 10
+
+[node name="CooldownPotionBg" type="TextureRect" parent="HUD/Items/CooldownPotionBox"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("12_l6b6f")
+expand_mode = 1
+
+[node name="CooldownPotionIcon" type="TextureRect" parent="HUD/Items/CooldownPotionBox/CooldownPotionBg"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_3qucr")
+expand_mode = 1
+
+[node name="CooldownPotionTextBox" type="MarginContainer" parent="HUD/Items/CooldownPotionBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 56
+theme_override_constants/margin_top = 48
+
+[node name="CooldownPotionCount" type="RichTextLabel" parent="HUD/Items/CooldownPotionBox/CooldownPotionTextBox"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/normal_font = ExtResource("6_1c27h")
+theme_override_font_sizes/normal_font_size = 24
+text = "4"
 
 [connection signal="timeout" from="HUD/Stats/FireSpellBox/FireSpellTimer" to="." method="_on_fire_spell_timer_timeout"]
 [connection signal="timeout" from="HUD/Stats/WaterSpellBox/WaterSpellTimer" to="." method="_on_water_spell_timer_timeout"]

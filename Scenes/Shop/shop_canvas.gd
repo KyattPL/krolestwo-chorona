@@ -6,7 +6,7 @@ var items = {
 	0: {
 		"name": "Health potion",
 		"desc": "Restores 20HP",
-		"price": 5
+		"price": 20
 	},
 	1: {
 		"name": "Speed potion",
