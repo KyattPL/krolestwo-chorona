@@ -79,3 +79,7 @@ func _on_shop_pause_game():
 	
 func _on_shop_resume_game():
 	$HUD.visible = true
+
+func _on_shop_change_coins(newCoins):
+	$HUD/HUD/Stats/CoinsText.text = str(newCoins)
+	$Player.coins = newCoins

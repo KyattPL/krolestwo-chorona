@@ -1532,5 +1532,6 @@ scale = Vector2(0.479998, 0.479998)
 
 [connection signal="pause_game" from="Scroll" to="PlayerRoot" method="_on_scroll_pause_game"]
 [connection signal="resume_game" from="Scroll" to="PlayerRoot" method="_on_scroll_resume_game"]
+[connection signal="change_coins" from="Shop" to="PlayerRoot" method="_on_shop_change_coins"]
 [connection signal="pause_game" from="Shop" to="PlayerRoot" method="_on_shop_pause_game"]
 [connection signal="resume_game" from="Shop" to="PlayerRoot" method="_on_shop_resume_game"]

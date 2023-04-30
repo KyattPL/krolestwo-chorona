@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dlg184222nbn7"]
+[gd_scene load_steps=30 format=3 uid="uid://x2jln8v61i60"]
 
 [ext_resource type="Texture2D" uid="uid://dprf0aqw2omc7" path="res://Assets/shop/shop_bg.png" id="1_ebl2c"]
 [ext_resource type="Script" path="res://Scenes/Shop/shop_canvas.gd" id="1_w6bbd"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://br726sni7l2iv" path="res://Assets/shop/arrow_left.png" id="6_bfa11"]
 [ext_resource type="Texture2D" uid="uid://dfvp76y30i86n" path="res://Assets/shop/arrow_right.png" id="7_4ygjx"]
 [ext_resource type="Texture2D" uid="uid://cvsqf8sade6bi" path="res://Assets/shop/item_bg.png" id="7_k1lev"]
-[ext_resource type="Texture2D" uid="uid://2t26vm7v8p8f" path="res://Assets/shop/potion_health.png" id="8_b7jr4"]
+[ext_resource type="Texture2D" uid="uid://2t26vm7v8p8f" path="res://Assets/shop/potion_0.png" id="8_7o6x5"]
 
 [sub_resource type="Animation" id="Animation_3lyab"]
 length = 0.001
@@ -240,7 +240,7 @@ grow_vertical = 2
 theme_override_constants/margin_bottom = 225
 
 [node name="ItemNameLabel" type="RichTextLabel" parent="ItemNameContainer"]
-custom_minimum_size = Vector2(250, 50)
+custom_minimum_size = Vector2(275, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -302,7 +302,7 @@ custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("8_b7jr4")
+texture = ExtResource("8_7o6x5")
 expand_mode = 1
 
 [node name="NextItemButton" type="Button" parent="ItemSelectContainer"]
@@ -331,7 +331,7 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="ItemDescriptionLabel" type="RichTextLabel" parent="ItemDescriptionContainer"]
-custom_minimum_size = Vector2(200, 50)
+custom_minimum_size = Vector2(450, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -391,3 +391,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_xtn4d")
 text = "Buy"
 
 [connection signal="pressed" from="CloseContainer/CloseShop" to="." method="_on_close_shop_pressed"]
+[connection signal="pressed" from="ItemSelectContainer/PrevItemButton" to="." method="_on_prev_item_button_pressed"]
+[connection signal="pressed" from="ItemSelectContainer/NextItemButton" to="." method="_on_next_item_button_pressed"]
+[connection signal="pressed" from="BuyContainer/BuyButton" to="." method="_on_buy_button_pressed"]

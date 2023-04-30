@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://7l1x2iutuecr" path="res://Scenes/UI/ActionTooltip/action_tooltip.tscn" id="1_70gkb"]
 [ext_resource type="Script" path="res://Scenes/Shop/shop.gd" id="1_phwf3"]
 [ext_resource type="Texture2D" uid="uid://duy7sp4rwrct1" path="res://Assets/tiles/oak_wood/shop.png" id="2_5g8sf"]
-[ext_resource type="PackedScene" uid="uid://dlg184222nbn7" path="res://Scenes/Shop/shop_canvas.tscn" id="3_ja3yf"]
+[ext_resource type="PackedScene" uid="uid://x2jln8v61i60" path="res://Scenes/Shop/shop_canvas.tscn" id="3_ja3yf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b80fe"]
 size = Vector2(431, 284)
@@ -27,6 +27,8 @@ texture = ExtResource("2_5g8sf")
 position = Vector2(-3.5, 15)
 shape = SubResource("RectangleShape2D_b80fe")
 
+[connection signal="add_potions" from="ShopCanvas" to="." method="_on_shop_canvas_add_potions"]
+[connection signal="change_coins" from="ShopCanvas" to="." method="_on_shop_canvas_change_coins"]
 [connection signal="resume_game" from="ShopCanvas" to="." method="_on_shop_canvas_resume_game"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

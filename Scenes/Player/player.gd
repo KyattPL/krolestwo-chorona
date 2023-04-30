@@ -19,6 +19,10 @@ signal health_lost(oldVal, newVal)
 var coins = 0
 signal coins_changed(oldVal, newVal)
 
+var healthPotions = 0
+var speedPotions = 0
+var cooldownPotions = 0
+
 var isFireOnCD: bool = false
 var isWaterOnCD: bool = false
 var isLightningOnCD: bool = false
