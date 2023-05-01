@@ -5,6 +5,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var maxHealth = 130
 @export var bulletSpeed = 200
 @export var bulletScene: PackedScene
+@export var coinScene: PackedScene
 
 var facingLeft: bool = false
 var fightVelocity: float = 0.0
@@ -123,6 +124,10 @@ func got_hit(damage, spellType):
 		$HealthUI/Healthbar.value = percentRemaining
 		$HealthUI/Healthbar.set_modulate(Color.from_hsv(newHue, 1, 0.72))
 		if health <= 0:
+			var spawnedCoin = coinScene.instantiate()
+			spawnedCoin.scale = Vector2(0.02, 0.02)
+			spawnedCoin.position = position
+			get_node("..").add_child(spawnedCoin)
 			queue_free()
 
 func _on_player_detector_body_entered(_body: CharacterBody2D):
