@@ -10,7 +10,7 @@ enum SPELL { NONE, FIRE, WATER, LIGHTNING, EARTH }
 func _ready():
 	$HUD/Stats/PlayerHPBar.value = 100
 
-func _on_player_health_lost(oldVal, newVal):
+func _on_player_health_changed(oldVal, newVal):
 	$HUD/Stats/PlayerHPBar.value = newVal
 
 func _on_player_coins_changed(oldVal, newVal):
@@ -102,3 +102,36 @@ func _on_player_spell_selected(oldVal, newVal):
 			$HUD/Stats/LightningSpellBox/LightningSpellIcon.modulate = Color.from_hsv(0.14, 1, 1)
 		elif newVal == SPELL.EARTH:
 			$HUD/Stats/EarthSpellBox/EarthSpellIcon.modulate = Color.from_hsv(0.14, 1, 1)
+
+func _on_player_used_potion(potionType):
+	match potionType:
+		0:
+			var count = $HUD/Items/HealthPotionBox/HealthPotionTextBox/HealthPotionCount.text
+			print(count)
+			$HUD/Items/HealthPotionBox/HealthPotionTextBox/HealthPotionCount.text = str(int(count) - 1)
+		1:
+			var count = $HUD/Items/SpeedPotionBox/SpeedPotionTextBox/SpeedPotionCount.text
+			$HUD/Items/SpeedPotionBox/SpeedPotionTextBox/SpeedPotionCount.text = str(int(count) - 1)
+		2:
+			var count = $HUD/Items/CooldownPotionBox/CooldownPotionTextBox/CooldownPotionCount.text
+			$HUD/Items/CooldownPotionBox/CooldownPotionTextBox/CooldownPotionCount.text = str(int(count) - 1)
+			
+			fireSpellWaitTime = 0
+			$HUD/Stats/FireSpellBox/FireSpellIcon.modulate = Color.from_hsv(0,0,1)
+			$HUD/Stats/FireSpellBox/FireSpellCD.visible = false
+			$HUD/Stats/FireSpellBox/FireSpellTimer.stop()			
+			
+			waterSpellWaitTime = 0
+			$HUD/Stats/WaterSpellBox/WaterSpellIcon.modulate = Color.from_hsv(0,0,1)
+			$HUD/Stats/WaterSpellBox/WaterSpellCD.visible = false
+			$HUD/Stats/WaterSpellBox/WaterSpellTimer.stop()
+			
+			lightningSpellWaitTime = 0
+			$HUD/Stats/LightningSpellBox/LightningSpellIcon.modulate = Color.from_hsv(0,0,1)
+			$HUD/Stats/LightningSpellBox/LightningSpellCD.visible = false
+			$HUD/Stats/LightningSpellBox/LightningSpellTimer.stop()			
+			
+			earthSpellWaitTime = 0
+			$HUD/Stats/EarthSpellBox/EarthSpellIcon.modulate = Color.from_hsv(0,0,1)
+			$HUD/Stats/EarthSpellBox/EarthSpellCD.visible = false
+			$HUD/Stats/EarthSpellBox/EarthSpellTimer.stop()

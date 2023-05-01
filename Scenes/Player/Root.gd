@@ -83,3 +83,15 @@ func _on_shop_resume_game():
 func _on_shop_change_coins(newCoins):
 	$HUD/HUD/Stats/CoinsText.text = str(newCoins)
 	$Player.coins = newCoins
+
+func _on_shop_add_potions(potionType, potionCount):
+	match potionType:
+		0:
+			$Player.healthPotions += 1
+			$HUD/HUD/Items/HealthPotionBox/HealthPotionTextBox/HealthPotionCount.text = str($Player.healthPotions)
+		1:
+			$Player.speedPotions += 1
+			$HUD/HUD/Items/SpeedPotionBox/SpeedPotionTextBox/SpeedPotionCount.text = str($Player.speedPotions)
+		2:
+			$Player.cooldownPotions += 1
+			$HUD/HUD/Items/CooldownPotionBox/CooldownPotionTextBox/CooldownPotionCount.text = str($Player.cooldownPotions)

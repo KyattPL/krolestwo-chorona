@@ -1516,7 +1516,6 @@ scale = Vector2(-0.25, -0.25)
 [node name="PlayerRoot" parent="." instance=ExtResource("3_dj0wq")]
 position = Vector2(-1355, 73)
 scale = Vector2(0.25, 0.25)
-metadata/_edit_group_ = true
 
 [node name="Node" type="Node" parent="."]
 
@@ -1532,6 +1531,7 @@ scale = Vector2(0.479998, 0.479998)
 
 [connection signal="pause_game" from="Scroll" to="PlayerRoot" method="_on_scroll_pause_game"]
 [connection signal="resume_game" from="Scroll" to="PlayerRoot" method="_on_scroll_resume_game"]
+[connection signal="add_potions" from="Shop" to="PlayerRoot" method="_on_shop_add_potions"]
 [connection signal="change_coins" from="Shop" to="PlayerRoot" method="_on_shop_change_coins"]
 [connection signal="pause_game" from="Shop" to="PlayerRoot" method="_on_shop_pause_game"]
 [connection signal="resume_game" from="Shop" to="PlayerRoot" method="_on_shop_resume_game"]

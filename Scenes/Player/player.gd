@@ -13,8 +13,9 @@ enum SPELL { NONE, FIRE, WATER, LIGHTNING, EARTH }
 var selectedSpell: SPELL = SPELL.NONE
 signal spell_selected(oldVal, newVal)
 
+var maxHealth = 100
 var health = 100
-signal health_lost(oldVal, newVal)
+signal health_changed(oldVal, newVal)
 
 var coins = 0
 signal coins_changed(oldVal, newVal)
@@ -22,6 +23,7 @@ signal coins_changed(oldVal, newVal)
 var healthPotions = 0
 var speedPotions = 0
 var cooldownPotions = 0
+signal used_potion(potionType)
 
 var isFireOnCD: bool = false
 var isWaterOnCD: bool = false
@@ -64,6 +66,10 @@ func get_input():
 	var left = Input.is_action_pressed('move_left')
 	var jump = Input.is_action_just_pressed('jump')
 	var shield = Input.is_action_pressed("shield")
+	
+	var hpPotion = Input.is_action_just_pressed('use_health_potion')
+	var speedPotion = Input.is_action_just_pressed('use_speed_potion')
+	var cooldownPotion = Input.is_action_just_pressed('use_cooldown_potion')
 
 	if shield and is_on_floor():
 		isShielded = true
@@ -85,11 +91,31 @@ func get_input():
 	elif left:
 		facingLeft = true
 		velocity.x -= run_speed
+	
+	if hpPotion and healthPotions > 0:
+		var oldVal = health
+		healthPotions -= 1
+		health += 20
+		used_potion.emit(0)
+		if health > maxHealth:
+			health = maxHealth
+		health_changed.emit(oldVal, health)
+	
+	if speedPotion and speedPotions > 0:
+		speedPotions -= 1
+		run_speed += 100
+		used_potion.emit(1)
+		await get_tree().create_timer(3.0).timeout
+		run_speed -= 100
+		
+	if cooldownPotion and cooldownPotions > 0:
+		cooldownPotions -= 1
+		used_potion.emit(2)
 
 func got_hit(damage):
 	if not isShielded:
 		health -= damage
-		health_lost.emit(health + damage, health)
+		health_changed.emit(health + damage, health)
 		if health <= 0:
 			get_tree().reload_current_scene()
 
