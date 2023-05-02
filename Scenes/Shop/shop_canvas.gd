@@ -6,17 +6,17 @@ var items = {
 	0: {
 		"name": "Health potion",
 		"desc": "Restores 20HP",
-		"price": 20
+		"price": 2
 	},
 	1: {
 		"name": "Speed potion",
 		"desc": "Increases speed for 3s",
-		"price": 20
+		"price": 2
 	},
 	2: {
 		"name": "Cooldown potion",
 		"desc": "Refreshes cooldown of spells",
-		"price": 30
+		"price": 3
 	}
 }
 

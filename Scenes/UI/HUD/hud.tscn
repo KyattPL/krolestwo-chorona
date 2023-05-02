@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://von5xtuebuww"]
+[gd_scene load_steps=23 format=3 uid="uid://von5xtuebuww"]
 
 [ext_resource type="Script" path="res://Scenes/UI/HUD/hud.gd" id="1_m5h7p"]
 [ext_resource type="Texture2D" uid="uid://cplyko1cl3y85" path="res://Assets/HUD/under.png" id="1_mq2eu"]
@@ -15,6 +15,33 @@
 [ext_resource type="Texture2D" uid="uid://2t26vm7v8p8f" path="res://Assets/shop/potion_0.png" id="13_gq2e2"]
 [ext_resource type="Texture2D" uid="uid://c51od1fs67aol" path="res://Assets/shop/potion_1.png" id="14_3530t"]
 [ext_resource type="Texture2D" uid="uid://doua461h7sjce" path="res://Assets/shop/potion_2.png" id="15_3qucr"]
+[ext_resource type="Texture2D" uid="uid://p32xqg05l07s" path="res://Assets/button/button_bg.png" id="16_qy07n"]
+[ext_resource type="Texture2D" uid="uid://c7ltuw4cgptp1" path="res://Assets/button/button_pressed.png" id="17_d272p"]
+[ext_resource type="Texture2D" uid="uid://bygs33gsi563u" path="res://Assets/HUD/skillTreeIcon.png" id="18_p8qu3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4fi5r"]
+texture = ExtResource("16_qy07n")
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3rp65"]
+texture = ExtResource("16_qy07n")
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lvxxv"]
+texture = ExtResource("17_d272p")
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fwayo"]
 
 [node name="RootCanvas" type="CanvasLayer"]
 script = ExtResource("1_m5h7p")
@@ -390,6 +417,34 @@ theme_override_constants/shadow_outline_size = 6
 theme_override_fonts/normal_font = ExtResource("6_1c27h")
 theme_override_font_sizes/normal_font_size = 24
 text = "0"
+
+[node name="SkillTree" type="Control" parent="HUD"]
+layout_mode = 2
+
+[node name="SkillTreeOpenBox" type="MarginContainer" parent="HUD/SkillTree"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="SkillTreeOpenButton" type="Button" parent="HUD/SkillTree/SkillTreeOpenBox"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_4fi5r")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3rp65")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lvxxv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fwayo")
+icon = ExtResource("18_p8qu3")
+expand_icon = true
 
 [connection signal="timeout" from="HUD/Stats/FireSpellBox/FireSpellTimer" to="." method="_on_fire_spell_timer_timeout"]
 [connection signal="timeout" from="HUD/Stats/WaterSpellBox/WaterSpellTimer" to="." method="_on_water_spell_timer_timeout"]
