@@ -477,7 +477,6 @@ expand_icon = true
 
 [node name="SkillTreeBox" type="MarginContainer" parent="HUD/SkillTree"]
 process_mode = 2
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -543,13 +542,55 @@ texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Button" type="Button" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/TextureRect3"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/TextureRect3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_7jyvk")
+expand_mode = 1
+
 [node name="TextureRect4" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
+tooltip_text = "Basic fire spell"
 texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/TextureRect4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_7jyvk")
+expand_mode = 1
 
 [node name="WaterSkillColumn" type="VBoxContainer" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid"]
 layout_mode = 2
