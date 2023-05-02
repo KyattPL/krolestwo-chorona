@@ -119,19 +119,41 @@ func _on_player_used_potion(potionType):
 			fireSpellWaitTime = 0
 			$HUD/Stats/FireSpellBox/FireSpellIcon.modulate = Color.from_hsv(0,0,1)
 			$HUD/Stats/FireSpellBox/FireSpellCD.visible = false
-			$HUD/Stats/FireSpellBox/FireSpellTimer.stop()			
+			$HUD/Stats/FireSpellBox/FireSpellTimer.stop()
+			get_node("../FireSpellCD").stop()
+			get_node("../FireSpellCD").emit_signal("timeout")
 			
 			waterSpellWaitTime = 0
 			$HUD/Stats/WaterSpellBox/WaterSpellIcon.modulate = Color.from_hsv(0,0,1)
 			$HUD/Stats/WaterSpellBox/WaterSpellCD.visible = false
 			$HUD/Stats/WaterSpellBox/WaterSpellTimer.stop()
+			get_node("../WaterSpellCD").stop()
+			get_node("../WaterSpellCD").emit_signal("timeout")
 			
 			lightningSpellWaitTime = 0
 			$HUD/Stats/LightningSpellBox/LightningSpellIcon.modulate = Color.from_hsv(0,0,1)
 			$HUD/Stats/LightningSpellBox/LightningSpellCD.visible = false
-			$HUD/Stats/LightningSpellBox/LightningSpellTimer.stop()			
+			$HUD/Stats/LightningSpellBox/LightningSpellTimer.stop()
+			get_node("../LightningSpellCD").stop()
+			get_node("../LightningSpellCD").emit_signal("timeout")
 			
 			earthSpellWaitTime = 0
 			$HUD/Stats/EarthSpellBox/EarthSpellIcon.modulate = Color.from_hsv(0,0,1)
 			$HUD/Stats/EarthSpellBox/EarthSpellCD.visible = false
 			$HUD/Stats/EarthSpellBox/EarthSpellTimer.stop()
+			get_node("../EarthSpellCD").stop()
+			get_node("../EarthSpellCD").emit_signal("timeout")
+
+func _on_skill_tree_open_button_pressed():
+	get_tree().paused = true
+	$HUD/Stats.visible = false
+	$HUD/Items.visible = false
+	$HUD/SkillTree/SkillTreeOpenBox.visible = false
+	$HUD/SkillTree/SkillTreeBox.visible = true
+
+func _on_skill_tree_close_button_pressed():
+	$HUD/Stats.visible = true
+	$HUD/Items.visible = true
+	$HUD/SkillTree/SkillTreeOpenBox.visible = true
+	$HUD/SkillTree/SkillTreeBox.visible = false
+	get_tree().paused = false
