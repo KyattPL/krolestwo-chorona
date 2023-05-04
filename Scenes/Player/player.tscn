@@ -47,15 +47,15 @@ lightningSpell = ExtResource("5_4vqt1")
 earthSpell = ExtResource("6_vspi1")
 
 [node name="FireSpellCD" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 12.0
 one_shot = true
 
 [node name="WaterSpellCD" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 8.0
 one_shot = true
 
 [node name="LightningSpellCD" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 8.0
 one_shot = true
 
 [node name="NormalSpellCD" type="Timer" parent="."]
@@ -63,7 +63,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="EarthSpellCD" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 11.0
 one_shot = true
 
 [node name="HUD" parent="." instance=ExtResource("9_3136r")]

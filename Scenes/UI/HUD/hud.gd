@@ -164,6 +164,7 @@ func _on_better_fire_button_pressed():
 		$HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/BetterFireBox.modulate = Color.from_hsv(0,0,1)
 		playerNode.fireLvl = 2
 		playerNode.skillPoints -= 1
+		# todo: get_node("../FireSpellCD").wait_time -= 3 (czy ile tam w tooltipie)
 
 func _on_best_fire_button_pressed():
 	var playerNode = get_node("../Player")
