@@ -25,6 +25,12 @@ var speedPotions = 0
 var cooldownPotions = 0
 signal used_potion(potionType)
 
+var skillPoints = 2
+var fireLvl = 1
+var waterLvl = 1
+var lightningLvl = 1
+var earthLvl = 1
+
 var isFireOnCD: bool = false
 var isWaterOnCD: bool = false
 var isLightningOnCD: bool = false

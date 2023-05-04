@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://von5xtuebuww"]
+[gd_scene load_steps=64 format=3 uid="uid://von5xtuebuww"]
 
 [ext_resource type="Script" path="res://Scenes/UI/HUD/hud.gd" id="1_m5h7p"]
 [ext_resource type="Texture2D" uid="uid://cplyko1cl3y85" path="res://Assets/HUD/under.png" id="1_mq2eu"]
@@ -19,6 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://c7ltuw4cgptp1" path="res://Assets/button/button_pressed.png" id="17_d272p"]
 [ext_resource type="Texture2D" uid="uid://bygs33gsi563u" path="res://Assets/HUD/skillTreeIcon.png" id="18_p8qu3"]
 [ext_resource type="Texture2D" uid="uid://dprf0aqw2omc7" path="res://Assets/shop/shop_bg.png" id="19_moc4o"]
+[ext_resource type="Texture2D" uid="uid://basfetsueaqhh" path="res://Assets/HUD/fireUpgraded.png" id="20_ic1tu"]
+[ext_resource type="Texture2D" uid="uid://bi2qicssyv15d" path="res://Assets/HUD/waterUpgraded.png" id="21_02v47"]
+[ext_resource type="Texture2D" uid="uid://dt1j2k1k0ikvp" path="res://Assets/HUD/upgradedLightning.png" id="22_entp3"]
+[ext_resource type="Texture2D" uid="uid://bo4ajyaoonlep" path="res://Assets/HUD/earthUpgraded.png" id="23_44cf7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4fi5r"]
 texture = ExtResource("16_qy07n")
@@ -67,6 +71,70 @@ expand_margin_right = 15.0
 expand_margin_bottom = 15.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ara4k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jgokg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2aubt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fl7vv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fnp6t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rr1hc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qrfcj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tq3as"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0l3gn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a2vuq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c2xie"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pt04m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aiugy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s1dx2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jve1b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_870w4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7rbv3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ye8t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qd3tq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6wn0b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_psaxj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_me0kl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qo57d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iv8wr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_33mqv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g1cen"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sid50"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jpqmg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vul78"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xfy0a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqo8a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nqli7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ya5r1"]
 
 [node name="RootCanvas" type="CanvasLayer"]
 script = ExtResource("1_m5h7p")
@@ -477,6 +545,7 @@ expand_icon = true
 
 [node name="SkillTreeBox" type="MarginContainer" parent="HUD/SkillTree"]
 process_mode = 2
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -526,7 +595,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn"]
+[node name="BestFireBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn"]
+modulate = Color(0.392157, 0.392157, 0.392157, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
@@ -534,24 +604,59 @@ texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect3" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn"]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("12_l6b6f")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Button" type="Button" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/TextureRect3"]
-visible = false
+[node name="BestFireButton" type="Button" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/BestFireBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jgokg")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2aubt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fl7vv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fnp6t")
 
-[node name="TextureRect" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/TextureRect3"]
+[node name="BestFireIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/BestFireBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("20_ic1tu")
+expand_mode = 1
+
+[node name="BetterFireBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn"]
+modulate = Color(0.392157, 0.392157, 0.392157, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("12_l6b6f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BetterFireButton" type="Button" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/BetterFireBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rr1hc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qrfcj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_tq3as")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0l3gn")
+
+[node name="BetterFireIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/BetterFireBox"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -564,10 +669,11 @@ offset_right = 30.0
 offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("8_7jyvk")
 expand_mode = 1
 
-[node name="TextureRect4" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn"]
+[node name="BasicFireBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
@@ -576,7 +682,7 @@ texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/TextureRect4"]
+[node name="BasicFireIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/BasicFireBox"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -597,7 +703,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TextureRect2" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn"]
+[node name="BestWaterBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn"]
+modulate = Color(0.392157, 0.392157, 0.392157, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
@@ -605,7 +712,39 @@ texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect3" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn"]
+[node name="BestWaterButton" type="Button" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn/BestWaterBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_a2vuq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_c2xie")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pt04m")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aiugy")
+
+[node name="BestWaterIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn/BestWaterBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("21_02v47")
+expand_mode = 1
+
+[node name="BetterWaterBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn"]
+modulate = Color(0.392157, 0.392157, 0.392157, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
@@ -613,20 +752,69 @@ texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect4" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn"]
+[node name="BetterWaterButton" type="Button" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn/BetterWaterBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_s1dx2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jve1b")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_870w4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7rbv3")
+
+[node name="BetterWaterIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn/BetterWaterBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("11_i1h1m")
+expand_mode = 1
+
+[node name="BasicWaterBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="BasicWaterIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn/BasicWaterBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_i1h1m")
+expand_mode = 1
 
 [node name="LightningSkillColumn" type="VBoxContainer" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TextureRect2" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn"]
+[node name="BestLightningBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn"]
+modulate = Color(0.392157, 0.392157, 0.392157, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
@@ -634,7 +822,39 @@ texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect3" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn"]
+[node name="BestLightningButton" type="Button" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn/BestLightningBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8ye8t")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qd3tq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6wn0b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_psaxj")
+
+[node name="BestLightningIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn/BestLightningBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("22_entp3")
+expand_mode = 1
+
+[node name="BetterLightningBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn"]
+modulate = Color(0.392157, 0.392157, 0.392157, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
@@ -642,20 +862,69 @@ texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect4" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn"]
+[node name="BetterLightningButton" type="Button" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn/BetterLightningBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_me0kl")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qo57d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_iv8wr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_33mqv")
+
+[node name="BetterLightningIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn/BetterLightningBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_0ipm1")
+expand_mode = 1
+
+[node name="BasicLightningBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="BasicLightningIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn/BasicLightningBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_0ipm1")
+expand_mode = 1
 
 [node name="EarthSkillColumn" type="VBoxContainer" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TextureRect2" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn"]
+[node name="BestEarthBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn"]
+modulate = Color(0.392157, 0.392157, 0.392157, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
@@ -663,7 +932,39 @@ texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect3" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn"]
+[node name="BestEarthButton" type="Button" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn/BestEarthBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_g1cen")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_sid50")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jpqmg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vul78")
+
+[node name="BestEarthIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn/BestEarthBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("23_44cf7")
+expand_mode = 1
+
+[node name="BetterEarthBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn"]
+modulate = Color(0.392157, 0.392157, 0.392157, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
@@ -671,13 +972,61 @@ texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect4" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn"]
+[node name="BetterEarthButton" type="Button" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn/BetterEarthBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xfy0a")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_bqo8a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nqli7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ya5r1")
+
+[node name="BetterEarthIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn/BetterEarthBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_dig4c")
+expand_mode = 1
+
+[node name="BasicEarthBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="BasicEarthIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn/BasicEarthBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_dig4c")
+expand_mode = 1
 
 [connection signal="timeout" from="HUD/Stats/FireSpellBox/FireSpellTimer" to="." method="_on_fire_spell_timer_timeout"]
 [connection signal="timeout" from="HUD/Stats/WaterSpellBox/WaterSpellTimer" to="." method="_on_water_spell_timer_timeout"]
@@ -685,3 +1034,11 @@ stretch_mode = 5
 [connection signal="timeout" from="HUD/Stats/EarthSpellBox/EarthSpellTimer" to="." method="_on_earth_spell_timer_timeout"]
 [connection signal="pressed" from="HUD/SkillTree/SkillTreeOpenBox/SkillTreeOpenButton" to="." method="_on_skill_tree_open_button_pressed"]
 [connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeCloseButton" to="." method="_on_skill_tree_close_button_pressed"]
+[connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/BestFireBox/BestFireButton" to="." method="_on_best_fire_button_pressed"]
+[connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/BetterFireBox/BetterFireButton" to="." method="_on_better_fire_button_pressed"]
+[connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn/BestWaterBox/BestWaterButton" to="." method="_on_best_water_button_pressed"]
+[connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn/BetterWaterBox/BetterWaterButton" to="." method="_on_better_water_button_pressed"]
+[connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn/BestLightningBox/BestLightningButton" to="." method="_on_best_lightning_button_pressed"]
+[connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn/BetterLightningBox/BetterLightningButton" to="." method="_on_better_lightning_button_pressed"]
+[connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn/BestEarthBox/BestEarthButton" to="." method="_on_best_earth_button_pressed"]
+[connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn/BetterEarthBox/BetterEarthButton" to="." method="_on_better_earth_button_pressed"]
