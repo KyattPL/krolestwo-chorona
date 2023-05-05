@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://m64imel01c37" path="res://Assets/spells/water/IceVFX 1 Repeatable.png" id="5_gxpsl"]
 [ext_resource type="Texture2D" uid="uid://c1waqmra1jak6" path="res://Assets/spells/water/Ice VFX 1 Hit.png" id="6_6n5p1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dn5df"]
-radius = 66.4831
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_211hd"]
+size = Vector2(67, 32)
 
 [sub_resource type="Animation" id="Animation_wcb5l"]
 resource_name = "basic_fly"
@@ -59,22 +59,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_njyb8"]
-resource_name = "best_start"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BestBoltStart:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-
 [sub_resource type="Animation" id="Animation_ex2p5"]
 resource_name = "best_fly"
 loop_mode = 1
@@ -105,6 +89,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_njyb8"]
+resource_name = "best_start"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BestBoltStart:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rnm37"]
@@ -155,7 +155,8 @@ hframes = 8
 frame = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_dn5df")
+position = Vector2(-3.5, -2)
+shape = SubResource("RectangleShape2D_211hd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

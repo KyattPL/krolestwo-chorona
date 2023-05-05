@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var bulletSpeed: int = 300
+@export var bulletSpeed: int = 200
 @export var normalSpell: PackedScene
 
 @export var fireSpell: PackedScene

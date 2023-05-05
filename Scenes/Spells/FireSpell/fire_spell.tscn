@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://c5351nw24u5ap" path="res://Assets/spells/fire/Firebolt SpriteSheet.png" id="2_uub7k"]
 [ext_resource type="Texture2D" uid="uid://2d27342ssaix" path="res://Assets/spells/fire/Explosion SpriteSheet.png" id="3_ixlus"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_10clf"]
-radius = 63.3877
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_adcy3"]
+size = Vector2(73, 35)
 
 [sub_resource type="Animation" id="Animation_feig6"]
 resource_name = "fly"
@@ -83,7 +83,8 @@ hframes = 4
 vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_10clf")
+position = Vector2(9.5, 7.5)
+shape = SubResource("RectangleShape2D_adcy3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

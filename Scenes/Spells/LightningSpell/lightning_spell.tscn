@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bhuvtqs02eqae" path="res://Assets/spells/lightning/Thunder projectile1 w blur.png" id="3_uuo6t"]
 [ext_resource type="Texture2D" uid="uid://cllp3lduw1riq" path="res://Assets/spells/lightning/Projectile 2 w blur.png" id="4_a7ala"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dcu6v"]
-radius = 63.5059
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4ku7"]
+size = Vector2(54, 27)
 
 [sub_resource type="Animation" id="Animation_yavuf"]
 resource_name = "basic_fly"
@@ -107,7 +107,8 @@ texture = ExtResource("4_a7ala")
 hframes = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_dcu6v")
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_h4ku7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
