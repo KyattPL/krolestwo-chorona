@@ -600,6 +600,7 @@ modulate = Color(0.392157, 0.392157, 0.392157, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
+tooltip_text = "+20dmg"
 texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
@@ -709,6 +710,7 @@ modulate = Color(0.392157, 0.392157, 0.392157, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
+tooltip_text = "+10dmg"
 texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
@@ -821,6 +823,7 @@ modulate = Color(0.392157, 0.392157, 0.392157, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
+tooltip_text = "+15dmg"
 texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
@@ -933,6 +936,7 @@ modulate = Color(0.392157, 0.392157, 0.392157, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
+tooltip_text = "+20dmg"
 texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
@@ -1034,6 +1038,19 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_dig4c")
 expand_mode = 1
+
+[node name="SkillPointsBox" type="MarginContainer" parent="HUD/SkillTree/SkillTreeBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 40
+
+[node name="SkillPointsText" type="RichTextLabel" parent="HUD/SkillTree/SkillTreeBox/SkillPointsBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("6_1c27h")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Points: 0[/center]"
 
 [connection signal="timeout" from="HUD/Stats/FireSpellBox/FireSpellTimer" to="." method="_on_fire_spell_timer_timeout"]
 [connection signal="timeout" from="HUD/Stats/WaterSpellBox/WaterSpellTimer" to="." method="_on_water_spell_timer_timeout"]

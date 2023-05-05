@@ -1,31 +1,126 @@
-[gd_scene load_steps=5 format=3 uid="uid://cp8s8pdcgakky"]
+[gd_scene load_steps=11 format=3 uid="uid://cp8s8pdcgakky"]
 
 [ext_resource type="Script" path="res://Scenes/Spells/EarthSpell/earth_spell.gd" id="1_tsmeg"]
-[ext_resource type="Texture2D" uid="uid://76aj6o6huipu" path="res://Assets/bullets/earthSpell.png" id="2_st801"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0diyn"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_st801")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://cu0k2tp0m1v82" path="res://Assets/spells/earth/Earth projectile Spritesheet .png" id="2_ot802"]
+[ext_resource type="Texture2D" uid="uid://i7osjp10duej" path="res://Assets/spells/earth/Irregular rock Spritesheet.png" id="3_2ifnl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_60n52"]
 radius = 65.9242
+
+[sub_resource type="Animation" id="Animation_kyj88"]
+resource_name = "basic_fly"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BasicBolt:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_p6ugu"]
+resource_name = "basic_hit"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BasicBolt:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_64p5w"]
+resource_name = "best_start"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BestBolt:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_xfx8o"]
+resource_name = "best_fly"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BestBolt:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -17), Vector2(0, 0), Vector2(0, 25), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yn0ay"]
+resource_name = "best_hit"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BestBolt:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yajth"]
+_data = {
+"basic_fly": SubResource("Animation_kyj88"),
+"basic_hit": SubResource("Animation_p6ugu"),
+"best_fly": SubResource("Animation_xfx8o"),
+"best_hit": SubResource("Animation_yn0ay"),
+"best_start": SubResource("Animation_64p5w")
+}
 
 [node name="EarthSpell" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 10
 script = ExtResource("1_tsmeg")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 1)
-scale = Vector2(0.501953, 0.501953)
-sprite_frames = SubResource("SpriteFrames_0diyn")
+[node name="BasicBolt" type="Sprite2D" parent="."]
+position = Vector2(3.8147e-06, -1.90735e-06)
+scale = Vector2(1.71875, 1.71875)
+texture = ExtResource("2_ot802")
+hframes = 6
+vframes = 2
+
+[node name="BestBolt" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.875, 1.875)
+texture = ExtResource("3_2ifnl")
+hframes = 6
+vframes = 2
+frame = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_60n52")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yajth")
+}

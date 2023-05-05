@@ -146,6 +146,8 @@ func _on_player_used_potion(potionType):
 
 func _on_skill_tree_open_button_pressed():
 	get_tree().paused = true
+	var playerNode = get_node("../Player")
+	$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
 	$HUD/Stats.visible = false
 	$HUD/Items.visible = false
 	$HUD/SkillTree/SkillTreeOpenBox.visible = false
@@ -164,7 +166,8 @@ func _on_better_fire_button_pressed():
 		$HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/BetterFireBox.modulate = Color.from_hsv(0,0,1)
 		playerNode.fireLvl = 2
 		playerNode.skillPoints -= 1
-		# todo: get_node("../FireSpellCD").wait_time -= 3 (czy ile tam w tooltipie)
+		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
+		get_node("../FireSpellCD").wait_time -= 3
 
 func _on_best_fire_button_pressed():
 	var playerNode = get_node("../Player")
@@ -172,6 +175,7 @@ func _on_best_fire_button_pressed():
 		$HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/BestFireBox.modulate = Color.from_hsv(0,0,1)
 		playerNode.fireLvl = 3
 		playerNode.skillPoints -= 1
+		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
 
 func _on_better_water_button_pressed():
 	var playerNode = get_node("../Player")
@@ -179,6 +183,8 @@ func _on_better_water_button_pressed():
 		$HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn/BetterWaterBox.modulate = Color.from_hsv(0,0,1)
 		playerNode.waterLvl = 2
 		playerNode.skillPoints -= 1
+		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
+		get_node("../WaterSpellCD").wait_time -= 2
 
 func _on_best_water_button_pressed():
 	var playerNode = get_node("../Player")
@@ -186,6 +192,7 @@ func _on_best_water_button_pressed():
 		$HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn/BestWaterBox.modulate = Color.from_hsv(0,0,1)
 		playerNode.waterLvl = 3
 		playerNode.skillPoints -= 1
+		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
 
 
 func _on_better_lightning_button_pressed():
@@ -194,7 +201,8 @@ func _on_better_lightning_button_pressed():
 		$HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn/BetterLightningBox.modulate = Color.from_hsv(0,0,1)
 		playerNode.lightningLvl = 2
 		playerNode.skillPoints -= 1
-
+		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
+		get_node("../LightningSpellCD").wait_time -= 3
 
 func _on_best_lightning_button_pressed():
 	var playerNode = get_node("../Player")
@@ -202,6 +210,7 @@ func _on_best_lightning_button_pressed():
 		$HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn/BestLightningBox.modulate = Color.from_hsv(0,0,1)
 		playerNode.lightningLvl = 3
 		playerNode.skillPoints -= 1
+		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
 
 
 func _on_better_earth_button_pressed():
@@ -210,7 +219,8 @@ func _on_better_earth_button_pressed():
 		$HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn/BetterEarthBox.modulate = Color.from_hsv(0,0,1)
 		playerNode.earthLvl = 2
 		playerNode.skillPoints -= 1
-
+		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
+		get_node("../EarthSpellCD").wait_time -= 4
 
 func _on_best_earth_button_pressed():
 	var playerNode = get_node("../Player")
@@ -218,3 +228,4 @@ func _on_best_earth_button_pressed():
 		$HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn/BestEarthBox.modulate = Color.from_hsv(0,0,1)
 		playerNode.earthLvl = 3
 		playerNode.skillPoints -= 1
+		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'

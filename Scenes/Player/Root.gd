@@ -28,6 +28,7 @@ func shoot():
 		match $Player.selectedSpell:
 			SPELL.FIRE:
 				var fireBullet: CharacterBody2D = fireSpell.instantiate()
+				fireBullet.max_lvl_increase($Player.fireLvl == 3)
 				$FireSpellCD.start()
 				fireOnCD.emit($FireSpellCD.wait_time)
 				$Player.isFireOnCD = true
@@ -35,6 +36,7 @@ func shoot():
 				spawn_bullet(fireBullet)
 			SPELL.WATER:
 				var waterBullet: CharacterBody2D = waterSpell.instantiate()
+				waterBullet.max_lvl_increase($Player.waterLvl == 3)
 				$WaterSpellCD.start()
 				waterOnCD.emit($WaterSpellCD.wait_time)
 				$Player.isWaterOnCD = true
@@ -42,6 +44,7 @@ func shoot():
 				spawn_bullet(waterBullet)
 			SPELL.LIGHTNING:
 				var lightningBullet: CharacterBody2D = lightningSpell.instantiate()
+				lightningBullet.max_lvl_increase($Player.lightningLvl == 3)
 				$LightningSpellCD.start()
 				lightningOnCD.emit($LightningSpellCD.wait_time)
 				$Player.isLightningOnCD = true
@@ -49,6 +52,7 @@ func shoot():
 				spawn_bullet(lightningBullet)
 			SPELL.EARTH:
 				var earthBullet: CharacterBody2D = earthSpell.instantiate()
+				earthBullet.max_lvl_increase($Player.earthLvl == 3)
 				$EarthSpellCD.start()
 				earthOnCD.emit($EarthSpellCD.wait_time)
 				$Player.isEarthOnCD = true

@@ -1,31 +1,115 @@
-[gd_scene load_steps=5 format=3 uid="uid://h4no2tr0ic6e"]
+[gd_scene load_steps=11 format=3 uid="uid://h4no2tr0ic6e"]
 
 [ext_resource type="Script" path="res://Scenes/Spells/LightningSpell/lightning_spell.gd" id="1_0ugku"]
-[ext_resource type="Texture2D" uid="uid://55rb5noi5hnp" path="res://Assets/bullets/lightningSpell.png" id="2_jqf5o"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ku6nb"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_jqf5o")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://cxmyjmakypcew" path="res://Assets/spells/lightning/Thunder hit w blur.png" id="2_fheag"]
+[ext_resource type="Texture2D" uid="uid://bhuvtqs02eqae" path="res://Assets/spells/lightning/Thunder projectile1 w blur.png" id="3_uuo6t"]
+[ext_resource type="Texture2D" uid="uid://cllp3lduw1riq" path="res://Assets/spells/lightning/Projectile 2 w blur.png" id="4_a7ala"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dcu6v"]
 radius = 63.5059
+
+[sub_resource type="Animation" id="Animation_yavuf"]
+resource_name = "basic_fly"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BasicBolt:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_mrnip"]
+resource_name = "best_fly"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BestBolt:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_r5w5n"]
+resource_name = "best_start"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BestBolt:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_gh42y"]
+resource_name = "bolt_hit"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoltHit:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g7hkq"]
+_data = {
+"basic_fly": SubResource("Animation_yavuf"),
+"best_fly": SubResource("Animation_mrnip"),
+"best_start": SubResource("Animation_r5w5n"),
+"bolt_hit": SubResource("Animation_gh42y")
+}
 
 [node name="LightningSpell" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 10
 script = ExtResource("1_0ugku")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2.00001, 1.99998)
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_ku6nb")
+[node name="BoltHit" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.78125, 1.78125)
+texture = ExtResource("2_fheag")
+hframes = 6
+frame = 5
+
+[node name="BasicBolt" type="Sprite2D" parent="."]
+position = Vector2(9.53674e-07, 0)
+scale = Vector2(1.375, 1.375)
+texture = ExtResource("3_uuo6t")
+hframes = 5
+
+[node name="BestBolt" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.4375, 1.4375)
+texture = ExtResource("4_a7ala")
+hframes = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dcu6v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_g7hkq")
+}

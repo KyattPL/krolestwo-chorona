@@ -1,31 +1,91 @@
-[gd_scene load_steps=5 format=3 uid="uid://w6c44mseldyw"]
+[gd_scene load_steps=9 format=3 uid="uid://w6c44mseldyw"]
 
 [ext_resource type="Script" path="res://Scenes/Spells/FireSpell/fire_spell.gd" id="1_awrbm"]
-[ext_resource type="Texture2D" uid="uid://b8i1s0u36dt3v" path="res://Assets/bullets/fireSpell.png" id="2_fgybc"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_rpiuo"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_fgybc")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://c5351nw24u5ap" path="res://Assets/spells/fire/Firebolt SpriteSheet.png" id="2_uub7k"]
+[ext_resource type="Texture2D" uid="uid://2d27342ssaix" path="res://Assets/spells/fire/Explosion SpriteSheet.png" id="3_ixlus"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_10clf"]
 radius = 63.3877
+
+[sub_resource type="Animation" id="Animation_feig6"]
+resource_name = "fly"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BasicBolt:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_5a4ja"]
+resource_name = "splash_basic"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BasicBolt:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_54vmf"]
+resource_name = "splash_best"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BestBolt:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uflkc"]
+_data = {
+"fly": SubResource("Animation_feig6"),
+"splash_basic": SubResource("Animation_5a4ja"),
+"splash_best": SubResource("Animation_54vmf")
+}
 
 [node name="FireSpell" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 10
 script = ExtResource("1_awrbm")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-7.62939e-06, -7.62939e-06)
-scale = Vector2(0.480469, 0.480469)
-sprite_frames = SubResource("SpriteFrames_rpiuo")
+[node name="BasicBolt" type="Sprite2D" parent="."]
+position = Vector2(-0.999998, 0)
+scale = Vector2(1.7819, 1.7819)
+texture = ExtResource("2_uub7k")
+hframes = 11
+
+[node name="BestBolt" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -1)
+scale = Vector2(2.39063, 2.39063)
+texture = ExtResource("3_ixlus")
+hframes = 4
+vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_10clf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uflkc")
+}
