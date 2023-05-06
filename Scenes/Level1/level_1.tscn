@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://bdo8hqse5vrkg"]
+[gd_scene load_steps=14 format=3 uid="uid://bdo8hqse5vrkg"]
 
+[ext_resource type="Script" path="res://Scripts/load_save.gd" id="1_3n01d"]
 [ext_resource type="Texture2D" uid="uid://fjlvere58nyg" path="res://Assets/tiles/oak_wood/oak_woods_tileset.png" id="1_5s8ed"]
 [ext_resource type="PackedScene" uid="uid://bvnvm63w85654" path="res://Scenes/Coin/coin.tscn" id="2_y2nvd"]
 [ext_resource type="PackedScene" uid="uid://5kd2hrg6rd08" path="res://Scenes/Player/player.tscn" id="3_dj0wq"]
@@ -7,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cdni5b3n7ui7n" path="res://Scenes/Enemy/enemy.tscn" id="6_0uk0x"]
 [ext_resource type="PackedScene" uid="uid://cpymtgbwlju1m" path="res://Scenes/Shop/shop.tscn" id="7_duunm"]
 [ext_resource type="PackedScene" uid="uid://ct6d68mkwg2bq" path="res://Scenes/Scroll/scroll.tscn" id="7_uc64q"]
+[ext_resource type="PackedScene" uid="uid://c3aexp56nb5oo" path="res://Scenes/ExitDoor/exit_door.tscn" id="8_83dra"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8fxjx"]
 texture = ExtResource("1_5s8ed")
@@ -1472,6 +1474,7 @@ sources/1 = SubResource("TileSetAtlasSource_f41ka")
 
 [node name="Level1" type="Node2D"]
 position = Vector2(1440, 20)
+script = ExtResource("1_3n01d")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_jdbc6")
@@ -1517,10 +1520,6 @@ scale = Vector2(-0.25, -0.25)
 position = Vector2(-1355, 73)
 scale = Vector2(0.25, 0.25)
 
-[node name="Node" type="Node" parent="."]
-
-[node name="Node2" type="Node" parent="."]
-
 [node name="Scroll" parent="." instance=ExtResource("7_uc64q")]
 position = Vector2(-1372, 103)
 scale = Vector2(0.0799975, 0.0799975)
@@ -1528,6 +1527,9 @@ scale = Vector2(0.0799975, 0.0799975)
 [node name="Shop" parent="." instance=ExtResource("7_duunm")]
 position = Vector2(-539, 93)
 scale = Vector2(0.479998, 0.479998)
+
+[node name="ExitDoor" parent="." instance=ExtResource("8_83dra")]
+position = Vector2(-896, 117)
 
 [connection signal="pause_game" from="Scroll" to="PlayerRoot" method="_on_scroll_pause_game"]
 [connection signal="resume_game" from="Scroll" to="PlayerRoot" method="_on_scroll_resume_game"]
