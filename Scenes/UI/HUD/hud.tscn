@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://von5xtuebuww"]
+[gd_scene load_steps=76 format=3 uid="uid://von5xtuebuww"]
 
 [ext_resource type="Script" path="res://Scenes/UI/HUD/hud.gd" id="1_m5h7p"]
 [ext_resource type="Texture2D" uid="uid://cplyko1cl3y85" path="res://Assets/HUD/under.png" id="1_mq2eu"]
@@ -135,6 +135,42 @@ expand_margin_bottom = 15.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nqli7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ya5r1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1xeqr"]
+texture = ExtResource("16_qy07n")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dsiqd"]
+texture = ExtResource("16_qy07n")
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rcoiy"]
+texture = ExtResource("17_d272p")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o8ytl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5wmn3"]
+texture = ExtResource("16_qy07n")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uupgq"]
+texture = ExtResource("16_qy07n")
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r3cmp"]
+texture = ExtResource("17_d272p")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3popi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tdp3a"]
+texture = ExtResource("16_qy07n")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6merl"]
+texture = ExtResource("16_qy07n")
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rswoo"]
+texture = ExtResource("17_d272p")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aahin"]
 
 [node name="RootCanvas" type="CanvasLayer"]
 script = ExtResource("1_m5h7p")
@@ -600,7 +636,6 @@ modulate = Color(0.392157, 0.392157, 0.392157, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
-tooltip_text = "+20dmg"
 texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
@@ -612,6 +647,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+tooltip_text = "+20dmg"
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_jgokg")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_2aubt")
@@ -641,7 +677,6 @@ modulate = Color(0.392157, 0.392157, 0.392157, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
-tooltip_text = "-3s on fire spell cooldown"
 texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
@@ -653,6 +688,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+tooltip_text = "-3s on fire spell cooldown"
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rr1hc")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_qrfcj")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_tq3as")
@@ -710,7 +746,6 @@ modulate = Color(0.392157, 0.392157, 0.392157, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
-tooltip_text = "+10dmg"
 texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
@@ -722,6 +757,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+tooltip_text = "+10dmg"
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_a2vuq")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_c2xie")
@@ -751,7 +787,6 @@ modulate = Color(0.392157, 0.392157, 0.392157, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
-tooltip_text = "-2s on spell cooldown"
 texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
@@ -763,6 +798,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+tooltip_text = "-2s on spell cooldown"
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_s1dx2")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_jve1b")
@@ -823,7 +859,6 @@ modulate = Color(0.392157, 0.392157, 0.392157, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
-tooltip_text = "+15dmg"
 texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
@@ -835,6 +870,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+tooltip_text = "+15dmg"
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_8ye8t")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_qd3tq")
@@ -864,7 +900,6 @@ modulate = Color(0.392157, 0.392157, 0.392157, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
-tooltip_text = "-3s on spell cooldown"
 texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
@@ -876,6 +911,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+tooltip_text = "-3s on spell cooldown"
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_me0kl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_qo57d")
@@ -936,7 +972,6 @@ modulate = Color(0.392157, 0.392157, 0.392157, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
-tooltip_text = "+20dmg"
 texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
@@ -948,6 +983,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+tooltip_text = "+20dmg"
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_g1cen")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_sid50")
@@ -977,7 +1013,6 @@ modulate = Color(0.392157, 0.392157, 0.392157, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 3
-tooltip_text = "-4s on spell cooldown"
 texture = ExtResource("12_l6b6f")
 expand_mode = 1
 stretch_mode = 5
@@ -989,6 +1024,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+tooltip_text = "-4s on spell cooldown"
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xfy0a")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_bqo8a")
@@ -1052,6 +1088,63 @@ theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center]Points: 0[/center]"
 
+[node name="Pause" type="Control" parent="HUD"]
+process_mode = 2
+visible = false
+layout_mode = 2
+
+[node name="PauseMarginBox" type="MarginContainer" parent="HUD/Pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseVBox" type="VBoxContainer" parent="HUD/Pause/PauseMarginBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="HUD/Pause/PauseMarginBox/PauseVBox"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_1c27h")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_1xeqr")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dsiqd")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rcoiy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o8ytl")
+text = "Resume"
+
+[node name="SettingsButton" type="Button" parent="HUD/Pause/PauseMarginBox/PauseVBox"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_1c27h")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_5wmn3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_uupgq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_r3cmp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3popi")
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="HUD/Pause/PauseMarginBox/PauseVBox"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_1c27h")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_tdp3a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6merl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rswoo")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aahin")
+text = "Exit"
+
 [connection signal="timeout" from="HUD/Stats/FireSpellBox/FireSpellTimer" to="." method="_on_fire_spell_timer_timeout"]
 [connection signal="timeout" from="HUD/Stats/WaterSpellBox/WaterSpellTimer" to="." method="_on_water_spell_timer_timeout"]
 [connection signal="timeout" from="HUD/Stats/LightningSpellBox/LightningSpellTimer" to="." method="_on_lightning_spell_timer_timeout"]
@@ -1066,3 +1159,6 @@ text = "[center]Points: 0[/center]"
 [connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn/BetterLightningBox/BetterLightningButton" to="." method="_on_better_lightning_button_pressed"]
 [connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn/BestEarthBox/BestEarthButton" to="." method="_on_best_earth_button_pressed"]
 [connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn/BetterEarthBox/BetterEarthButton" to="." method="_on_better_earth_button_pressed"]
+[connection signal="pressed" from="HUD/Pause/PauseMarginBox/PauseVBox/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="HUD/Pause/PauseMarginBox/PauseVBox/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="HUD/Pause/PauseMarginBox/PauseVBox/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -10,6 +10,14 @@ enum SPELL { NONE, FIRE, WATER, LIGHTNING, EARTH }
 func _ready():
 	$HUD/Stats/PlayerHPBar.value = 100
 
+func _process(delta):
+	if Input.is_action_just_pressed("pause"):
+		get_tree().paused = true
+		$HUD/Pause.visible = true
+		$HUD/Items.visible = false
+		$HUD/Stats.visible = false
+		$HUD/SkillTree.visible = false
+
 func _on_player_health_changed(oldVal, newVal):
 	$HUD/Stats/PlayerHPBar.value = newVal
 
@@ -107,7 +115,6 @@ func _on_player_used_potion(potionType):
 	match potionType:
 		0:
 			var count = $HUD/Items/HealthPotionBox/HealthPotionTextBox/HealthPotionCount.text
-			print(count)
 			$HUD/Items/HealthPotionBox/HealthPotionTextBox/HealthPotionCount.text = str(int(count) - 1)
 		1:
 			var count = $HUD/Items/SpeedPotionBox/SpeedPotionTextBox/SpeedPotionCount.text
@@ -229,3 +236,18 @@ func _on_best_earth_button_pressed():
 		playerNode.earthLvl = 3
 		playerNode.skillPoints -= 1
 		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
+
+func _on_resume_button_pressed():
+	get_tree().paused = false
+	$HUD/Pause.visible = false
+	$HUD/Stats.visible = true
+	$HUD/Items.visible = true
+	$HUD/SkillTree.visible = true
+
+func _on_settings_button_pressed():
+	pass # Replace with function body.
+
+func _on_exit_button_pressed():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/MainMenu/main_menu.tscn")
