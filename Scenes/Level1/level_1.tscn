@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bdo8hqse5vrkg"]
+[gd_scene load_steps=16 format=3 uid="uid://bdo8hqse5vrkg"]
 
 [ext_resource type="Script" path="res://Scripts/load_save.gd" id="1_3n01d"]
 [ext_resource type="Texture2D" uid="uid://fjlvere58nyg" path="res://Assets/tiles/oak_wood/oak_woods_tileset.png" id="1_5s8ed"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ct6d68mkwg2bq" path="res://Scenes/Scroll/scroll.tscn" id="7_uc64q"]
 [ext_resource type="PackedScene" uid="uid://c3aexp56nb5oo" path="res://Scenes/ExitDoor/exit_door.tscn" id="8_83dra"]
 [ext_resource type="PackedScene" uid="uid://cf8263un4w57g" path="res://Scenes/MiniBoss/miniboss.tscn" id="10_7bl58"]
+[ext_resource type="PackedScene" uid="uid://bvp8op8lovkns" path="res://Scenes/Artifact/artifact.tscn" id="11_e8yn5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8fxjx"]
 texture = ExtResource("1_5s8ed")
@@ -1547,6 +1548,10 @@ scale = Vector2(0.280005, 0.280005)
 [node name="Miniboss" parent="." instance=ExtResource("10_7bl58")]
 position = Vector2(634, 361)
 scale = Vector2(0.2, 0.2)
+
+[node name="Artifact" parent="." instance=ExtResource("11_e8yn5")]
+position = Vector2(-709, 123)
+scale = Vector2(0.25, 0.25)
 
 [connection signal="pause_game" from="Scroll" to="PlayerRoot" method="_on_scroll_pause_game"]
 [connection signal="resume_game" from="Scroll" to="PlayerRoot" method="_on_scroll_resume_game"]
