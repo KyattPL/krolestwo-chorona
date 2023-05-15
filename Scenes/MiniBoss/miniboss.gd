@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var speed = 80
-@export var maxHealth = 130
-@export var bulletSpeed = 200
+@export var maxHealth = 250
+@export var bulletSpeed = 350
 @export var bulletScene: PackedScene
 @export var coinScene: PackedScene
 
@@ -18,7 +18,7 @@ enum SHIELD_TYPE { FIRE, WATER, LIGHTNING, EARTH }
 var currentShield: SHIELD_TYPE
 # PATROL - out of combat movement, FIGHT_MOVE - in combat with player tracking
 # SHIELD - put on shield animation, SHOOT - stand still and shoot animation
-enum STATE { PATROL, SHOOT, FIGHT_MOVE, SHIELD }
+enum STATE { PATROL, SHOOT, FIGHT_MOVE, SHIELD, TELEPORT }
 
 var currentState: STATE = STATE.PATROL
 
@@ -63,14 +63,14 @@ func fight_move(delta):
 		$Sprite2D.flip_h = facingLeft
 		$GroundRayCast.position.x = 47 if !facingLeft else -77
 		$GroundRayCast2.position.x = -77 if !facingLeft else 47
-		$PlayerDetector.position.x = 0 if !facingLeft else -475
+		$PlayerDetector.position.x = 0 if !facingLeft else -1024
 		
 	if not isPlayerOnLeft and facingLeft:
 		facingLeft = false
 		$Sprite2D.flip_h = facingLeft
 		$GroundRayCast.position.x = 47 if !facingLeft else -77
 		$GroundRayCast2.position.x = -77 if !facingLeft else 47
-		$PlayerDetector.position.x = 0 if !facingLeft else -475
+		$PlayerDetector.position.x = 0 if !facingLeft else -1024
 		
 	if not $GroundRayCast.is_colliding() and is_on_floor():
 		velocity.x = 30 if facingLeft else -30
@@ -102,6 +102,14 @@ func shield():
 	isShielded = true
 	$Shield.visible = true
 
+func teleport():
+	var tpSpots = get_tree().get_nodes_in_group("bossTP")
+	var numOfSpots = tpSpots.size()
+	var randomSpotIndex = randi_range(0, numOfSpots - 1)
+	var randomisedSpot = tpSpots[randomSpotIndex]
+	global_position = randomisedSpot.global_position
+	currentState = STATE.FIGHT_MOVE
+
 func detect_turn_around():
 	if (not $GroundRayCast.is_colliding() and is_on_floor()) or \
 		($WallRayCast.is_colliding() or $WallRayCast2.is_colliding()):
@@ -113,7 +121,7 @@ func detect_turn_around():
 		$WallRayCast.rotation_degrees = -90 if !facingLeft else 90
 		$WallRayCast2.position.x = 5 if !facingLeft else -45
 		$WallRayCast2.rotation_degrees = -90 if !facingLeft else 90
-		$PlayerDetector.position.x = 0 if !facingLeft else -475
+		$PlayerDetector.position.x = 0 if !facingLeft else -1024
 
 func got_hit(damage, spellType):
 	if isShielded:
@@ -133,6 +141,7 @@ func got_hit(damage, spellType):
 			var spawnedCoin = coinScene.instantiate()
 			spawnedCoin.scale = Vector2(0.02, 0.02)
 			spawnedCoin.position = position
+			get_node("../PlayerRoot/Player").skillPoints += 1
 			get_node("..").add_child(spawnedCoin)
 			queue_free()
 
@@ -147,7 +156,10 @@ func _on_player_detector_body_exited(_body):
 func _on_state_change_timer_timeout():
 	var choice = randf()
 	
-	if choice < 0.4:
+	if choice < 0.1:
+		currentState = STATE.TELEPORT
+		teleport()
+	elif choice < 0.4:
 		currentState = STATE.FIGHT_MOVE
 		fightVelocity = 0
 	elif choice < 0.8:

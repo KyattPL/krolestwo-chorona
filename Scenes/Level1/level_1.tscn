@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bdo8hqse5vrkg"]
+[gd_scene load_steps=15 format=3 uid="uid://bdo8hqse5vrkg"]
 
 [ext_resource type="Script" path="res://Scripts/load_save.gd" id="1_3n01d"]
 [ext_resource type="Texture2D" uid="uid://fjlvere58nyg" path="res://Assets/tiles/oak_wood/oak_woods_tileset.png" id="1_5s8ed"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cpymtgbwlju1m" path="res://Scenes/Shop/shop.tscn" id="7_duunm"]
 [ext_resource type="PackedScene" uid="uid://ct6d68mkwg2bq" path="res://Scenes/Scroll/scroll.tscn" id="7_uc64q"]
 [ext_resource type="PackedScene" uid="uid://c3aexp56nb5oo" path="res://Scenes/ExitDoor/exit_door.tscn" id="8_83dra"]
+[ext_resource type="PackedScene" uid="uid://cf8263un4w57g" path="res://Scenes/MiniBoss/miniboss.tscn" id="10_7bl58"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8fxjx"]
 texture = ExtResource("1_5s8ed")
@@ -1530,6 +1531,22 @@ scale = Vector2(0.479998, 0.479998)
 
 [node name="ExitDoor" parent="." instance=ExtResource("8_83dra")]
 position = Vector2(-896, 117)
+
+[node name="TpSpot" type="Node2D" parent="." groups=["bossTP"]]
+position = Vector2(600, 264)
+scale = Vector2(0.280005, 0.280005)
+
+[node name="TpSpot2" type="Node2D" parent="." groups=["bossTP"]]
+position = Vector2(748, 330)
+scale = Vector2(0.280005, 0.280005)
+
+[node name="TpSpot3" type="Node2D" parent="." groups=["bossTP"]]
+position = Vector2(496, 354)
+scale = Vector2(0.280005, 0.280005)
+
+[node name="Miniboss" parent="." instance=ExtResource("10_7bl58")]
+position = Vector2(634, 361)
+scale = Vector2(0.2, 0.2)
 
 [connection signal="pause_game" from="Scroll" to="PlayerRoot" method="_on_scroll_pause_game"]
 [connection signal="resume_game" from="Scroll" to="PlayerRoot" method="_on_scroll_resume_game"]

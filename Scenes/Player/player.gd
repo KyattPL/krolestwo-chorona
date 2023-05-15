@@ -25,7 +25,7 @@ var speedPotions = 0
 var cooldownPotions = 0
 signal used_potion(potionType)
 
-var skillPoints = 2
+var skillPoints = 0
 var fireLvl = 1
 var waterLvl = 1
 var lightningLvl = 1
