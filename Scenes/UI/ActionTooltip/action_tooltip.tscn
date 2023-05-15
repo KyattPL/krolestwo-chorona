@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://7l1x2iutuecr"]
+
+[ext_resource type="Texture2D" uid="uid://p32xqg05l07s" path="res://Assets/button/button_bg.png" id="1_1g5g2"]
+[ext_resource type="FontFile" uid="uid://dabu02j6atprm" path="res://Assets/fonts/MinimalPixel v2.ttf" id="2_tugim"]
+
+[node name="ActionTooltip" type="CanvasLayer"]
+
+[node name="Container" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -74.0
+offset_top = -100.0
+offset_right = 74.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="TextureRect" type="TextureRect" parent="Container"]
+layout_mode = 2
+texture = ExtResource("1_1g5g2")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Container"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 24
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Container/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_tugim")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]E[/center]"

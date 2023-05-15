@@ -9,14 +9,27 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jumping = false
 var facingLeft = false
 
-enum SPELLS { NONE, FIRE, WATER, LIGHTNING, EARTH }
-var selectedSpell: SPELLS = SPELLS.NONE
+enum SPELL { NONE, FIRE, WATER, LIGHTNING, EARTH }
+var selectedSpell: SPELL = SPELL.NONE
+signal spell_selected(oldVal, newVal)
 
+var maxHealth = 100
 var health = 100
-signal health_lost(oldVal, newVal)
+signal health_changed(oldVal, newVal)
 
 var coins = 0
 signal coins_changed(oldVal, newVal)
+
+var healthPotions = 0
+var speedPotions = 0
+var cooldownPotions = 0
+signal used_potion(potionType)
+
+var skillPoints = 0
+var fireLvl = 1
+var waterLvl = 1
+var lightningLvl = 1
+var earthLvl = 1
 
 var isFireOnCD: bool = false
 var isWaterOnCD: bool = false
@@ -28,25 +41,30 @@ var isShielded: bool = false
 
 func select_spell():
 	if Input.is_action_just_pressed("select_fire") and not isFireOnCD:
-		selectedSpell = SPELLS.FIRE if selectedSpell != SPELLS.FIRE else SPELLS.NONE
+		spell_selected.emit(selectedSpell, SPELL.FIRE)
+		selectedSpell = SPELL.FIRE if selectedSpell != SPELL.FIRE else SPELL.NONE
 	if Input.is_action_just_pressed("select_water") and not isWaterOnCD:
-		selectedSpell = SPELLS.WATER if selectedSpell != SPELLS.WATER else SPELLS.NONE
+		spell_selected.emit(selectedSpell, SPELL.WATER)
+		selectedSpell = SPELL.WATER if selectedSpell != SPELL.WATER else SPELL.NONE
 	if Input.is_action_just_pressed("select_lightning") and not isLightningOnCD:
-		selectedSpell = SPELLS.LIGHTNING if selectedSpell != SPELLS.LIGHTNING else SPELLS.NONE
+		spell_selected.emit(selectedSpell, SPELL.LIGHTNING)
+		selectedSpell = SPELL.LIGHTNING if selectedSpell != SPELL.LIGHTNING else SPELL.NONE
 	if Input.is_action_just_pressed("select_earth") and not isEarthOnCD:
-		selectedSpell = SPELLS.EARTH if selectedSpell != SPELLS.EARTH else SPELLS.NONE
+		spell_selected.emit(selectedSpell, SPELL.EARTH)
+		selectedSpell = SPELL.EARTH if selectedSpell != SPELL.EARTH else SPELL.NONE
 
 func joystick_aim(delta):
 	var direction: Vector2
 	direction.x = Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left")
 	direction.y = Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up")
 	
-	if abs(direction.x) == 1 and abs(direction.y) == 1:
-		direction = direction.normalized()
+	direction = direction.normalized()
+	#if abs(direction.x) == 1 and abs(direction.y) == 1:
+	#	direction = direction.normalized()
 
 	var movement = joystick_sens * direction * delta
-	if (movement):  
-		get_viewport().warp_mouse(get_global_mouse_position() + movement) 
+	if (movement):
+		get_viewport().warp_mouse(get_viewport().get_mouse_position() + movement) 
 
 func get_input():
 	velocity.x = 0
@@ -54,6 +72,10 @@ func get_input():
 	var left = Input.is_action_pressed('move_left')
 	var jump = Input.is_action_just_pressed('jump')
 	var shield = Input.is_action_pressed("shield")
+	
+	var hpPotion = Input.is_action_just_pressed('use_health_potion')
+	var speedPotion = Input.is_action_just_pressed('use_speed_potion')
+	var cooldownPotion = Input.is_action_just_pressed('use_cooldown_potion')
 
 	if shield and is_on_floor():
 		isShielded = true
@@ -75,11 +97,31 @@ func get_input():
 	elif left:
 		facingLeft = true
 		velocity.x -= run_speed
+	
+	if hpPotion and healthPotions > 0:
+		var oldVal = health
+		healthPotions -= 1
+		health += 20
+		used_potion.emit(0)
+		if health > maxHealth:
+			health = maxHealth
+		health_changed.emit(oldVal, health)
+	
+	if speedPotion and speedPotions > 0:
+		speedPotions -= 1
+		run_speed += 100
+		used_potion.emit(1)
+		await get_tree().create_timer(3.0).timeout
+		run_speed -= 100
+		
+	if cooldownPotion and cooldownPotions > 0:
+		cooldownPotions -= 1
+		used_potion.emit(2)
 
 func got_hit(damage):
 	if not isShielded:
 		health -= damage
-		health_lost.emit(health + damage, health)
+		health_changed.emit(health + damage, health)
 		if health <= 0:
 			get_tree().reload_current_scene()
 

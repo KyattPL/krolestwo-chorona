@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvp8op8lovkns"]
+
+[ext_resource type="Script" path="res://Scenes/Artifact/artifact.gd" id="1_1a8li"]
+[ext_resource type="Texture2D" uid="uid://cukf6gkp46m5p" path="res://Assets/artifact/FlyingObelisk_no_lightnings_no_letter.png" id="1_nvqj0"]
+
+[sub_resource type="Animation" id="Animation_gwo70"]
+resource_name = "destroyed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 4.43828),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.0426887),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_xvo77"]
+resource_name = "idle"
+length = 1.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1d5r2"]
+_data = {
+"destroyed": SubResource("Animation_gwo70"),
+"idle": SubResource("Animation_xvo77")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svpce"]
+size = Vector2(92, 326)
+
+[node name="Artifact" type="Node2D"]
+scale = Vector2(0.249086, 0.25)
+script = ExtResource("1_1a8li")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nvqj0")
+hframes = 13
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1d5r2")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(6, 28)
+shape = SubResource("RectangleShape2D_svpce")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -5,6 +5,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var maxHealth = 130
 @export var bulletSpeed = 200
 @export var bulletScene: PackedScene
+@export var coinScene: PackedScene
 
 var facingLeft: bool = false
 var fightVelocity: float = 0.0
@@ -32,7 +33,7 @@ func _physics_process(delta):
 		STATE.PATROL:
 			patrol(delta)
 		STATE.FIGHT_MOVE:
-			fight_move()
+			fight_move(delta)
 
 func patrol(delta):
 	velocity.x = -speed if facingLeft else speed
@@ -46,18 +47,36 @@ func shoot():
 	var bulletInstance: CharacterBody2D = bulletScene.instantiate()
 	var aimPlayerVec  = Vector2(playerObj.global_position.x - global_position.x, \
 		playerObj.global_position.y - global_position.y)
-	
-	print("Player: ", playerObj.global_position.x, ", me:", global_position.x)
 
 	bulletInstance.position = position
 	bulletInstance.velocity = aimPlayerVec.normalized() * bulletSpeed
 	add_sibling(bulletInstance)
 	currentState = STATE.FIGHT_MOVE
 
-func fight_move():
+func fight_move(delta):
 	velocity.x = fightVelocity
+	velocity.y += gravity * delta
+	var playerObj: CharacterBody2D = get_node("../PlayerRoot/Player")
+	var isPlayerOnLeft = playerObj.global_position.x < global_position.x
+	if isPlayerOnLeft and not facingLeft:
+		facingLeft = true
+		$Sprite2D.flip_h = facingLeft
+		$GroundRayCast.position.x = 47 if !facingLeft else -77
+		$GroundRayCast2.position.x = -77 if !facingLeft else 47
+		$PlayerDetector.position.x = 0 if !facingLeft else -475
+		
+	if not isPlayerOnLeft and facingLeft:
+		facingLeft = false
+		$Sprite2D.flip_h = facingLeft
+		$GroundRayCast.position.x = 47 if !facingLeft else -77
+		$GroundRayCast2.position.x = -77 if !facingLeft else 47
+		$PlayerDetector.position.x = 0 if !facingLeft else -475
+		
 	if not $GroundRayCast.is_colliding() and is_on_floor():
 		velocity.x = 30 if facingLeft else -30
+		
+	if not $GroundRayCast2.is_colliding() and is_on_floor():
+		velocity.x = -30 if facingLeft else 30
 		
 	move_and_slide()
 
@@ -84,10 +103,16 @@ func shield():
 	$Shield.visible = true
 
 func detect_turn_around():
-	if not $GroundRayCast.is_colliding() and is_on_floor():
+	if (not $GroundRayCast.is_colliding() and is_on_floor()) or \
+		($WallRayCast.is_colliding() or $WallRayCast2.is_colliding()):
 		facingLeft = !facingLeft
 		$Sprite2D.flip_h = facingLeft
 		$GroundRayCast.position.x = 47 if !facingLeft else -77
+		$GroundRayCast2.position.x = -77 if !facingLeft else 47
+		$WallRayCast.position.x = 5 if !facingLeft else -45
+		$WallRayCast.rotation_degrees = -90 if !facingLeft else 90
+		$WallRayCast2.position.x = 5 if !facingLeft else -45
+		$WallRayCast2.rotation_degrees = -90 if !facingLeft else 90
 		$PlayerDetector.position.x = 0 if !facingLeft else -475
 
 func got_hit(damage, spellType):
@@ -101,11 +126,14 @@ func got_hit(damage, spellType):
 	else:
 		health -= damage
 		var percentRemaining = round((health / maxHealth) * 100)
-		print(percentRemaining)
 		var newHue = percentRemaining / 255.0
 		$HealthUI/Healthbar.value = percentRemaining
 		$HealthUI/Healthbar.set_modulate(Color.from_hsv(newHue, 1, 0.72))
 		if health <= 0:
+			var spawnedCoin = coinScene.instantiate()
+			spawnedCoin.scale = Vector2(0.02, 0.02)
+			spawnedCoin.position = position
+			get_node("..").add_child(spawnedCoin)
 			queue_free()
 
 func _on_player_detector_body_entered(_body: CharacterBody2D):
@@ -119,7 +147,10 @@ func _on_player_detector_body_exited(_body):
 func _on_state_change_timer_timeout():
 	var choice = randf()
 	
-	if choice < 0.8:
+	if choice < 0.4:
+		currentState = STATE.FIGHT_MOVE
+		fightVelocity = 0
+	elif choice < 0.8:
 		currentState = STATE.FIGHT_MOVE
 		fight_move_change_velocity()
 	elif choice < 0.9 and !isShielded:

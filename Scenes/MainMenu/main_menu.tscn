@@ -1,0 +1,282 @@
+[gd_scene load_steps=33 format=3 uid="uid://sd12hw0ov5xb"]
+
+[ext_resource type="Script" path="res://Scenes/MainMenu/main_menu.gd" id="1_k3mho"]
+[ext_resource type="FontFile" uid="uid://dabu02j6atprm" path="res://Assets/fonts/MinimalPixel v2.ttf" id="1_xr5hq"]
+[ext_resource type="Texture2D" uid="uid://p32xqg05l07s" path="res://Assets/button/button_bg.png" id="2_tglln"]
+[ext_resource type="Texture2D" uid="uid://c7ltuw4cgptp1" path="res://Assets/button/button_pressed.png" id="3_r7gf1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cmy3i"]
+texture = ExtResource("2_tglln")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fxk7n"]
+texture = ExtResource("2_tglln")
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ei2we"]
+texture = ExtResource("3_r7gf1")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bo8e8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kcgdg"]
+texture = ExtResource("2_tglln")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3j16j"]
+texture = ExtResource("2_tglln")
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ylfgx"]
+texture = ExtResource("3_r7gf1")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t7lch"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qd6x7"]
+texture = ExtResource("2_tglln")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1xj14"]
+texture = ExtResource("2_tglln")
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wbii1"]
+texture = ExtResource("3_r7gf1")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2yeet"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eo3vc"]
+texture = ExtResource("2_tglln")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6nnam"]
+texture = ExtResource("2_tglln")
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bdjpa"]
+texture = ExtResource("3_r7gf1")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ny1ie"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6qqo8"]
+texture = ExtResource("2_tglln")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sdpf7"]
+texture = ExtResource("2_tglln")
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y1fjs"]
+texture = ExtResource("3_r7gf1")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00jbc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ckesf"]
+texture = ExtResource("2_tglln")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6a0xe"]
+texture = ExtResource("2_tglln")
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g6orh"]
+texture = ExtResource("3_r7gf1")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h3nqk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_53inr"]
+texture = ExtResource("2_tglln")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_786wa"]
+texture = ExtResource("2_tglln")
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8s5ws"]
+texture = ExtResource("3_r7gf1")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_udlm2"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k3mho")
+
+[node name="MenuBg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginButtonsContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 150
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="MarginButtonsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="MarginButtonsContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_xr5hq")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxTexture_cmy3i")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fxk7n")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ei2we")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bo8e8")
+text = "Play"
+
+[node name="SettingsButton" type="Button" parent="MarginButtonsContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_xr5hq")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxTexture_kcgdg")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3j16j")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ylfgx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t7lch")
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="MarginButtonsContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_xr5hq")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxTexture_qd6x7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1xj14")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wbii1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2yeet")
+text = "Exit"
+
+[node name="MarginSettingsContainer" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 150
+
+[node name="SettingsContainer" type="VBoxContainer" parent="MarginSettingsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ResetButton" type="Button" parent="MarginSettingsContainer/SettingsContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_xr5hq")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxTexture_eo3vc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6nnam")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bdjpa")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ny1ie")
+text = "Reset"
+
+[node name="ReturnButton" type="Button" parent="MarginSettingsContainer/SettingsContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_xr5hq")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxTexture_6qqo8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_sdpf7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y1fjs")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_00jbc")
+text = "Return"
+
+[node name="MarginResetContainer" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 100
+
+[node name="ResetProgressPanel" type="Panel" parent="MarginResetContainer"]
+layout_mode = 2
+
+[node name="ResetVerticalContainer" type="VBoxContainer" parent="MarginResetContainer/ResetProgressPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ResetProgressText" type="RichTextLabel" parent="MarginResetContainer/ResetProgressPanel/ResetVerticalContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xr5hq")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Are you sure you want to reset the progress?[/center]"
+
+[node name="ResetButtonsContainer" type="HBoxContainer" parent="MarginResetContainer/ResetProgressPanel/ResetVerticalContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="ResetConfirmButton" type="Button" parent="MarginResetContainer/ResetProgressPanel/ResetVerticalContainer/ResetButtonsContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_xr5hq")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxTexture_ckesf")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6a0xe")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_g6orh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h3nqk")
+text = "Yes"
+
+[node name="ResetCancelButton" type="Button" parent="MarginResetContainer/ResetProgressPanel/ResetVerticalContainer/ResetButtonsContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_xr5hq")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxTexture_53inr")
+theme_override_styles/hover = SubResource("StyleBoxTexture_786wa")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8s5ws")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_udlm2")
+text = "No"
+
+[connection signal="pressed" from="MarginButtonsContainer/ButtonsContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginButtonsContainer/ButtonsContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MarginButtonsContainer/ButtonsContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MarginSettingsContainer/SettingsContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="MarginSettingsContainer/SettingsContainer/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="MarginResetContainer/ResetProgressPanel/ResetVerticalContainer/ResetButtonsContainer/ResetConfirmButton" to="." method="_on_reset_confirm_button_pressed"]
+[connection signal="pressed" from="MarginResetContainer/ResetProgressPanel/ResetVerticalContainer/ResetButtonsContainer/ResetCancelButton" to="." method="_on_reset_cancel_button_pressed"]

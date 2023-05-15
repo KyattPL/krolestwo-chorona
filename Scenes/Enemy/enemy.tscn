@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdni5b3n7ui7n"]
+[gd_scene load_steps=11 format=3 uid="uid://cdni5b3n7ui7n"]
 
 [ext_resource type="Texture2D" uid="uid://crlvi5r65wygj" path="res://Assets/wizard/wizard_pixels.png" id="1_5q0aa"]
 [ext_resource type="Script" path="res://Scenes/Enemy/enemy.gd" id="1_j26kl"]
 [ext_resource type="PackedScene" uid="uid://b4uprsp8koujh" path="res://Scenes/Enemy/enemy_basic_bullet.tscn" id="2_2vjwg"]
+[ext_resource type="PackedScene" uid="uid://bvnvm63w85654" path="res://Scenes/Coin/coin.tscn" id="3_tagov"]
 [ext_resource type="Texture2D" uid="uid://cl8nfs5pcnn40" path="res://Assets/wizard/shield.png" id="4_or6bx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cgjnm"]
-size = Vector2(103, 174)
+size = Vector2(75, 174)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wbt2x"]
 size = Vector2(363.5, 272.5)
@@ -42,18 +43,40 @@ collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_j26kl")
 bulletScene = ExtResource("2_2vjwg")
+coinScene = ExtResource("3_tagov")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0.356863, 0.564706, 1)
+position = Vector2(-15, 2)
+scale = Vector2(0.867188, 1)
 texture = ExtResource("1_5q0aa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-15.5, -2)
+position = Vector2(-17.5, -2)
 shape = SubResource("RectangleShape2D_cgjnm")
 
 [node name="GroundRayCast" type="RayCast2D" parent="."]
 position = Vector2(47, 13)
 scale = Vector2(2, 2)
+target_position = Vector2(0, 65)
+collision_mask = 2
+
+[node name="GroundRayCast2" type="RayCast2D" parent="."]
+position = Vector2(-77, 13)
+scale = Vector2(2, 2)
+target_position = Vector2(0, 65)
+collision_mask = 2
+
+[node name="WallRayCast" type="RayCast2D" parent="."]
+position = Vector2(5, -50)
+rotation = -1.5708
+target_position = Vector2(0, 25)
+collision_mask = 2
+
+[node name="WallRayCast2" type="RayCast2D" parent="."]
+position = Vector2(5, 50)
+rotation = -1.5708
+target_position = Vector2(0, 25)
 collision_mask = 2
 
 [node name="PlayerDetector" type="Area2D" parent="."]

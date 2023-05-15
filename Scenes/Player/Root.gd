@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var bulletSpeed: int = 300
+@export var bulletSpeed: int = 200
 @export var normalSpell: PackedScene
 
 @export var fireSpell: PackedScene
@@ -28,6 +28,7 @@ func shoot():
 		match $Player.selectedSpell:
 			SPELL.FIRE:
 				var fireBullet: CharacterBody2D = fireSpell.instantiate()
+				fireBullet.max_lvl_increase($Player.fireLvl == 3)
 				$FireSpellCD.start()
 				fireOnCD.emit($FireSpellCD.wait_time)
 				$Player.isFireOnCD = true
@@ -35,6 +36,7 @@ func shoot():
 				spawn_bullet(fireBullet)
 			SPELL.WATER:
 				var waterBullet: CharacterBody2D = waterSpell.instantiate()
+				waterBullet.max_lvl_increase($Player.waterLvl == 3)
 				$WaterSpellCD.start()
 				waterOnCD.emit($WaterSpellCD.wait_time)
 				$Player.isWaterOnCD = true
@@ -42,6 +44,7 @@ func shoot():
 				spawn_bullet(waterBullet)
 			SPELL.LIGHTNING:
 				var lightningBullet: CharacterBody2D = lightningSpell.instantiate()
+				lightningBullet.max_lvl_increase($Player.lightningLvl == 3)
 				$LightningSpellCD.start()
 				lightningOnCD.emit($LightningSpellCD.wait_time)
 				$Player.isLightningOnCD = true
@@ -49,6 +52,7 @@ func shoot():
 				spawn_bullet(lightningBullet)
 			SPELL.EARTH:
 				var earthBullet: CharacterBody2D = earthSpell.instantiate()
+				earthBullet.max_lvl_increase($Player.earthLvl == 3)
 				$EarthSpellCD.start()
 				earthOnCD.emit($EarthSpellCD.wait_time)
 				$Player.isEarthOnCD = true
@@ -63,3 +67,35 @@ func shoot():
 
 func _process(delta):
 	shoot()
+
+
+func _on_scroll_pause_game():
+	$HUD.visible = false
+
+
+func _on_scroll_resume_game():
+	$HUD.visible = true
+
+
+func _on_shop_pause_game():
+	$HUD.visible = false
+
+	
+func _on_shop_resume_game():
+	$HUD.visible = true
+
+func _on_shop_change_coins(newCoins):
+	$HUD/HUD/Stats/CoinsText.text = str(newCoins)
+	$Player.coins = newCoins
+
+func _on_shop_add_potions(potionType, potionCount):
+	match potionType:
+		0:
+			$Player.healthPotions += 1
+			$HUD/HUD/Items/HealthPotionBox/HealthPotionTextBox/HealthPotionCount.text = str($Player.healthPotions)
+		1:
+			$Player.speedPotions += 1
+			$HUD/HUD/Items/SpeedPotionBox/SpeedPotionTextBox/SpeedPotionCount.text = str($Player.speedPotions)
+		2:
+			$Player.cooldownPotions += 1
+			$HUD/HUD/Items/CooldownPotionBox/CooldownPotionTextBox/CooldownPotionCount.text = str($Player.cooldownPotions)

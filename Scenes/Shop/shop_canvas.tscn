@@ -1,0 +1,396 @@
+[gd_scene load_steps=30 format=3 uid="uid://x2jln8v61i60"]
+
+[ext_resource type="Texture2D" uid="uid://dprf0aqw2omc7" path="res://Assets/shop/shop_bg.png" id="1_ebl2c"]
+[ext_resource type="Script" path="res://Scenes/Shop/shop_canvas.gd" id="1_w6bbd"]
+[ext_resource type="FontFile" uid="uid://dabu02j6atprm" path="res://Assets/fonts/MinimalPixel v2.ttf" id="2_atpxu"]
+[ext_resource type="Texture2D" uid="uid://p32xqg05l07s" path="res://Assets/button/button_bg.png" id="3_locos"]
+[ext_resource type="Texture2D" uid="uid://c7ltuw4cgptp1" path="res://Assets/button/button_pressed.png" id="4_dwsah"]
+[ext_resource type="Texture2D" uid="uid://br726sni7l2iv" path="res://Assets/shop/arrow_left.png" id="6_bfa11"]
+[ext_resource type="Texture2D" uid="uid://dfvp76y30i86n" path="res://Assets/shop/arrow_right.png" id="7_4ygjx"]
+[ext_resource type="Texture2D" uid="uid://cvsqf8sade6bi" path="res://Assets/shop/item_bg.png" id="7_k1lev"]
+[ext_resource type="Texture2D" uid="uid://2t26vm7v8p8f" path="res://Assets/shop/potion_0.png" id="8_7o6x5"]
+
+[sub_resource type="Animation" id="Animation_3lyab"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -700)]
+}
+
+[sub_resource type="Animation" id="Animation_0ottc"]
+resource_name = "TransitionIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -700), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_daqsc"]
+resource_name = "TransitionOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -700)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w71hw"]
+_data = {
+"RESET": SubResource("Animation_3lyab"),
+"TransitionIn": SubResource("Animation_0ottc"),
+"TransitionOut": SubResource("Animation_daqsc")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jkj6k"]
+texture = ExtResource("3_locos")
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yy2y1"]
+texture = ExtResource("3_locos")
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ak4y"]
+texture = ExtResource("4_dwsah")
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ijfl6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jkroa"]
+texture = ExtResource("3_locos")
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_76fvg"]
+texture = ExtResource("3_locos")
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vmis2"]
+texture = ExtResource("4_dwsah")
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vcio1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ra2f8"]
+texture = ExtResource("3_locos")
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1q0yb"]
+texture = ExtResource("3_locos")
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wn2ka"]
+texture = ExtResource("4_dwsah")
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4wwmg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rnrov"]
+texture = ExtResource("3_locos")
+expand_margin_left = 30.0
+expand_margin_top = 15.0
+expand_margin_right = 30.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rci2i"]
+texture = ExtResource("3_locos")
+expand_margin_left = 30.0
+expand_margin_top = 15.0
+expand_margin_right = 30.0
+expand_margin_bottom = 15.0
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dnl3q"]
+texture = ExtResource("4_dwsah")
+expand_margin_left = 30.0
+expand_margin_top = 15.0
+expand_margin_right = 30.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xtn4d"]
+
+[node name="ShopCanvas" type="CanvasLayer"]
+process_mode = 3
+offset = Vector2(0, -700)
+transform = Transform2D(1, 0, 0, 1, 0, -700)
+script = ExtResource("1_w6bbd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w71hw")
+}
+
+[node name="BgContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="ShopBg" type="TextureRect" parent="BgContainer"]
+layout_mode = 2
+texture = ExtResource("1_ebl2c")
+
+[node name="MoneyContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 580
+theme_override_constants/margin_bottom = 200
+
+[node name="MoneyLabel" type="RichTextLabel" parent="MoneyContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("2_atpxu")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Money: 100[/center]"
+
+[node name="CloseContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 240
+theme_override_constants/margin_bottom = 200
+
+[node name="CloseShop" type="Button" parent="CloseContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_atpxu")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_jkj6k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yy2y1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7ak4y")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ijfl6")
+text = "X"
+
+[node name="ItemNameContainer" type="MarginContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -137.5
+offset_right = 125.0
+offset_bottom = 137.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 225
+
+[node name="ItemNameLabel" type="RichTextLabel" parent="ItemNameContainer"]
+custom_minimum_size = Vector2(275, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("2_atpxu")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Health potion[/center]"
+
+[node name="ItemSelectContainer" type="HBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -75.0
+offset_right = 114.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="PrevItemButton" type="Button" parent="ItemSelectContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_atpxu")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_jkroa")
+theme_override_styles/hover = SubResource("StyleBoxTexture_76fvg")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_vmis2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vcio1")
+icon = ExtResource("6_bfa11")
+
+[node name="ItemIcon" type="TextureRect" parent="ItemSelectContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_k1lev")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ItemSelectContainer/ItemIcon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ItemSelectContainer/ItemIcon/MarginContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_7o6x5")
+expand_mode = 1
+
+[node name="NextItemButton" type="Button" parent="ItemSelectContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_ra2f8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1q0yb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wn2ka")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4wwmg")
+icon = ExtResource("7_4ygjx")
+
+[node name="ItemDescriptionContainer" type="MarginContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 85.0
+offset_right = 100.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="ItemDescriptionLabel" type="RichTextLabel" parent="ItemDescriptionContainer"]
+custom_minimum_size = Vector2(450, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("2_atpxu")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Restores 20HP[/center]"
+
+[node name="ItemCostContainer" type="MarginContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -175.0
+offset_right = 60.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 300
+
+[node name="ItemCostLabel" type="RichTextLabel" parent="ItemCostContainer"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("2_atpxu")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]20 gold[/center]"
+
+[node name="BuyContainer" type="MarginContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = -241.0
+offset_right = 70.0
+offset_bottom = 241.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 450
+
+[node name="BuyButton" type="Button" parent="BuyContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_atpxu")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_rnrov")
+theme_override_styles/hover = SubResource("StyleBoxTexture_rci2i")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dnl3q")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xtn4d")
+text = "Buy"
+
+[connection signal="pressed" from="CloseContainer/CloseShop" to="." method="_on_close_shop_pressed"]
+[connection signal="pressed" from="ItemSelectContainer/PrevItemButton" to="." method="_on_prev_item_button_pressed"]
+[connection signal="pressed" from="ItemSelectContainer/NextItemButton" to="." method="_on_next_item_button_pressed"]
+[connection signal="pressed" from="BuyContainer/BuyButton" to="." method="_on_buy_button_pressed"]

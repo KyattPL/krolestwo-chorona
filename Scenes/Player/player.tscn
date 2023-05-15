@@ -25,7 +25,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s4i60"]
-size = Vector2(123, 182)
+size = Vector2(80, 182)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dci2e"]
 animations = [{
@@ -47,15 +47,15 @@ lightningSpell = ExtResource("5_4vqt1")
 earthSpell = ExtResource("6_vspi1")
 
 [node name="FireSpellCD" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 12.0
 one_shot = true
 
 [node name="WaterSpellCD" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 8.0
 one_shot = true
 
 [node name="LightningSpellCD" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 8.0
 one_shot = true
 
 [node name="NormalSpellCD" type="Timer" parent="."]
@@ -63,7 +63,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="EarthSpellCD" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 11.0
 one_shot = true
 
 [node name="HUD" parent="." instance=ExtResource("9_3136r")]
@@ -75,10 +75,12 @@ script = ExtResource("5_8hotu")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(-22, 4)
+scale = Vector2(0.851562, 0.96875)
 sprite_frames = SubResource("SpriteFrames_4uico")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-19.5, 1)
+position = Vector2(-23, 1)
 shape = SubResource("RectangleShape2D_s4i60")
 debug_color = Color(0, 0.564706, 0.662745, 0.419608)
 
@@ -96,6 +98,7 @@ zoom = Vector2(2.5, 2.5)
 limit_left = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="Crosshair" type="Sprite2D" parent="CanvasLayer"]
 z_index = 3
@@ -113,4 +116,6 @@ script = ExtResource("2_68fma")
 [connection signal="timeout" from="NormalSpellCD" to="Player" method="_on_normal_spell_cd_timeout"]
 [connection signal="timeout" from="EarthSpellCD" to="Player" method="_on_earth_spell_cd_timeout"]
 [connection signal="coins_changed" from="Player" to="HUD" method="_on_player_coins_changed"]
-[connection signal="health_lost" from="Player" to="HUD" method="_on_player_health_lost"]
+[connection signal="health_changed" from="Player" to="HUD" method="_on_player_health_changed"]
+[connection signal="spell_selected" from="Player" to="HUD" method="_on_player_spell_selected"]
+[connection signal="used_potion" from="Player" to="HUD" method="_on_player_used_potion"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://von5xtuebuww"]
+[gd_scene load_steps=76 format=3 uid="uid://von5xtuebuww"]
 
 [ext_resource type="Script" path="res://Scenes/UI/HUD/hud.gd" id="1_m5h7p"]
 [ext_resource type="Texture2D" uid="uid://cplyko1cl3y85" path="res://Assets/HUD/under.png" id="1_mq2eu"]
@@ -11,18 +11,183 @@
 [ext_resource type="Texture2D" uid="uid://bf360du4uv41m" path="res://Assets/HUD/spellEarthIcon.png" id="9_dig4c"]
 [ext_resource type="Texture2D" uid="uid://c3iks8qextmwu" path="res://Assets/HUD/spellLightningIcon.png" id="10_0ipm1"]
 [ext_resource type="Texture2D" uid="uid://bcehnidqgqui2" path="res://Assets/HUD/spellWaterIcon.png" id="11_i1h1m"]
+[ext_resource type="Texture2D" uid="uid://cvsqf8sade6bi" path="res://Assets/shop/item_bg.png" id="12_l6b6f"]
+[ext_resource type="Texture2D" uid="uid://2t26vm7v8p8f" path="res://Assets/shop/potion_0.png" id="13_gq2e2"]
+[ext_resource type="Texture2D" uid="uid://c51od1fs67aol" path="res://Assets/shop/potion_1.png" id="14_3530t"]
+[ext_resource type="Texture2D" uid="uid://doua461h7sjce" path="res://Assets/shop/potion_2.png" id="15_3qucr"]
+[ext_resource type="Texture2D" uid="uid://p32xqg05l07s" path="res://Assets/button/button_bg.png" id="16_qy07n"]
+[ext_resource type="Texture2D" uid="uid://c7ltuw4cgptp1" path="res://Assets/button/button_pressed.png" id="17_d272p"]
+[ext_resource type="Texture2D" uid="uid://bygs33gsi563u" path="res://Assets/HUD/skillTreeIcon.png" id="18_p8qu3"]
+[ext_resource type="Texture2D" uid="uid://dprf0aqw2omc7" path="res://Assets/shop/shop_bg.png" id="19_moc4o"]
+[ext_resource type="Texture2D" uid="uid://basfetsueaqhh" path="res://Assets/HUD/fireUpgraded.png" id="20_ic1tu"]
+[ext_resource type="Texture2D" uid="uid://bi2qicssyv15d" path="res://Assets/HUD/waterUpgraded.png" id="21_02v47"]
+[ext_resource type="Texture2D" uid="uid://dt1j2k1k0ikvp" path="res://Assets/HUD/upgradedLightning.png" id="22_entp3"]
+[ext_resource type="Texture2D" uid="uid://bo4ajyaoonlep" path="res://Assets/HUD/earthUpgraded.png" id="23_44cf7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4fi5r"]
+texture = ExtResource("16_qy07n")
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3rp65"]
+texture = ExtResource("16_qy07n")
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lvxxv"]
+texture = ExtResource("17_d272p")
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fwayo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wgnrm"]
+texture = ExtResource("16_qy07n")
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tvkag"]
+texture = ExtResource("16_qy07n")
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5r2m4"]
+texture = ExtResource("17_d272p")
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ara4k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jgokg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2aubt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fl7vv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fnp6t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rr1hc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qrfcj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tq3as"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0l3gn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a2vuq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c2xie"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pt04m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aiugy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s1dx2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jve1b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_870w4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7rbv3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ye8t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qd3tq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6wn0b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_psaxj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_me0kl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qo57d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iv8wr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_33mqv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g1cen"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sid50"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jpqmg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vul78"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xfy0a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqo8a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nqli7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ya5r1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1xeqr"]
+texture = ExtResource("16_qy07n")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dsiqd"]
+texture = ExtResource("16_qy07n")
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rcoiy"]
+texture = ExtResource("17_d272p")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o8ytl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5wmn3"]
+texture = ExtResource("16_qy07n")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uupgq"]
+texture = ExtResource("16_qy07n")
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r3cmp"]
+texture = ExtResource("17_d272p")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3popi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tdp3a"]
+texture = ExtResource("16_qy07n")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6merl"]
+texture = ExtResource("16_qy07n")
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rswoo"]
+texture = ExtResource("17_d272p")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aahin"]
 
 [node name="RootCanvas" type="CanvasLayer"]
 script = ExtResource("1_m5h7p")
 
-[node name="HUD" type="GridContainer" parent="."]
-offset_right = 1147.0
-offset_bottom = 604.0
+[node name="HUD" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Stats" type="Control" parent="HUD"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 
 [node name="PlayerHPBar" type="TextureProgressBar" parent="HUD/Stats"]
 layout_mode = 1
@@ -87,6 +252,7 @@ scale = Vector2(0.32, 0.32)
 texture = ExtResource("7_au50h")
 
 [node name="TextureRect" type="TextureRect" parent="HUD/Stats/FireSpellBox/FireSpellIcon"]
+layout_mode = 0
 offset_left = 18.75
 offset_top = 6.25
 offset_right = 274.75
@@ -234,7 +400,765 @@ offset_bottom = 274.75
 scale = Vector2(0.875, 0.875)
 texture = ExtResource("9_dig4c")
 
+[node name="Items" type="Control" parent="HUD"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="HealthPotionBox" type="MarginContainer" parent="HUD/Items"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -85.0
+offset_right = 85.0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HealthPotionBg" type="TextureRect" parent="HUD/Items/HealthPotionBox"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("12_l6b6f")
+expand_mode = 1
+
+[node name="HealthPotionIcon" type="TextureRect" parent="HUD/Items/HealthPotionBox/HealthPotionBg"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_gq2e2")
+expand_mode = 1
+
+[node name="HealthPotionTextBox" type="MarginContainer" parent="HUD/Items/HealthPotionBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 56
+theme_override_constants/margin_top = 48
+
+[node name="HealthPotionCount" type="RichTextLabel" parent="HUD/Items/HealthPotionBox/HealthPotionTextBox"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/normal_font = ExtResource("6_1c27h")
+theme_override_font_sizes/normal_font_size = 24
+text = "0"
+
+[node name="SpeedPotionBox" type="MarginContainer" parent="HUD/Items"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -85.0
+offset_right = 75.0
+grow_vertical = 0
+theme_override_constants/margin_left = 110
+theme_override_constants/margin_bottom = 10
+
+[node name="SpeedPotionBg" type="TextureRect" parent="HUD/Items/SpeedPotionBox"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("12_l6b6f")
+expand_mode = 1
+
+[node name="SpeedPotionIcon" type="TextureRect" parent="HUD/Items/SpeedPotionBox/SpeedPotionBg"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_3530t")
+expand_mode = 1
+
+[node name="SpeedPotionTextBox" type="MarginContainer" parent="HUD/Items/SpeedPotionBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 56
+theme_override_constants/margin_top = 48
+
+[node name="SpeedPotionCount" type="RichTextLabel" parent="HUD/Items/SpeedPotionBox/SpeedPotionTextBox"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/normal_font = ExtResource("6_1c27h")
+theme_override_font_sizes/normal_font_size = 24
+text = "0"
+
+[node name="CooldownPotionBox" type="MarginContainer" parent="HUD/Items"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -85.0
+offset_right = 75.0
+grow_vertical = 0
+theme_override_constants/margin_left = 210
+theme_override_constants/margin_bottom = 10
+
+[node name="CooldownPotionBg" type="TextureRect" parent="HUD/Items/CooldownPotionBox"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("12_l6b6f")
+expand_mode = 1
+
+[node name="CooldownPotionIcon" type="TextureRect" parent="HUD/Items/CooldownPotionBox/CooldownPotionBg"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_3qucr")
+expand_mode = 1
+
+[node name="CooldownPotionTextBox" type="MarginContainer" parent="HUD/Items/CooldownPotionBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 56
+theme_override_constants/margin_top = 48
+
+[node name="CooldownPotionCount" type="RichTextLabel" parent="HUD/Items/CooldownPotionBox/CooldownPotionTextBox"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/normal_font = ExtResource("6_1c27h")
+theme_override_font_sizes/normal_font_size = 24
+text = "0"
+
+[node name="SkillTree" type="Control" parent="HUD"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SkillTreeOpenBox" type="MarginContainer" parent="HUD/SkillTree"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="SkillTreeOpenButton" type="Button" parent="HUD/SkillTree/SkillTreeOpenBox"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_4fi5r")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3rp65")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lvxxv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fwayo")
+icon = ExtResource("18_p8qu3")
+expand_icon = true
+
+[node name="SkillTreeBox" type="MarginContainer" parent="HUD/SkillTree"]
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 90
+
+[node name="SkillTreeBg" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("19_moc4o")
+expand_mode = 1
+
+[node name="SkillTreeCloseButton" type="Button" parent="HUD/SkillTree/SkillTreeBox"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_1c27h")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_wgnrm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tvkag")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5r2m4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ara4k")
+text = "X"
+
+[node name="SkillTreeGridBox" type="MarginContainer" parent="HUD/SkillTree/SkillTreeBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 100
+
+[node name="SkillTreeGrid" type="GridContainer" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox"]
+layout_mode = 2
+columns = 4
+
+[node name="FireSkillColumn" type="VBoxContainer" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="BestFireBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn"]
+modulate = Color(0.392157, 0.392157, 0.392157, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("12_l6b6f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BestFireButton" type="Button" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/BestFireBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "+20dmg"
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jgokg")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2aubt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fl7vv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fnp6t")
+
+[node name="BestFireIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/BestFireBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("20_ic1tu")
+expand_mode = 1
+
+[node name="BetterFireBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn"]
+modulate = Color(0.392157, 0.392157, 0.392157, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("12_l6b6f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BetterFireButton" type="Button" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/BetterFireBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "-3s on fire spell cooldown"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rr1hc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qrfcj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_tq3as")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0l3gn")
+
+[node name="BetterFireIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/BetterFireBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_7jyvk")
+expand_mode = 1
+
+[node name="BasicFireBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Basic fire spell"
+texture = ExtResource("12_l6b6f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BasicFireIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/BasicFireBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_7jyvk")
+expand_mode = 1
+
+[node name="WaterSkillColumn" type="VBoxContainer" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BestWaterBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn"]
+modulate = Color(0.392157, 0.392157, 0.392157, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("12_l6b6f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BestWaterButton" type="Button" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn/BestWaterBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "+10dmg"
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_a2vuq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_c2xie")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pt04m")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aiugy")
+
+[node name="BestWaterIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn/BestWaterBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("21_02v47")
+expand_mode = 1
+
+[node name="BetterWaterBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn"]
+modulate = Color(0.392157, 0.392157, 0.392157, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("12_l6b6f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BetterWaterButton" type="Button" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn/BetterWaterBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "-2s on spell cooldown"
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_s1dx2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jve1b")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_870w4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7rbv3")
+
+[node name="BetterWaterIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn/BetterWaterBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("11_i1h1m")
+expand_mode = 1
+
+[node name="BasicWaterBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Basic water spell"
+texture = ExtResource("12_l6b6f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BasicWaterIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn/BasicWaterBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_i1h1m")
+expand_mode = 1
+
+[node name="LightningSkillColumn" type="VBoxContainer" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BestLightningBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn"]
+modulate = Color(0.392157, 0.392157, 0.392157, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("12_l6b6f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BestLightningButton" type="Button" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn/BestLightningBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "+15dmg"
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8ye8t")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qd3tq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6wn0b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_psaxj")
+
+[node name="BestLightningIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn/BestLightningBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("22_entp3")
+expand_mode = 1
+
+[node name="BetterLightningBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn"]
+modulate = Color(0.392157, 0.392157, 0.392157, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("12_l6b6f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BetterLightningButton" type="Button" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn/BetterLightningBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "-3s on spell cooldown"
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_me0kl")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qo57d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_iv8wr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_33mqv")
+
+[node name="BetterLightningIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn/BetterLightningBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_0ipm1")
+expand_mode = 1
+
+[node name="BasicLightningBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Basic lightning spell"
+texture = ExtResource("12_l6b6f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BasicLightningIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn/BasicLightningBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_0ipm1")
+expand_mode = 1
+
+[node name="EarthSkillColumn" type="VBoxContainer" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BestEarthBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn"]
+modulate = Color(0.392157, 0.392157, 0.392157, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("12_l6b6f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BestEarthButton" type="Button" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn/BestEarthBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "+20dmg"
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_g1cen")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_sid50")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jpqmg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vul78")
+
+[node name="BestEarthIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn/BestEarthBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("23_44cf7")
+expand_mode = 1
+
+[node name="BetterEarthBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn"]
+modulate = Color(0.392157, 0.392157, 0.392157, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("12_l6b6f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BetterEarthButton" type="Button" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn/BetterEarthBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "-4s on spell cooldown"
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xfy0a")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_bqo8a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nqli7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ya5r1")
+
+[node name="BetterEarthIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn/BetterEarthBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_dig4c")
+expand_mode = 1
+
+[node name="BasicEarthBox" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Basic earth spell"
+texture = ExtResource("12_l6b6f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BasicEarthIcon" type="TextureRect" parent="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn/BasicEarthBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_dig4c")
+expand_mode = 1
+
+[node name="SkillPointsBox" type="MarginContainer" parent="HUD/SkillTree/SkillTreeBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 40
+
+[node name="SkillPointsText" type="RichTextLabel" parent="HUD/SkillTree/SkillTreeBox/SkillPointsBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("6_1c27h")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Points: 0[/center]"
+
+[node name="Pause" type="Control" parent="HUD"]
+process_mode = 2
+visible = false
+layout_mode = 2
+
+[node name="PauseMarginBox" type="MarginContainer" parent="HUD/Pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseVBox" type="VBoxContainer" parent="HUD/Pause/PauseMarginBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="HUD/Pause/PauseMarginBox/PauseVBox"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_1c27h")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_1xeqr")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dsiqd")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rcoiy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o8ytl")
+text = "Resume"
+
+[node name="SettingsButton" type="Button" parent="HUD/Pause/PauseMarginBox/PauseVBox"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_1c27h")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_5wmn3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_uupgq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_r3cmp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3popi")
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="HUD/Pause/PauseMarginBox/PauseVBox"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_1c27h")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_tdp3a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6merl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rswoo")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aahin")
+text = "Exit"
+
 [connection signal="timeout" from="HUD/Stats/FireSpellBox/FireSpellTimer" to="." method="_on_fire_spell_timer_timeout"]
 [connection signal="timeout" from="HUD/Stats/WaterSpellBox/WaterSpellTimer" to="." method="_on_water_spell_timer_timeout"]
 [connection signal="timeout" from="HUD/Stats/LightningSpellBox/LightningSpellTimer" to="." method="_on_lightning_spell_timer_timeout"]
 [connection signal="timeout" from="HUD/Stats/EarthSpellBox/EarthSpellTimer" to="." method="_on_earth_spell_timer_timeout"]
+[connection signal="pressed" from="HUD/SkillTree/SkillTreeOpenBox/SkillTreeOpenButton" to="." method="_on_skill_tree_open_button_pressed"]
+[connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeCloseButton" to="." method="_on_skill_tree_close_button_pressed"]
+[connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/BestFireBox/BestFireButton" to="." method="_on_best_fire_button_pressed"]
+[connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/BetterFireBox/BetterFireButton" to="." method="_on_better_fire_button_pressed"]
+[connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn/BestWaterBox/BestWaterButton" to="." method="_on_best_water_button_pressed"]
+[connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn/BetterWaterBox/BetterWaterButton" to="." method="_on_better_water_button_pressed"]
+[connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn/BestLightningBox/BestLightningButton" to="." method="_on_best_lightning_button_pressed"]
+[connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn/BetterLightningBox/BetterLightningButton" to="." method="_on_better_lightning_button_pressed"]
+[connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn/BestEarthBox/BestEarthButton" to="." method="_on_best_earth_button_pressed"]
+[connection signal="pressed" from="HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn/BetterEarthBox/BetterEarthButton" to="." method="_on_better_earth_button_pressed"]
+[connection signal="pressed" from="HUD/Pause/PauseMarginBox/PauseVBox/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="HUD/Pause/PauseMarginBox/PauseVBox/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="HUD/Pause/PauseMarginBox/PauseVBox/ExitButton" to="." method="_on_exit_button_pressed"]
