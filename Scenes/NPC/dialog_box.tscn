@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=3 uid="uid://cjvucf8hokg1n"]
+
+[ext_resource type="Script" path="res://Scenes/NPC/dialog_box.gd" id="1_apw48"]
+[ext_resource type="Texture2D" uid="uid://cvsqf8sade6bi" path="res://Assets/shop/item_bg.png" id="1_tgrkg"]
+[ext_resource type="FontFile" uid="uid://dabu02j6atprm" path="res://Assets/fonts/MinimalPixel v2.ttf" id="2_krh2t"]
+[ext_resource type="Texture2D" uid="uid://p32xqg05l07s" path="res://Assets/button/button_bg.png" id="3_1h8vs"]
+[ext_resource type="Texture2D" uid="uid://c7ltuw4cgptp1" path="res://Assets/button/button_pressed.png" id="4_u13bp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n3388"]
+texture = ExtResource("3_1h8vs")
+expand_margin_left = 12.0
+expand_margin_right = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_luitx"]
+texture = ExtResource("3_1h8vs")
+expand_margin_left = 12.0
+expand_margin_right = 12.0
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5jdlg"]
+texture = ExtResource("4_u13bp")
+expand_margin_left = 12.0
+expand_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6sx1b"]
+
+[node name="DialogBox" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_apw48")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 350
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_tgrkg")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 75
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 75
+theme_override_constants/margin_bottom = 35
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/normal_font = ExtResource("2_krh2t")
+theme_override_font_sizes/normal_font_size = 32
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="MarginContainer2"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_krh2t")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_n3388")
+theme_override_styles/hover = SubResource("StyleBoxTexture_luitx")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5jdlg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6sx1b")
+text = "Next"
+
+[connection signal="pressed" from="MarginContainer2/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxyd1jc2vxjuv"]
+
+[ext_resource type="Script" path="res://Scenes/NPC/npc.gd" id="1_itr0r"]
+[ext_resource type="PackedScene" uid="uid://7l1x2iutuecr" path="res://Scenes/UI/ActionTooltip/action_tooltip.tscn" id="2_ycsgx"]
+[ext_resource type="Texture2D" uid="uid://crlvi5r65wygj" path="res://Assets/wizard/wizard_pixels.png" id="3_b63o7"]
+[ext_resource type="PackedScene" uid="uid://cjvucf8hokg1n" path="res://Scenes/NPC/dialog_box.tscn" id="3_e6kva"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmw37"]
+size = Vector2(144, 192)
+
+[node name="NPC" type="Node2D"]
+script = ExtResource("1_itr0r")
+
+[node name="ActionTooltip" parent="." instance=ExtResource("2_ycsgx")]
+visible = false
+
+[node name="DialogBox" parent="." instance=ExtResource("3_e6kva")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_b63o7")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-16, -4)
+shape = SubResource("RectangleShape2D_bmw37")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

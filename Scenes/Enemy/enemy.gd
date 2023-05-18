@@ -9,15 +9,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var facingLeft: bool = false
 var fightVelocity: float = 0.0
-var isShielded: bool = false
 var health: float
 
 enum SPELL { NONE, FIRE, WATER, LIGHTNING, EARTH }
 
-enum SHIELD_TYPE { FIRE, WATER, LIGHTNING, EARTH }
-var currentShield: SHIELD_TYPE
 # PATROL - out of combat movement, FIGHT_MOVE - in combat with player tracking
-# SHIELD - put on shield animation, SHOOT - stand still and shoot animation
+# SHOOT - stand still and shoot animation
 enum STATE { PATROL, SHOOT, FIGHT_MOVE, SHIELD }
 
 var currentState: STATE = STATE.PATROL
@@ -83,24 +80,6 @@ func fight_move(delta):
 func fight_move_change_velocity():
 	var velocitySign = -1 if randf() < 0.5 else 1
 	fightVelocity = velocitySign * randf_range(50, 100)
-	
-func shield():
-	var randomShield = randi_range(1, 4)
-	match randomShield:
-		1:
-			$Shield.modulate = Color.RED
-			currentShield = SHIELD_TYPE.FIRE
-		2:
-			$Shield.modulate = Color.BLUE
-			currentShield = SHIELD_TYPE.WATER
-		3:
-			$Shield.modulate = Color.PURPLE
-			currentShield = SHIELD_TYPE.LIGHTNING
-		_:
-			$Shield.modulate = Color.GREEN
-			currentShield = SHIELD_TYPE.EARTH
-	isShielded = true
-	$Shield.visible = true
 
 func detect_turn_around():
 	if (not $GroundRayCast.is_colliding() and is_on_floor()) or \
@@ -116,25 +95,17 @@ func detect_turn_around():
 		$PlayerDetector.position.x = 0 if !facingLeft else -475
 
 func got_hit(damage, spellType):
-	if isShielded:
-		if currentShield == SHIELD_TYPE.FIRE and spellType == SPELL.FIRE \
-			or currentShield == SHIELD_TYPE.WATER and spellType == SPELL.WATER \
-			or currentShield == SHIELD_TYPE.LIGHTNING and spellType == SPELL.LIGHTNING \
-			or currentShield == SHIELD_TYPE.EARTH and spellType == SPELL.EARTH:
-				isShielded = false
-				$Shield.visible = false
-	else:
-		health -= damage
-		var percentRemaining = round((health / maxHealth) * 100)
-		var newHue = percentRemaining / 255.0
-		$HealthUI/Healthbar.value = percentRemaining
-		$HealthUI/Healthbar.set_modulate(Color.from_hsv(newHue, 1, 0.72))
-		if health <= 0:
-			var spawnedCoin = coinScene.instantiate()
-			spawnedCoin.scale = Vector2(0.02, 0.02)
-			spawnedCoin.position = position
-			get_node("..").add_child(spawnedCoin)
-			queue_free()
+	health -= damage
+	var percentRemaining = round((health / maxHealth) * 100)
+	var newHue = percentRemaining / 255.0
+	$HealthUI/Healthbar.value = percentRemaining
+	$HealthUI/Healthbar.set_modulate(Color.from_hsv(newHue, 1, 0.72))
+	if health <= 0:
+		var spawnedCoin = coinScene.instantiate()
+		spawnedCoin.scale = Vector2(0.02, 0.02)
+		spawnedCoin.position = position
+		get_node("..").add_child(spawnedCoin)
+		queue_free()
 
 func _on_player_detector_body_entered(_body: CharacterBody2D):
 	currentState = STATE.FIGHT_MOVE
@@ -153,9 +124,6 @@ func _on_state_change_timer_timeout():
 	elif choice < 0.8:
 		currentState = STATE.FIGHT_MOVE
 		fight_move_change_velocity()
-	elif choice < 0.9 and !isShielded:
-		currentState = STATE.SHIELD
-		shield()
 	else:
 		currentState = STATE.SHOOT
 		shoot()
