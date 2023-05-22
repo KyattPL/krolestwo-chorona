@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bdo8hqse5vrkg"]
+[gd_scene load_steps=18 format=3 uid="uid://bdo8hqse5vrkg"]
 
 [ext_resource type="Script" path="res://Scripts/load_save.gd" id="1_3n01d"]
 [ext_resource type="Texture2D" uid="uid://fjlvere58nyg" path="res://Assets/tiles/oak_wood/oak_woods_tileset.png" id="1_5s8ed"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cf8263un4w57g" path="res://Scenes/MiniBoss/miniboss.tscn" id="10_7bl58"]
 [ext_resource type="PackedScene" uid="uid://bvp8op8lovkns" path="res://Scenes/Artifact/artifact.tscn" id="11_e8yn5"]
 [ext_resource type="PackedScene" uid="uid://dxyd1jc2vxjuv" path="res://Scenes/NPC/npc.tscn" id="12_as6t7"]
+[ext_resource type="PackedScene" uid="uid://cg5sk1827fb3i" path="res://Scenes/ParallaxBg/background.tscn" id="13_uonrv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8fxjx"]
 texture = ExtResource("1_5s8ed")
@@ -1558,6 +1559,8 @@ scale = Vector2(0.25, 0.25)
 position = Vector2(-828, 119)
 scale = Vector2(0.24, 0.24)
 dialogKey = "npc1"
+
+[node name="Background" parent="." instance=ExtResource("13_uonrv")]
 
 [connection signal="add_potions" from="Shop" to="PlayerRoot" method="_on_shop_add_potions"]
 [connection signal="change_coins" from="Shop" to="PlayerRoot" method="_on_shop_change_coins"]
