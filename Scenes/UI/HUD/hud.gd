@@ -10,12 +10,40 @@ enum SPELL { NONE, FIRE, WATER, LIGHTNING, EARTH }
 func _ready():
 	$HUD/Stats/PlayerHPBar.value = 100
 	
-func initialize():
+func restore_from_save():
 	var playerInstance = get_node("../Player")
 	$HUD/Stats/CoinsText.text = str(playerInstance.coins)
 	$HUD/Items/HealthPotionBox/HealthPotionTextBox/HealthPotionCount.text = str(playerInstance.healthPotions)
 	$HUD/Items/SpeedPotionBox/SpeedPotionTextBox/SpeedPotionCount.text = str(playerInstance.speedPotions)
 	$HUD/Items/CooldownPotionBox/CooldownPotionTextBox/CooldownPotionCount.text = str(playerInstance.cooldownPotions)
+	
+	if playerInstance.skillPoints > 0:
+		$HUD/SkillTree/SkillTreeOpenBox/UnspentSkillPointsBox.visible = true
+
+	# Color.from_hsv(0,0,1)
+	if playerInstance.fireLvl == 2:
+		$HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/BetterFireBox.modulate = Color.from_hsv(0,0,1)
+		get_node("../FireSpellCD").wait_time -= 3
+	if playerInstance.fireLvl == 3:
+		$HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/FireSkillColumn/BestFireBox.modulate = Color.from_hsv(0,0,1)
+	
+	if playerInstance.waterLvl == 2:
+		$HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn/BetterWaterBox.modulate = Color.from_hsv(0,0,1)
+		get_node("../FireSpellCD").wait_time -= 2
+	if playerInstance.waterLvl == 3:
+		$HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/WaterSkillColumn/BestWaterBox.modulate = Color.from_hsv(0,0,1)
+		
+	if playerInstance.lightningLvl == 2:
+		$HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn/BetterLightningBox.modulate = Color.from_hsv(0,0,1)
+		get_node("../FireSpellCD").wait_time -= 3
+	if playerInstance.lightningLvl == 2:
+		$HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/LightningSkillColumn/BestLightningBox.modulate = Color.from_hsv(0,0,1)
+		
+	if playerInstance.earthLvl == 2:
+		$HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn/BetterEarthBox.modulate = Color.from_hsv(0,0,1)
+		get_node("../FireSpellCD").wait_time -= 4
+	if playerInstance.earthLvl == 3:
+		$HUD/SkillTree/SkillTreeBox/SkillTreeGridBox/SkillTreeGrid/EarthSkillColumn/BestEarthBox.modulate = Color.from_hsv(0,0,1)
 
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
@@ -182,6 +210,7 @@ func _on_better_fire_button_pressed():
 		playerNode.skillPoints -= 1
 		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
 		get_node("../FireSpellCD").wait_time -= 3
+		is_unspent_box_visible()
 
 func _on_best_fire_button_pressed():
 	var playerNode = get_node("../Player")
@@ -190,6 +219,7 @@ func _on_best_fire_button_pressed():
 		playerNode.fireLvl = 3
 		playerNode.skillPoints -= 1
 		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
+		is_unspent_box_visible()
 
 func _on_better_water_button_pressed():
 	var playerNode = get_node("../Player")
@@ -199,6 +229,7 @@ func _on_better_water_button_pressed():
 		playerNode.skillPoints -= 1
 		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
 		get_node("../WaterSpellCD").wait_time -= 2
+		is_unspent_box_visible()
 
 func _on_best_water_button_pressed():
 	var playerNode = get_node("../Player")
@@ -207,7 +238,7 @@ func _on_best_water_button_pressed():
 		playerNode.waterLvl = 3
 		playerNode.skillPoints -= 1
 		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
-
+		is_unspent_box_visible()
 
 func _on_better_lightning_button_pressed():
 	var playerNode = get_node("../Player")
@@ -217,6 +248,7 @@ func _on_better_lightning_button_pressed():
 		playerNode.skillPoints -= 1
 		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
 		get_node("../LightningSpellCD").wait_time -= 3
+		is_unspent_box_visible()
 
 func _on_best_lightning_button_pressed():
 	var playerNode = get_node("../Player")
@@ -225,7 +257,7 @@ func _on_best_lightning_button_pressed():
 		playerNode.lightningLvl = 3
 		playerNode.skillPoints -= 1
 		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
-
+		is_unspent_box_visible()
 
 func _on_better_earth_button_pressed():
 	var playerNode = get_node("../Player")
@@ -235,6 +267,7 @@ func _on_better_earth_button_pressed():
 		playerNode.skillPoints -= 1
 		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
 		get_node("../EarthSpellCD").wait_time -= 4
+		is_unspent_box_visible()
 
 func _on_best_earth_button_pressed():
 	var playerNode = get_node("../Player")
@@ -243,6 +276,12 @@ func _on_best_earth_button_pressed():
 		playerNode.earthLvl = 3
 		playerNode.skillPoints -= 1
 		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
+		is_unspent_box_visible()
+
+func is_unspent_box_visible():
+	var playerNode = get_node("../Player")
+	if playerNode.skillPoints == 0:
+		$HUD/SkillTree/SkillTreeOpenBox/UnspentSkillPointsBox.visible = false
 
 func _on_resume_button_pressed():
 	get_tree().paused = false

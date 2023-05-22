@@ -26,4 +26,4 @@ func _ready():
 		playerObj.lightningLvl = int(data['lightningLvl'])
 		playerObj.earthLvl = int(data['earthLvl'])
 
-		get_node("PlayerRoot/HUD").initialize()
+		get_node("PlayerRoot/HUD").restore_from_save()

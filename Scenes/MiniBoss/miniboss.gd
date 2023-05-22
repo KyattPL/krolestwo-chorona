@@ -142,6 +142,7 @@ func got_hit(damage, spellType):
 			spawnedCoin.scale = Vector2(0.02, 0.02)
 			spawnedCoin.position = position
 			get_node("../PlayerRoot/Player").skillPoints += 1
+			get_node("../PlayerRoot/HUD/HUD/SkillTree/SkillTreeOpenBox/UnspentSkillPointsBox").visible = true
 			get_node("..").add_child(spawnedCoin)
 			queue_free()
 
