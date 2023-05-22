@@ -91,11 +91,11 @@ func _on_shop_change_coins(newCoins):
 func _on_shop_add_potions(potionType, potionCount):
 	match potionType:
 		0:
-			$Player.healthPotions += 1
+			$Player.healthPotions += potionCount
 			$HUD/HUD/Items/HealthPotionBox/HealthPotionTextBox/HealthPotionCount.text = str($Player.healthPotions)
 		1:
-			$Player.speedPotions += 1
+			$Player.speedPotions += potionCount
 			$HUD/HUD/Items/SpeedPotionBox/SpeedPotionTextBox/SpeedPotionCount.text = str($Player.speedPotions)
 		2:
-			$Player.cooldownPotions += 1
+			$Player.cooldownPotions += potionCount
 			$HUD/HUD/Items/CooldownPotionBox/CooldownPotionTextBox/CooldownPotionCount.text = str($Player.cooldownPotions)

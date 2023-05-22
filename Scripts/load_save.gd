@@ -25,3 +25,5 @@ func _ready():
 		playerObj.waterLvl = int(data['waterLvl'])
 		playerObj.lightningLvl = int(data['lightningLvl'])
 		playerObj.earthLvl = int(data['earthLvl'])
+
+		get_node("PlayerRoot/HUD").initialize()

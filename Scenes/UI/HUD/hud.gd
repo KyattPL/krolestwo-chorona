@@ -9,6 +9,13 @@ enum SPELL { NONE, FIRE, WATER, LIGHTNING, EARTH }
 
 func _ready():
 	$HUD/Stats/PlayerHPBar.value = 100
+	
+func initialize():
+	var playerInstance = get_node("../Player")
+	$HUD/Stats/CoinsText.text = str(playerInstance.coins)
+	$HUD/Items/HealthPotionBox/HealthPotionTextBox/HealthPotionCount.text = str(playerInstance.healthPotions)
+	$HUD/Items/SpeedPotionBox/SpeedPotionTextBox/SpeedPotionCount.text = str(playerInstance.speedPotions)
+	$HUD/Items/CooldownPotionBox/CooldownPotionTextBox/CooldownPotionCount.text = str(playerInstance.cooldownPotions)
 
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
