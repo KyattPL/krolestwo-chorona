@@ -108,6 +108,9 @@ scale = Vector2(0.0416667, 0.0416667)
 texture = ExtResource("1_gwjtt")
 script = ExtResource("2_68fma")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
 [connection signal="earthOnCD" from="." to="HUD" method="_on_player_root_earth_on_cd"]
 [connection signal="fireOnCD" from="." to="HUD" method="_on_player_root_fire_on_cd"]
 [connection signal="lightningOnCD" from="." to="HUD" method="_on_player_root_lightning_on_cd"]

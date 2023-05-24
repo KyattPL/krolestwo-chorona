@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bdo8hqse5vrkg"]
+[gd_scene load_steps=19 format=3 uid="uid://bdo8hqse5vrkg"]
 
 [ext_resource type="Script" path="res://Scripts/load_save.gd" id="1_3n01d"]
 [ext_resource type="Texture2D" uid="uid://fjlvere58nyg" path="res://Assets/tiles/oak_wood/oak_woods_tileset.png" id="1_5s8ed"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bvp8op8lovkns" path="res://Scenes/Artifact/artifact.tscn" id="11_e8yn5"]
 [ext_resource type="PackedScene" uid="uid://dxyd1jc2vxjuv" path="res://Scenes/NPC/npc.tscn" id="12_as6t7"]
 [ext_resource type="PackedScene" uid="uid://cg5sk1827fb3i" path="res://Scenes/ParallaxBg/background.tscn" id="13_uonrv"]
+[ext_resource type="AudioStream" uid="uid://bo5ol81u7ffsf" path="res://Assets/background/forest/birds-isaiah658.wav" id="14_damqe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8fxjx"]
 texture = ExtResource("1_5s8ed")
@@ -1561,6 +1562,11 @@ scale = Vector2(0.24, 0.24)
 dialogKey = "npc1"
 
 [node name="Background" parent="." instance=ExtResource("13_uonrv")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_damqe")
+autoplay = true
+bus = &"Music"
 
 [connection signal="add_potions" from="Shop" to="PlayerRoot" method="_on_shop_add_potions"]
 [connection signal="change_coins" from="Shop" to="PlayerRoot" method="_on_shop_change_coins"]

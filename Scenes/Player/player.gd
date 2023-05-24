@@ -39,6 +39,8 @@ var isNormalOnCD: bool = false
 
 var isShielded: bool = false
 
+@onready var audioPlayer: AudioStreamPlayer = get_node("../AudioStreamPlayer")
+
 func select_spell():
 	if Input.is_action_just_pressed("select_fire") and not isFireOnCD:
 		spell_selected.emit(selectedSpell, SPELL.FIRE)
@@ -78,6 +80,9 @@ func get_input():
 	var cooldownPotion = Input.is_action_just_pressed('use_cooldown_potion')
 
 	if shield and is_on_floor():
+		if !isShielded:
+			audioPlayer.stream = preload("res://Assets/wizard/shield.wav")
+			audioPlayer.play()
 		isShielded = true
 		$Shield.visible = true
 		return
@@ -86,15 +91,23 @@ func get_input():
 		isShielded = false
 	
 	if jump and is_on_floor():
+		audioPlayer.stream = preload("res://Assets/wizard/30_Jump_03.wav")
+		audioPlayer.play()
 		jumping = true
 		velocity.y = jump_speed
 		
 	if right and left:
 		pass
 	elif right:
+		if !audioPlayer.playing:
+			audioPlayer.stream = preload("res://Assets/wizard/03_Step_grass_03.wav")
+			audioPlayer.play()
 		facingLeft = false
 		velocity.x += run_speed
 	elif left:
+		if !audioPlayer.playing:
+			audioPlayer.stream = preload("res://Assets/wizard/03_Step_grass_03.wav")
+			audioPlayer.play()
 		facingLeft = true
 		velocity.x -= run_speed
 	
@@ -103,6 +116,8 @@ func get_input():
 		healthPotions -= 1
 		health += 20
 		used_potion.emit(0)
+		audioPlayer.stream = preload("res://Assets/wizard/item.wav")
+		audioPlayer.play()
 		if health > maxHealth:
 			health = maxHealth
 		health_changed.emit(oldVal, health)
@@ -111,21 +126,29 @@ func get_input():
 		speedPotions -= 1
 		run_speed += 100
 		used_potion.emit(1)
+		audioPlayer.stream = preload("res://Assets/wizard/item.wav")
+		audioPlayer.play()
 		await get_tree().create_timer(3.0).timeout
 		run_speed -= 100
 		
 	if cooldownPotion and cooldownPotions > 0:
 		cooldownPotions -= 1
 		used_potion.emit(2)
+		audioPlayer.stream = preload("res://Assets/wizard/item.wav")
+		audioPlayer.play()
 
 func got_hit(damage):
 	if not isShielded:
 		health -= damage
 		health_changed.emit(health + damage, health)
+		audioPlayer.stream = preload("res://Assets/wizard/hit.wav")
+		audioPlayer.play()
 		if health <= 0:
 			get_tree().reload_current_scene()
 
 func got_coin():
+	audioPlayer.stream = preload("res://Assets/coin/Coin01.wav")
+	audioPlayer.play()
 	coins_changed.emit(coins, coins + 10)
 	coins += 10
 

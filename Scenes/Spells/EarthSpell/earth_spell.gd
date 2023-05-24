@@ -34,16 +34,24 @@ func _physics_process(delta):
 			if character.get_collision_layer() == ENEMY_COLLISION_LAYER:
 				character.got_hit(damage, SPELL.EARTH)
 				if isBest:
+					$AudioStreamPlayer.stream = preload("res://Assets/spells/earth/boulder_drop.ogg")
+					$AudioStreamPlayer.play()
 					$AnimationPlayer.play("best_hit")
 				else:
+					$AudioStreamPlayer.stream = preload("res://Assets/spells/earth/rock_break.ogg")
+					$AudioStreamPlayer.play()
 					$AnimationPlayer.play("basic_hit")
 				hitObject = true
 				await $AnimationPlayer.animation_finished
 				queue_free()
 		if !hitObject and collision.get_collider().is_class("TileMap") and not is_queued_for_deletion():
 			if isBest:
+				$AudioStreamPlayer.stream = preload("res://Assets/spells/earth/boulder_drop.ogg")
+				$AudioStreamPlayer.play()
 				$AnimationPlayer.play("best_hit")
 			else:
+				$AudioStreamPlayer.stream = preload("res://Assets/spells/earth/rock_break.ogg")
+				$AudioStreamPlayer.play()
 				$AnimationPlayer.play("basic_hit")
 			hitObject = true
 			await $AnimationPlayer.animation_finished

@@ -29,8 +29,12 @@ func _physics_process(delta):
 				if isBest:
 					$BasicBolt.visible = false
 					$BestBolt.visible = true
+					$AudioStreamPlayer.stream = preload("res://Assets/spells/fire/explode2.wav")
+					$AudioStreamPlayer.play()
 					$AnimationPlayer.play("splash_best")
 				else:
+					$AudioStreamPlayer.stream = preload("res://Assets/spells/fire/foom_0.wav")
+					$AudioStreamPlayer.play()
 					$AnimationPlayer.play("splash_basic")
 				hitObject = true
 				await $AnimationPlayer.animation_finished
@@ -39,8 +43,12 @@ func _physics_process(delta):
 			if isBest:
 				$BasicBolt.visible = false
 				$BestBolt.visible = true
+				$AudioStreamPlayer.stream = preload("res://Assets/spells/fire/explode2.wav")
+				$AudioStreamPlayer.play()
 				$AnimationPlayer.play("splash_best")
 			else:
+				$AudioStreamPlayer.stream = preload("res://Assets/spells/fire/foom_0.wav")
+				$AudioStreamPlayer.play()
 				$AnimationPlayer.play("splash_basic")
 			hitObject = true
 			await $AnimationPlayer.animation_finished

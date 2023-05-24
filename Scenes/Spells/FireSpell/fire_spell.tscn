@@ -90,3 +90,6 @@ shape = SubResource("RectangleShape2D_adcy3")
 libraries = {
 "": SubResource("AnimationLibrary_uflkc")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

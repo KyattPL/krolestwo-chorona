@@ -21,6 +21,10 @@ func spawn_bullet(bulletInstance: CharacterBody2D):
 	bulletInstance.velocity = mousePos * bulletSpeed
 	add_child(bulletInstance)
 
+func play_cast_audio():
+	$AudioStreamPlayer.stream = preload("res://Assets/wizard/56_Attack_03.wav")
+	$AudioStreamPlayer.play()
+
 func shoot():
 	var isShot = Input.is_action_just_pressed('shoot')
 	
@@ -33,6 +37,7 @@ func shoot():
 				fireOnCD.emit($FireSpellCD.wait_time)
 				$Player.isFireOnCD = true
 				$Player.selectedSpell = SPELL.NONE
+				play_cast_audio()
 				spawn_bullet(fireBullet)
 			SPELL.WATER:
 				var waterBullet: CharacterBody2D = waterSpell.instantiate()
@@ -41,6 +46,7 @@ func shoot():
 				waterOnCD.emit($WaterSpellCD.wait_time)
 				$Player.isWaterOnCD = true
 				$Player.selectedSpell = SPELL.NONE
+				play_cast_audio()
 				spawn_bullet(waterBullet)
 			SPELL.LIGHTNING:
 				var lightningBullet: CharacterBody2D = lightningSpell.instantiate()
@@ -49,6 +55,7 @@ func shoot():
 				lightningOnCD.emit($LightningSpellCD.wait_time)
 				$Player.isLightningOnCD = true
 				$Player.selectedSpell = SPELL.NONE
+				play_cast_audio()
 				spawn_bullet(lightningBullet)
 			SPELL.EARTH:
 				var earthBullet: CharacterBody2D = earthSpell.instantiate()
@@ -57,12 +64,14 @@ func shoot():
 				earthOnCD.emit($EarthSpellCD.wait_time)
 				$Player.isEarthOnCD = true
 				$Player.selectedSpell = SPELL.NONE
+				play_cast_audio()
 				spawn_bullet(earthBullet)
 			_:			
 				if not $Player.isNormalOnCD:
 					var normalBullet: CharacterBody2D = normalSpell.instantiate()
 					$NormalSpellCD.start()
 					$Player.isNormalOnCD = true
+					play_cast_audio()
 					spawn_bullet(normalBullet)
 
 func _process(delta):

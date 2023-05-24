@@ -77,4 +77,7 @@ collision_mask = 4
 position = Vector2(6, 28)
 shape = SubResource("RectangleShape2D_svpce")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

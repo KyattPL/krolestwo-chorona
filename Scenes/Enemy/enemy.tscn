@@ -131,6 +131,9 @@ theme_override_styles/background = SubResource("StyleBoxFlat_tbu2q")
 theme_override_styles/fill = SubResource("StyleBoxFlat_bvr32")
 value = 100.0
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
 [connection signal="timeout" from="StateChangeTimer" to="." method="_on_state_change_timer_timeout"]

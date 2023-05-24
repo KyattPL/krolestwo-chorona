@@ -101,6 +101,9 @@ func got_hit(damage, spellType):
 	$HealthUI/Healthbar.value = percentRemaining
 	$HealthUI/Healthbar.set_modulate(Color.from_hsv(newHue, 1, 0.72))
 	if health <= 0:
+		$AudioStreamPlayer.stream = preload("res://Assets/enemy/death.wav")
+		$AudioStreamPlayer.play()
+		await $AudioStreamPlayer.finished
 		var spawnedCoin = coinScene.instantiate()
 		spawnedCoin.scale = Vector2(0.02, 0.02)
 		spawnedCoin.position = position

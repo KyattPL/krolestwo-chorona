@@ -36,10 +36,14 @@ func _physics_process(delta):
 				if isBest:
 					$BestBolt.visible = false
 					$BoltHit.visible = true
+					$AudioStreamPlayer.stream = preload("res://Assets/spells/lightning/hit.wav")
+					$AudioStreamPlayer.play()
 					$AnimationPlayer.play("bolt_hit")
 				else:
 					$BasicBolt.visible = false
 					$BoltHit.visible = true
+					$AudioStreamPlayer.stream = preload("res://Assets/spells/lightning/death.wav")
+					$AudioStreamPlayer.play()
 					$AnimationPlayer.play("bolt_hit")
 				hitObject = true
 				await $AnimationPlayer.animation_finished
@@ -48,10 +52,14 @@ func _physics_process(delta):
 			if isBest:
 				$BestBolt.visible = false
 				$BoltHit.visible = true
+				$AudioStreamPlayer.stream = preload("res://Assets/spells/lightning/hit.wav")
+				$AudioStreamPlayer.play()
 				$AnimationPlayer.play("bolt_hit")
 			else:
 				$BasicBolt.visible = false
 				$BoltHit.visible = true
+				$AudioStreamPlayer.stream = preload("res://Assets/spells/lightning/death.wav")
+				$AudioStreamPlayer.play()
 				$AnimationPlayer.play("bolt_hit")
 			hitObject = true
 			await $AnimationPlayer.animation_finished

@@ -1,21 +1,50 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4uprsp8koujh"]
+[gd_scene load_steps=8 format=3 uid="uid://b4uprsp8koujh"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy/enemy_basic_bullet.gd" id="1_0seo7"]
-[ext_resource type="Texture2D" uid="uid://csc68cnofprb1" path="res://Assets/bullets/regularSpell.png" id="2_jl8yo"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4yr6e"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_jl8yo")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://dwbcfaqp0snwq" path="res://Assets/spells/normal/EnergyBall.png" id="2_fe1cv"]
+[ext_resource type="Texture2D" uid="uid://chnr00il8rsdt" path="res://Assets/spells/normal/energyBallImpact.png" id="3_q5qfc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oovym"]
-radius = 68.09
+radius = 32.0039
+
+[sub_resource type="Animation" id="Animation_l2o72"]
+resource_name = "fly"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BasicBolt:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_eqeee"]
+resource_name = "hit"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BasicBoltHit:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sj5ku"]
+_data = {
+"fly": SubResource("Animation_l2o72"),
+"hit": SubResource("Animation_eqeee")
+}
 
 [node name="EnemyBasicBullet" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
@@ -23,11 +52,26 @@ collision_layer = 16
 collision_mask = 3
 script = ExtResource("1_0seo7")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.0980392, 0.0627451, 0.00392157, 1)
-scale = Vector2(0.527344, 0.527344)
-sprite_frames = SubResource("SpriteFrames_4yr6e")
+[node name="BasicBolt" type="Sprite2D" parent="."]
+modulate = Color(0.266667, 0.266667, 0.266667, 1)
+scale = Vector2(0.492187, 0.492187)
+texture = ExtResource("2_fe1cv")
+hframes = 9
+
+[node name="BasicBoltHit" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.266667, 0.266667, 0.266667, 1)
+texture = ExtResource("3_q5qfc")
+vframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 shape = SubResource("CircleShape2D_oovym")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sj5ku")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
