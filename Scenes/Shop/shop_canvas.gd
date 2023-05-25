@@ -51,6 +51,7 @@ func set_players_coins(coins):
 	boughtSpeed = 0
 
 func change_item():
+	$ButtonClickPlayer.play()
 	var itemData = items[currentItem]
 	$ItemNameContainer/ItemNameLabel.text = "[center]" + itemData['name'] + "[/center]"
 	$ItemDescriptionContainer/ItemDescriptionLabel.text = "[center]" + itemData['desc'] + "[/center]"
@@ -71,6 +72,7 @@ func _on_close_shop_pressed():
 	if boughtCD > 0:
 		add_potions.emit(2, boughtCD)
 	resume_game.emit()
+	$ButtonClickPlayer.play()
 
 func _on_next_item_button_pressed():
 	currentItem = (currentItem + 1) % 3
@@ -85,6 +87,7 @@ func _on_prev_item_button_pressed():
 
 func _on_buy_button_pressed():
 	if playersCoins >= items[currentItem]['price']:
+		$ButtonClickPlayer.play()
 		playersCoins -= items[currentItem]['price']
 		$MoneyContainer/MoneyLabel.text = "[center]Money: " + str(playersCoins) + "[/center]"
 		match currentItem:

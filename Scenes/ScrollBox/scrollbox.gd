@@ -5,6 +5,7 @@ extends CanvasLayer
 signal resume_game
 
 func _on_button_pressed():
+	$ButtonClickPlayer.play()
 	get_tree().paused = false
 	visible = false
 	resume_game.emit()

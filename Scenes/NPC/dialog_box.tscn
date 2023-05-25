@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cjvucf8hokg1n"]
+[gd_scene load_steps=11 format=3 uid="uid://cjvucf8hokg1n"]
 
 [ext_resource type="Script" path="res://Scenes/NPC/dialog_box.gd" id="1_apw48"]
 [ext_resource type="Texture2D" uid="uid://cvsqf8sade6bi" path="res://Assets/shop/item_bg.png" id="1_tgrkg"]
 [ext_resource type="FontFile" uid="uid://dabu02j6atprm" path="res://Assets/fonts/MinimalPixel v2.ttf" id="2_krh2t"]
 [ext_resource type="Texture2D" uid="uid://p32xqg05l07s" path="res://Assets/button/button_bg.png" id="3_1h8vs"]
 [ext_resource type="Texture2D" uid="uid://c7ltuw4cgptp1" path="res://Assets/button/button_pressed.png" id="4_u13bp"]
+[ext_resource type="AudioStream" uid="uid://bg8ch0j2a1myl" path="res://Assets/button/misc_menu_3.wav" id="6_x7n1w"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n3388"]
 texture = ExtResource("3_1h8vs")
@@ -82,5 +83,9 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_luitx")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_5jdlg")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_6sx1b")
 text = "Next"
+
+[node name="ButtonClickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_x7n1w")
+bus = &"SFX"
 
 [connection signal="pressed" from="MarginContainer2/Button" to="." method="_on_button_pressed"]

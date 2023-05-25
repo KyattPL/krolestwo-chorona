@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://von5xtuebuww"]
+[gd_scene load_steps=95 format=3 uid="uid://von5xtuebuww"]
 
 [ext_resource type="Script" path="res://Scenes/UI/HUD/hud.gd" id="1_m5h7p"]
 [ext_resource type="Texture2D" uid="uid://cplyko1cl3y85" path="res://Assets/HUD/under.png" id="1_mq2eu"]
@@ -23,6 +23,11 @@
 [ext_resource type="Texture2D" uid="uid://bi2qicssyv15d" path="res://Assets/HUD/waterUpgraded.png" id="21_02v47"]
 [ext_resource type="Texture2D" uid="uid://dt1j2k1k0ikvp" path="res://Assets/HUD/upgradedLightning.png" id="22_entp3"]
 [ext_resource type="Texture2D" uid="uid://bo4ajyaoonlep" path="res://Assets/HUD/earthUpgraded.png" id="23_44cf7"]
+[ext_resource type="Texture2D" uid="uid://br726sni7l2iv" path="res://Assets/shop/arrow_left.png" id="24_c0snk"]
+[ext_resource type="AudioStream" uid="uid://bg8ch0j2a1myl" path="res://Assets/button/misc_menu_3.wav" id="24_dshq2"]
+[ext_resource type="Texture2D" uid="uid://c6u85cjxhjfet" path="res://Assets/menu/sliderBg.png" id="25_eq6md"]
+[ext_resource type="Texture2D" uid="uid://iovrn6muuyot" path="res://Assets/menu/sliderFront.png" id="26_6xjrp"]
+[ext_resource type="Texture2D" uid="uid://dfvp76y30i86n" path="res://Assets/shop/arrow_right.png" id="27_77fsv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4fi5r"]
 texture = ExtResource("16_qy07n")
@@ -171,6 +176,56 @@ modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
 texture = ExtResource("17_d272p")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aahin"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_unlx3"]
+texture = ExtResource("16_qy07n")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_afod2"]
+texture = ExtResource("16_qy07n")
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gjcue"]
+texture = ExtResource("17_d272p")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1sb4t"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jmsdt"]
+texture = ExtResource("16_qy07n")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yhjrq"]
+texture = ExtResource("16_qy07n")
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k4hgj"]
+texture = ExtResource("17_d272p")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_enr72"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4tkc"]
+texture = ExtResource("25_eq6md")
+texture_margin_left = 25.0
+texture_margin_right = 25.0
+expand_margin_top = 25.0
+expand_margin_bottom = 25.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a7wvu"]
+texture = ExtResource("26_6xjrp")
+texture_margin_left = 25.0
+texture_margin_right = 25.0
+expand_margin_top = 25.0
+expand_margin_bottom = 25.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wus3u"]
+texture = ExtResource("16_qy07n")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_otein"]
+texture = ExtResource("16_qy07n")
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ufm65"]
+texture = ExtResource("17_d272p")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aw0qx"]
 
 [node name="RootCanvas" type="CanvasLayer"]
 script = ExtResource("1_m5h7p")
@@ -1162,6 +1217,140 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_rswoo")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_aahin")
 text = "Exit"
 
+[node name="PauseSettingsBox" type="MarginContainer" parent="HUD/Pause"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 75
+
+[node name="PauseSettingsColumn" type="VBoxContainer" parent="HUD/Pause/PauseSettingsBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ReturnButton" type="Button" parent="HUD/Pause/PauseSettingsBox/PauseSettingsColumn"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_1c27h")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxTexture_unlx3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_afod2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gjcue")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1sb4t")
+text = "Return"
+
+[node name="SFXVolumeLabel" type="RichTextLabel" parent="HUD/Pause/PauseSettingsBox/PauseSettingsColumn"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("6_1c27h")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Sound Effects Volume:[/center]"
+
+[node name="SFXControlContainer" type="HBoxContainer" parent="HUD/Pause/PauseSettingsBox/PauseSettingsColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="LowerSFXButton" type="Button" parent="HUD/Pause/PauseSettingsBox/PauseSettingsColumn/SFXControlContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_jmsdt")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yhjrq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_k4hgj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_enr72")
+icon = ExtResource("24_c0snk")
+icon_alignment = 1
+
+[node name="SFXVolumeBar" type="ProgressBar" parent="HUD/Pause/PauseSettingsBox/PauseSettingsColumn/SFXControlContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+theme_override_styles/background = SubResource("StyleBoxTexture_g4tkc")
+theme_override_styles/fill = SubResource("StyleBoxTexture_a7wvu")
+max_value = 10.0
+step = 1.0
+value = 5.0
+show_percentage = false
+
+[node name="HigherSFXButton" type="Button" parent="HUD/Pause/PauseSettingsBox/PauseSettingsColumn/SFXControlContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_wus3u")
+theme_override_styles/hover = SubResource("StyleBoxTexture_otein")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ufm65")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aw0qx")
+icon = ExtResource("27_77fsv")
+icon_alignment = 1
+
+[node name="MusicVolumeLabel" type="RichTextLabel" parent="HUD/Pause/PauseSettingsBox/PauseSettingsColumn"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("6_1c27h")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Music Volume:[/center]"
+
+[node name="MusicControlContainer" type="HBoxContainer" parent="HUD/Pause/PauseSettingsBox/PauseSettingsColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="LowerMusicButton" type="Button" parent="HUD/Pause/PauseSettingsBox/PauseSettingsColumn/MusicControlContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_jmsdt")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yhjrq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_k4hgj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_enr72")
+icon = ExtResource("24_c0snk")
+icon_alignment = 1
+
+[node name="MusicVolumeBar" type="ProgressBar" parent="HUD/Pause/PauseSettingsBox/PauseSettingsColumn/MusicControlContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+theme_override_styles/background = SubResource("StyleBoxTexture_g4tkc")
+theme_override_styles/fill = SubResource("StyleBoxTexture_a7wvu")
+max_value = 10.0
+step = 1.0
+value = 5.0
+show_percentage = false
+
+[node name="HigherMusicButton" type="Button" parent="HUD/Pause/PauseSettingsBox/PauseSettingsColumn/MusicControlContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_wus3u")
+theme_override_styles/hover = SubResource("StyleBoxTexture_otein")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ufm65")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aw0qx")
+icon = ExtResource("27_77fsv")
+icon_alignment = 1
+
+[node name="ButtonClickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_dshq2")
+bus = &"SFX"
+
 [connection signal="timeout" from="HUD/Stats/FireSpellBox/FireSpellTimer" to="." method="_on_fire_spell_timer_timeout"]
 [connection signal="timeout" from="HUD/Stats/WaterSpellBox/WaterSpellTimer" to="." method="_on_water_spell_timer_timeout"]
 [connection signal="timeout" from="HUD/Stats/LightningSpellBox/LightningSpellTimer" to="." method="_on_lightning_spell_timer_timeout"]
@@ -1179,3 +1368,8 @@ text = "Exit"
 [connection signal="pressed" from="HUD/Pause/PauseMarginBox/PauseVBox/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="HUD/Pause/PauseMarginBox/PauseVBox/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="HUD/Pause/PauseMarginBox/PauseVBox/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="HUD/Pause/PauseSettingsBox/PauseSettingsColumn/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="HUD/Pause/PauseSettingsBox/PauseSettingsColumn/SFXControlContainer/LowerSFXButton" to="." method="_on_lower_sfx_button_pressed"]
+[connection signal="pressed" from="HUD/Pause/PauseSettingsBox/PauseSettingsColumn/SFXControlContainer/HigherSFXButton" to="." method="_on_higher_sfx_button_pressed"]
+[connection signal="pressed" from="HUD/Pause/PauseSettingsBox/PauseSettingsColumn/MusicControlContainer/LowerMusicButton" to="." method="_on_lower_music_button_pressed"]
+[connection signal="pressed" from="HUD/Pause/PauseSettingsBox/PauseSettingsColumn/MusicControlContainer/HigherMusicButton" to="." method="_on_higher_music_button_pressed"]

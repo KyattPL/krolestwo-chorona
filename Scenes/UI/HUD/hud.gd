@@ -10,6 +10,12 @@ enum SPELL { NONE, FIRE, WATER, LIGHTNING, EARTH }
 func _ready():
 	$HUD/Stats/PlayerHPBar.value = 100
 	
+	var sfxVolume = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))
+	var musicVolume = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))
+	
+	$HUD/Pause/PauseSettingsBox/PauseSettingsColumn/SFXControlContainer/SFXVolumeBar.value = 10 - (-1 * sfxVolume / 6)
+	$HUD/Pause/PauseSettingsBox/PauseSettingsColumn/MusicControlContainer/MusicVolumeBar.value = 10 - (-1 * musicVolume / 6)
+	
 func restore_from_save():
 	var playerInstance = get_node("../Player")
 	$HUD/Stats/CoinsText.text = str(playerInstance.coins)
@@ -194,6 +200,7 @@ func _on_skill_tree_open_button_pressed():
 	$HUD/Items.visible = false
 	$HUD/SkillTree/SkillTreeOpenBox.visible = false
 	$HUD/SkillTree/SkillTreeBox.visible = true
+	$ButtonClickPlayer.play()
 
 func _on_skill_tree_close_button_pressed():
 	$HUD/Stats.visible = true
@@ -201,6 +208,7 @@ func _on_skill_tree_close_button_pressed():
 	$HUD/SkillTree/SkillTreeOpenBox.visible = true
 	$HUD/SkillTree/SkillTreeBox.visible = false
 	get_tree().paused = false
+	$ButtonClickPlayer.play()
 
 func _on_better_fire_button_pressed():
 	var playerNode = get_node("../Player")
@@ -211,6 +219,7 @@ func _on_better_fire_button_pressed():
 		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
 		get_node("../FireSpellCD").wait_time -= 3
 		is_unspent_box_visible()
+		$ButtonClickPlayer.play()
 
 func _on_best_fire_button_pressed():
 	var playerNode = get_node("../Player")
@@ -220,6 +229,7 @@ func _on_best_fire_button_pressed():
 		playerNode.skillPoints -= 1
 		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
 		is_unspent_box_visible()
+		$ButtonClickPlayer.play()
 
 func _on_better_water_button_pressed():
 	var playerNode = get_node("../Player")
@@ -230,6 +240,7 @@ func _on_better_water_button_pressed():
 		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
 		get_node("../WaterSpellCD").wait_time -= 2
 		is_unspent_box_visible()
+		$ButtonClickPlayer.play()
 
 func _on_best_water_button_pressed():
 	var playerNode = get_node("../Player")
@@ -239,6 +250,7 @@ func _on_best_water_button_pressed():
 		playerNode.skillPoints -= 1
 		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
 		is_unspent_box_visible()
+		$ButtonClickPlayer.play()
 
 func _on_better_lightning_button_pressed():
 	var playerNode = get_node("../Player")
@@ -249,6 +261,7 @@ func _on_better_lightning_button_pressed():
 		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
 		get_node("../LightningSpellCD").wait_time -= 3
 		is_unspent_box_visible()
+		$ButtonClickPlayer.play()
 
 func _on_best_lightning_button_pressed():
 	var playerNode = get_node("../Player")
@@ -258,6 +271,7 @@ func _on_best_lightning_button_pressed():
 		playerNode.skillPoints -= 1
 		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
 		is_unspent_box_visible()
+		$ButtonClickPlayer.play()
 
 func _on_better_earth_button_pressed():
 	var playerNode = get_node("../Player")
@@ -268,6 +282,7 @@ func _on_better_earth_button_pressed():
 		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
 		get_node("../EarthSpellCD").wait_time -= 4
 		is_unspent_box_visible()
+		$ButtonClickPlayer.play()
 
 func _on_best_earth_button_pressed():
 	var playerNode = get_node("../Player")
@@ -277,6 +292,7 @@ func _on_best_earth_button_pressed():
 		playerNode.skillPoints -= 1
 		$HUD/SkillTree/SkillTreeBox/SkillPointsBox/SkillPointsText.text = '[center]Points: ' + str(playerNode.skillPoints) + '[/center]'
 		is_unspent_box_visible()
+		$ButtonClickPlayer.play()
 
 func is_unspent_box_visible():
 	var playerNode = get_node("../Player")
@@ -289,11 +305,76 @@ func _on_resume_button_pressed():
 	$HUD/Stats.visible = true
 	$HUD/Items.visible = true
 	$HUD/SkillTree.visible = true
+	$ButtonClickPlayer.play()
 
 func _on_settings_button_pressed():
-	pass # Replace with function body.
+	$ButtonClickPlayer.play()
+	$HUD/Pause/PauseMarginBox.visible = false
+	$HUD/Pause/PauseSettingsBox.visible = true
 
 func _on_exit_button_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/MainMenu/main_menu.tscn")
+	$ButtonClickPlayer.play()
+
+func _on_return_button_pressed():
+	$ButtonClickPlayer.play()
+	$HUD/Pause/PauseMarginBox.visible = true
+	$HUD/Pause/PauseSettingsBox.visible = false
+
+func _on_lower_sfx_button_pressed():
+	$ButtonClickPlayer.play()
+	var busIndex = AudioServer.get_bus_index("SFX")
+	var busVolume = AudioServer.get_bus_volume_db(busIndex)
+	
+	if busVolume > -60:
+		$HUD/Pause/PauseSettingsBox/PauseSettingsColumn/SFXControlContainer/SFXVolumeBar.value -= 1
+		AudioServer.set_bus_volume_db(busIndex, busVolume - 6)
+		
+		var configFile = ConfigFile.new()
+		configFile.set_value("Audio", "sfxVol", busVolume - 6)
+		configFile.set_value("Audio", "musicVol", AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")))
+		configFile.save("user://settings.cfg")
+
+func _on_higher_sfx_button_pressed():
+	$ButtonClickPlayer.play()
+	var busIndex = AudioServer.get_bus_index("SFX")
+	var busVolume = AudioServer.get_bus_volume_db(busIndex)
+	
+	if busVolume < 0:
+		$HUD/Pause/PauseSettingsBox/PauseSettingsColumn/SFXControlContainer/SFXVolumeBar.value += 1
+		AudioServer.set_bus_volume_db(busIndex, busVolume + 6)
+		
+		var configFile = ConfigFile.new()
+		configFile.set_value("Audio", "sfxVol", busVolume + 6)
+		configFile.set_value("Audio", "musicVol", AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")))
+		configFile.save("user://settings.cfg")
+
+func _on_lower_music_button_pressed():
+	$ButtonClickPlayer.play()
+	var busIndex = AudioServer.get_bus_index("Music")
+	var busVolume = AudioServer.get_bus_volume_db(busIndex)
+	
+	if busVolume > -60:
+		$HUD/Pause/PauseSettingsBox/PauseSettingsColumn/MusicControlContainer/MusicVolumeBar.value -= 1
+		AudioServer.set_bus_volume_db(busIndex, busVolume - 6)
+		
+		var configFile = ConfigFile.new()
+		configFile.set_value("Audio", "sfxVol", AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
+		configFile.set_value("Audio", "musicVol", busVolume - 6)
+		configFile.save("user://settings.cfg")
+
+func _on_higher_music_button_pressed():
+	$ButtonClickPlayer.play()
+	var busIndex = AudioServer.get_bus_index("Music")
+	var busVolume = AudioServer.get_bus_volume_db(busIndex)
+	
+	if busVolume < 0:
+		$HUD/Pause/PauseSettingsBox/PauseSettingsColumn/MusicControlContainer/MusicVolumeBar.value += 1
+		AudioServer.set_bus_volume_db(busIndex, busVolume + 6)
+		
+		var configFile = ConfigFile.new()
+		configFile.set_value("Audio", "sfxVol", AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
+		configFile.set_value("Audio", "musicVol", busVolume + 6)
+		configFile.save("user://settings.cfg")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://x2jln8v61i60"]
+[gd_scene load_steps=31 format=3 uid="uid://x2jln8v61i60"]
 
 [ext_resource type="Texture2D" uid="uid://dprf0aqw2omc7" path="res://Assets/shop/shop_bg.png" id="1_ebl2c"]
 [ext_resource type="Script" path="res://Scenes/Shop/shop_canvas.gd" id="1_w6bbd"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dfvp76y30i86n" path="res://Assets/shop/arrow_right.png" id="7_4ygjx"]
 [ext_resource type="Texture2D" uid="uid://cvsqf8sade6bi" path="res://Assets/shop/item_bg.png" id="7_k1lev"]
 [ext_resource type="Texture2D" uid="uid://2t26vm7v8p8f" path="res://Assets/shop/potion_0.png" id="8_7o6x5"]
+[ext_resource type="AudioStream" uid="uid://bg8ch0j2a1myl" path="res://Assets/button/misc_menu_3.wav" id="10_m5bt4"]
 
 [sub_resource type="Animation" id="Animation_3lyab"]
 length = 0.001
@@ -389,6 +390,10 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_rci2i")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_dnl3q")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xtn4d")
 text = "Buy"
+
+[node name="ButtonClickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_m5bt4")
+bus = &"SFX"
 
 [connection signal="pressed" from="CloseContainer/CloseShop" to="." method="_on_close_shop_pressed"]
 [connection signal="pressed" from="ItemSelectContainer/PrevItemButton" to="." method="_on_prev_item_button_pressed"]

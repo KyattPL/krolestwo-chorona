@@ -27,3 +27,16 @@ func _ready():
 		playerObj.earthLvl = int(data['earthLvl'])
 
 		get_node("PlayerRoot/HUD").restore_from_save()
+
+	var config = ConfigFile.new()
+	var err = config.load("user://settings.cfg")
+	
+	var sfxBusIndex = AudioServer.get_bus_index("SFX")
+	var musicBusIndex = AudioServer.get_bus_index("Music")
+	
+	if err != OK:
+		AudioServer.set_bus_volume_db(sfxBusIndex, -30)
+		AudioServer.set_bus_volume_db(musicBusIndex, -30)
+	else:
+		AudioServer.set_bus_volume_db(sfxBusIndex, config.get_value("Audio", "sfxVol"))
+		AudioServer.set_bus_volume_db(musicBusIndex, config.get_value("Audio", "musicVol"))

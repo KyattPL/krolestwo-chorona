@@ -44,6 +44,7 @@ func next_line():
 		visible = false
 
 func _on_button_pressed():
+	$ButtonClickPlayer.play()
 	next_line()
 	
 func _process(delta):
