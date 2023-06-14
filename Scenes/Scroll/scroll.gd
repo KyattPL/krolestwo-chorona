@@ -1,9 +1,12 @@
 extends Node2D
 
+@export var scrollTxt: String
+
 var isPlayerOn: bool = false
 
 func _process(delta):
 	if Input.is_action_just_pressed("interact") and isPlayerOn:
+		$Scrollbox.scrollTxt = scrollTxt
 		$Scrollbox.visible = true
 		$ActionTooltip.visible = false
 		get_node("../PlayerRoot/HUD").visible = false

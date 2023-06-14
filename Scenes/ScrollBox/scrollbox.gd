@@ -2,6 +2,8 @@ extends CanvasLayer
 
 @export var joystick_sens = 700
 
+var scrollTxt: String = ""
+
 signal resume_game
 
 func _on_button_pressed():
@@ -25,6 +27,7 @@ func joystick_aim(delta):
 		get_viewport().warp_mouse(get_viewport().get_mouse_position() + movement)
 
 func _process(delta):
+	$MarginContainer/MarginContainer/RichTextLabel.text = scrollTxt
 	joystick_aim(delta)
 	if Input.is_action_just_pressed("confirm"):
 			get_tree().paused = false
