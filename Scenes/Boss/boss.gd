@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-@export var speed = 120
+@export var speed = 180
 @export var maxHealth = 500
 @export var bulletSpeed = 450
 @export var bulletScene: PackedScene
@@ -26,10 +26,16 @@ func _init():
 	health = maxHealth
 
 func _ready():
-	health -= 50 * get_node("../PlayerRoot/Player").artifacts
 	$HealthUI/Healthbar.set_modulate(Color.from_hsv(100 / 255.0, 1, 0.72))
 
 func _physics_process(delta):
+	if health == maxHealth:
+		health -= 50 * get_node("../PlayerRoot/Player").artifacts
+		var percentRemaining = round((health / maxHealth) * 100)
+		var newHue = percentRemaining / 255.0
+		$HealthUI/Healthbar.value = percentRemaining
+		$HealthUI/Healthbar.set_modulate(Color.from_hsv(newHue, 1, 0.72))
+	
 	match currentState:
 		STATE.PATROL:
 			patrol(delta)
@@ -63,14 +69,14 @@ func fight_move(delta):
 	var isPlayerOnLeft = playerObj.global_position.x < global_position.x
 	if isPlayerOnLeft and not facingLeft:
 		facingLeft = true
-		$Sprite2D.flip_h = facingLeft
+		$AnimatedSprite2D.flip_h = facingLeft
 		$GroundRayCast.position.x = 47 if !facingLeft else -77
 		$GroundRayCast2.position.x = -77 if !facingLeft else 47
 		$PlayerDetector.position.x = 0 if !facingLeft else -1024
 		
 	if not isPlayerOnLeft and facingLeft:
 		facingLeft = false
-		$Sprite2D.flip_h = facingLeft
+		$AnimatedSprite2D.flip_h = facingLeft
 		$GroundRayCast.position.x = 47 if !facingLeft else -77
 		$GroundRayCast2.position.x = -77 if !facingLeft else 47
 		$PlayerDetector.position.x = 0 if !facingLeft else -1024
@@ -117,7 +123,7 @@ func detect_turn_around():
 	if (not $GroundRayCast.is_colliding() and is_on_floor()) or \
 		($WallRayCast.is_colliding() or $WallRayCast2.is_colliding()):
 		facingLeft = !facingLeft
-		$Sprite2D.flip_h = facingLeft
+		$AnimatedSprite2D.flip_h = facingLeft
 		$GroundRayCast.position.x = 47 if !facingLeft else -77
 		$GroundRayCast2.position.x = -77 if !facingLeft else 47
 		$WallRayCast.position.x = 5 if !facingLeft else -45

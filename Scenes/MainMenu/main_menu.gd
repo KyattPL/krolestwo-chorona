@@ -71,6 +71,7 @@ func _on_reset_cancel_button_pressed():
 
 func _on_reset_confirm_button_pressed():
 	DirAccess.remove_absolute("user://savegame.save")
+	loadedLvlName = "res://Scenes/Level1/level_1.tscn"
 	$MarginSettingsContainer.visible = true
 	$MarginResetContainer.visible = false
 	$ButtonClickPlayer.play()

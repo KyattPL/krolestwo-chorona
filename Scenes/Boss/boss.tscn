@@ -102,14 +102,12 @@ corner_radius_bottom_left = 2
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_hml65")
-maxHealth = 130
-bulletSpeed = 200
 bulletScene = ExtResource("2_c6d5d")
 coinScene = ExtResource("3_ce1w2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-15, 2)
-scale = Vector2(0.867188, 1)
+scale = Vector2(-0.867, 1)
 sprite_frames = SubResource("SpriteFrames_r6txl")
 animation = &"shoot"
 frame = 2
@@ -175,6 +173,7 @@ offset_top = 80.0
 offset_right = 4.0
 offset_bottom = 120.0
 metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Healthbar" type="ProgressBar" parent="HealthUI"]
 layout_mode = 1
