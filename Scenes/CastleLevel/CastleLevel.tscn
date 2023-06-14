@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://nqmf5h8dcgrw"]
+[gd_scene load_steps=13 format=3 uid="uid://nqmf5h8dcgrw"]
 
 [ext_resource type="Texture2D" uid="uid://1ht3pk03v28c" path="res://Assets/tiles/castle/ground.png" id="1_mpenf"]
 [ext_resource type="Texture2D" uid="uid://dd6uifr7885kd" path="res://Assets/tiles/castle/walls_side_top.png" id="2_lwvfy"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cdni5b3n7ui7n" path="res://Scenes/Enemy/enemy.tscn" id="5_s7x7q"]
 [ext_resource type="PackedScene" uid="uid://cf8263un4w57g" path="res://Scenes/MiniBoss/miniboss.tscn" id="6_8nevn"]
 [ext_resource type="PackedScene" uid="uid://5kd2hrg6rd08" path="res://Scenes/Player/player.tscn" id="7_gmh55"]
+[ext_resource type="Texture2D" uid="uid://cs7yi2qnha1x2" path="res://Assets/tiles/castle/background.png" id="8_aevwp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_frcpr"]
 texture = ExtResource("1_mpenf")
@@ -2178,3 +2179,14 @@ scale = Vector2(0.2, 0.2)
 [node name="PlayerRoot" parent="." instance=ExtResource("7_gmh55")]
 position = Vector2(1127, 2952)
 scale = Vector2(0.25, 0.25)
+
+[node name="Bg" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Bg"]
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bg/ParallaxLayer"]
+scale = Vector2(1, 1.5)
+texture = ExtResource("8_aevwp")
+offset = Vector2(0, 100)
