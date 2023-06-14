@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://nqmf5h8dcgrw"]
+[gd_scene load_steps=15 format=3 uid="uid://nqmf5h8dcgrw"]
 
 [ext_resource type="Texture2D" uid="uid://1ht3pk03v28c" path="res://Assets/tiles/castle/ground.png" id="1_mpenf"]
 [ext_resource type="Texture2D" uid="uid://dd6uifr7885kd" path="res://Assets/tiles/castle/walls_side_top.png" id="2_lwvfy"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cf8263un4w57g" path="res://Scenes/MiniBoss/miniboss.tscn" id="6_8nevn"]
 [ext_resource type="PackedScene" uid="uid://5kd2hrg6rd08" path="res://Scenes/Player/player.tscn" id="7_gmh55"]
 [ext_resource type="Texture2D" uid="uid://cs7yi2qnha1x2" path="res://Assets/tiles/castle/background.png" id="8_aevwp"]
+[ext_resource type="PackedScene" uid="uid://c3aexp56nb5oo" path="res://Scenes/ExitDoor/exit_door.tscn" id="9_60ae8"]
+[ext_resource type="PackedScene" uid="uid://bvp8op8lovkns" path="res://Scenes/Artifact/artifact.tscn" id="10_ls51g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_frcpr"]
 texture = ExtResource("1_mpenf")
@@ -2190,3 +2192,10 @@ motion_mirroring = Vector2(480, 0)
 scale = Vector2(1, 1.5)
 texture = ExtResource("8_aevwp")
 offset = Vector2(0, 100)
+
+[node name="ExitDoor" parent="." instance=ExtResource("9_60ae8")]
+position = Vector2(2188, 975)
+
+[node name="Artifact" parent="." instance=ExtResource("10_ls51g")]
+position = Vector2(407, 162)
+scale = Vector2(0.1, 0.1)
