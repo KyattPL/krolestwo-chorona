@@ -25,6 +25,7 @@ func _ready():
 		playerObj.waterLvl = int(data['waterLvl'])
 		playerObj.lightningLvl = int(data['lightningLvl'])
 		playerObj.earthLvl = int(data['earthLvl'])
+		playerObj.artifacts = int(data['artifacts'])
 
 		get_node("PlayerRoot/HUD").restore_from_save()
 

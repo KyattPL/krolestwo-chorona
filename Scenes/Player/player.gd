@@ -39,6 +39,8 @@ var isNormalOnCD: bool = false
 
 var isShielded: bool = false
 
+var artifacts = 0
+
 @onready var audioPlayer: AudioStreamPlayer = get_node("../AudioStreamPlayer")
 
 func select_spell():
@@ -78,6 +80,18 @@ func get_input():
 	var hpPotion = Input.is_action_just_pressed('use_health_potion')
 	var speedPotion = Input.is_action_just_pressed('use_speed_potion')
 	var cooldownPotion = Input.is_action_just_pressed('use_cooldown_potion')
+	
+	if $AnimationPlayer.current_animation == "shoot":
+		await $AnimationPlayer.animation_finished
+	
+	if (right or left) and $AnimationPlayer.current_animation != "walk":
+		if facingLeft:
+			$AnimationPlayer.play("walk_left")
+		else:
+			$AnimationPlayer.play("walk_right")
+
+	if !right and !left and $AnimationPlayer.current_animation != "idle":
+		$AnimationPlayer.play("idle")
 
 	if shield and is_on_floor():
 		if !isShielded:

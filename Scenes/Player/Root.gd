@@ -29,6 +29,8 @@ func shoot():
 	var isShot = Input.is_action_just_pressed('shoot')
 	
 	if isShot and not $Player.isShielded:
+		$Player/AnimationPlayer.play("shoot")
+		
 		match $Player.selectedSpell:
 			SPELL.FIRE:
 				var fireBullet: CharacterBody2D = fireSpell.instantiate()

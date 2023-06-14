@@ -21,6 +21,7 @@ func _process(delta):
 			"waterLvl": playerNode.waterLvl,
 			"lightningLvl": playerNode.lightningLvl,
 			"earthLvl": playerNode.earthLvl,
+			"artifacts": playerNode.artifacts
 		}
 		var saveGame = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 		saveGame.store_line(JSON.stringify(saveDict))
