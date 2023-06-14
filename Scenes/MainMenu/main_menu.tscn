@@ -1,7 +1,8 @@
-[gd_scene load_steps=48 format=3 uid="uid://sd12hw0ov5xb"]
+[gd_scene load_steps=49 format=3 uid="uid://sd12hw0ov5xb"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu/main_menu.gd" id="1_k3mho"]
 [ext_resource type="FontFile" uid="uid://dabu02j6atprm" path="res://Assets/fonts/MinimalPixel v2.ttf" id="1_xr5hq"]
+[ext_resource type="Texture2D" uid="uid://c34awe16d63ok" path="res://Assets/background/menu/DreamShaper_v6_A_calm_forest_background_pixel_art_video_game_t_0.jpg" id="2_n7bds"]
 [ext_resource type="Texture2D" uid="uid://p32xqg05l07s" path="res://Assets/button/button_bg.png" id="2_tglln"]
 [ext_resource type="Texture2D" uid="uid://c7ltuw4cgptp1" path="res://Assets/button/button_pressed.png" id="3_r7gf1"]
 [ext_resource type="Texture2D" uid="uid://br726sni7l2iv" path="res://Assets/shop/arrow_left.png" id="5_r3moo"]
@@ -142,12 +143,14 @@ grow_vertical = 2
 script = ExtResource("1_k3mho")
 
 [node name="MenuBg" type="TextureRect" parent="."]
+modulate = Color(0.6, 0.6, 0.6, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_n7bds")
 
 [node name="MarginButtonsContainer" type="MarginContainer" parent="."]
 layout_mode = 1
