@@ -2148,11 +2148,11 @@ position = Vector2(-396, -659)
 scale = Vector2(0.02, 0.02)
 
 [node name="Scroll" parent="." instance=ExtResource("4_dahe1")]
-position = Vector2(710, 94)
+position = Vector2(340, -559)
 scale = Vector2(0.0799975, 0.0799975)
 
 [node name="Scroll2" parent="." instance=ExtResource("4_dahe1")]
-position = Vector2(355, -561)
+position = Vector2(120, -2182)
 scale = Vector2(0.0799975, 0.0799975)
 
 [node name="Enemy" parent="." instance=ExtResource("5_s7x7q")]
@@ -2166,7 +2166,7 @@ rotation = 3.14159
 scale = Vector2(-0.25, -0.25)
 
 [node name="Coin3" parent="." instance=ExtResource("3_gr7av")]
-position = Vector2(1096, -2086)
+position = Vector2(-198, -1624)
 scale = Vector2(0.02, 0.02)
 
 [node name="Miniboss" parent="." instance=ExtResource("6_8nevn")]
@@ -2174,5 +2174,5 @@ position = Vector2(-1029, -2202)
 scale = Vector2(0.2, 0.2)
 
 [node name="PlayerRoot" parent="." instance=ExtResource("7_gmh55")]
-position = Vector2(142, 430)
+position = Vector2(-220, 434)
 scale = Vector2(0.25, 0.25)
