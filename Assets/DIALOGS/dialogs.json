@@ -1,9 +1,31 @@
 {
 	"npc1": [
-		"Hi there!",
-		"How's it going my fellow friend?"
+		"Janus, I'm glad I found you. There's something you need to know. Ochetchia is in grave danger. The evil wizard Choron has cast a curse upon our land, and now he rules the kingdom with an iron fist.",
+		"Choron has acquired ancient artifacts of immense power. With their combined strength, he has become unstoppable. The artifacts have granted him unimaginable magic, and he uses it to control the minds of our people. They're mere puppets, trapped in an endless cycle of suffering and despair.",
+		"Janus, you're our last hope. You possess a rare gift, a power that can match Choron's. It's said that you are destined to face him, to challenge his rule and free our people from his wicked grasp.",
+		"You must gather your strength, Janus. Train, learn, and grow in power. Seek out the ancient knowledge that can aid you in your quest. Only by harnessing your true potential can you confront Choron and bring an end to his reign of darkness.",
+		"Remember, Janus, you're not alone. There are others who believe in you, who will stand by your side. Seek allies, form alliances, and together we can restore peace to Ochetchia.",
+		"Go now, young wizard, and may the magic that resides within you guide you on this perilous journey. The fate of our village, our people, rests in your hands. You are our only hope."
 	],
 	"npc2": [
-		"Yoyoyyooyoyoyoyoyyo"
-	]
+		"Janus, I'm relieved to have found you. Time is of the essence, my young wizard. Choron, the vile sorcerer, is at his castle, and the path to confront him is fraught with danger. You must hurry, for every moment that passes brings more suffering to our people.",
+		"The castle is surrounded by dark magic, a sinister barrier that repels all who dare to approach. But I have learned of a hidden passage, a secret path that leads through the treacherous forest, beyond the ancient ruins, and into the heart of Choron's fortress.",
+		"The forest is alive with twisted creatures, corrupted by Choron's dark influence. They will stop at nothing to protect their master. You must be cautious, rely on your magic and skills to overcome their wicked assaults.",
+		"Finally, the castle awaits you, its towering walls cloaked in shadows. Choron's minions patrol every corridor, watching for any intruders. You must evade them, use your cunning and magic to outwit them, for the fate of our village rests on your shoulders.",
+		"Janus, my trust lies with you. The people of our village look to you as our last hope, our beacon of light in this sea of darkness. You possess the strength, the power, and the will to face Choron and free us from his tyrannical rule.",
+		"Go forth, young wizard, and may the magic that flows through you guide and protect you on this perilous journey. Remember, you are not alone. The hopes and prayers of Ochetchia go with you. The time has come to face Choron and restore peace to our land."
+	],
+	"npc3": [
+		"Janus, I have some important information for you. Despite the dark times that have befallen us, there is still a glimmer of hope. You can still make use of your currency at the shop in the village.",
+		"The shopkeeper, though weary and burdened by the curse, still maintains a small sanctuary within the walls of his humble store. He recognizes the value of the coins you possess and is willing to trade with you.",
+		"Remember, Janus, that your currency carries more than just material worth. It represents the resilience and determination of our people. By utilizing it at the shop, you contribute to our collective fight against Choron's oppression.",
+		"So, my young wizard, do not hesitate to visit the shop. Make use of your currency to gather the tools and resources you need to face the challenges that lie ahead. The shopkeeper stands ready to assist you in your quest."
+	],
+	"npc4": [
+		"Janus, I have grave news for you. Ahead lies a treacherous path, a cave brimming with danger. It is imperative that you understand the perils that await you.",
+		"The cave is a labyrinth of darkness, its depths shrouded in mystery. It is said that ancient creatures, twisted by malevolent forces, dwell within its shadowy recesses. They hunger for the taste of intruders, for the thrill of preying upon the unwary.",
+		"Beware, Janus, for the cave's labyrinthine nature can confuse even the most seasoned traveler. Its winding tunnels and shifting passages will test your sense of direction and mental fortitude. You must remain focused and vigilant, for one misstep could lead to your demise.",
+		"The cave's darkness itself is a formidable adversary. It swallows light and distorts sound, playing tricks upon the senses. In its depths, disorientation and confusion await, threatening to undermine your resolve.",
+		"Farewell, Janus, and may luck be on your side as you venture into the depths. May you find the strength to overcome the dangers that await and emerge triumphant, ready to face the even greater challenges that lie beyond."
+	],
 }

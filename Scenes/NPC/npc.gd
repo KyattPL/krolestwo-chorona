@@ -1,6 +1,6 @@
 extends Node2D
 
-@export_enum("npc1", "npc2") var dialogKey: String
+@export_enum("npc1", "npc2", "npc3", "npc4") var dialogKey: String
 var isPlayerOn: bool = false
 
 func _ready():
