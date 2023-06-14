@@ -43,6 +43,7 @@ func patrol(delta):
 	detect_turn_around()
 
 func shoot():
+	$AnimationPlayer.play("shoot")
 	var playerObj: CharacterBody2D = get_node("../PlayerRoot/Player")
 	var bulletInstance: CharacterBody2D = bulletScene.instantiate()
 	var aimPlayerVec  = Vector2(playerObj.global_position.x - global_position.x, \

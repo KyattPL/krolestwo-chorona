@@ -26,6 +26,7 @@ func _init():
 	health = maxHealth
 
 func _ready():
+	health -= 50 * get_node("../PlayerRoot/Player").artifacts
 	$HealthUI/Healthbar.set_modulate(Color.from_hsv(100 / 255.0, 1, 0.72))
 
 func _physics_process(delta):
@@ -43,6 +44,8 @@ func patrol(delta):
 	detect_turn_around()
 
 func shoot():
+	$AnimationPlayer.play("shoot")
+	await $AnimationPlayer.animation_finished
 	var playerObj: CharacterBody2D = get_node("../PlayerRoot/Player")
 	var bulletInstance: CharacterBody2D = bulletScene.instantiate()
 	var aimPlayerVec  = Vector2(playerObj.global_position.x - global_position.x, \

@@ -112,6 +112,7 @@ position = Vector2(-15, 2)
 scale = Vector2(0.867188, 1)
 sprite_frames = SubResource("SpriteFrames_r6txl")
 animation = &"shoot"
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-17.5, -2)
