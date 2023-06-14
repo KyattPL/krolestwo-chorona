@@ -3,6 +3,9 @@ extends Node2D
 
 var isPlayerOn: bool = false
 
+func _ready():
+	$AnimationPlayer.play("default")
+
 func _process(delta):
 	if Input.is_action_just_pressed("interact") and isPlayerOn:
 		var playerNode = get_node("../PlayerRoot/Player")

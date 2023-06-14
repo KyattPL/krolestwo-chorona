@@ -1,11 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3aexp56nb5oo"]
+[gd_scene load_steps=7 format=3 uid="uid://c3aexp56nb5oo"]
 
 [ext_resource type="Script" path="res://Scenes/ExitDoor/exit_door.gd" id="1_plocn"]
 [ext_resource type="PackedScene" uid="uid://7l1x2iutuecr" path="res://Scenes/UI/ActionTooltip/action_tooltip.tscn" id="1_up77x"]
-[ext_resource type="Texture2D" uid="uid://76aj6o6huipu" path="res://Assets/bullets/earthSpell.png" id="2_nra60"]
+[ext_resource type="Texture2D" uid="uid://5bs7t8etlerr" path="res://Assets/exit/portalRings1.png" id="3_nf8cl"]
+
+[sub_resource type="Animation" id="Animation_n038b"]
+resource_name = "default"
+length = 1.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dfq5m"]
+_data = {
+"default": SubResource("Animation_n038b")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ium5p"]
-size = Vector2(44, 83)
+size = Vector2(42, 58)
 
 [node name="ExitDoor" type="Node2D"]
 script = ExtResource("1_plocn")
@@ -13,15 +35,24 @@ script = ExtResource("1_plocn")
 [node name="ActionTooltip" parent="." instance=ExtResource("1_up77x")]
 visible = false
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_dfq5m")
+}
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
-scale = Vector2(0.164063, 0.164063)
-texture = ExtResource("2_nra60")
+position = Vector2(2.86102e-06, -24)
+scale = Vector2(1.08203, 1.76203)
+texture = ExtResource("3_nf8cl")
+hframes = 4
+vframes = 5
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -19)
+position = Vector2(-1, -25)
 shape = SubResource("RectangleShape2D_ium5p")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

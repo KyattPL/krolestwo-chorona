@@ -1534,7 +1534,7 @@ position = Vector2(-539, 93)
 scale = Vector2(0.479998, 0.479998)
 
 [node name="ExitDoor" parent="." instance=ExtResource("8_83dra")]
-position = Vector2(-896, 117)
+position = Vector2(-892, 141)
 
 [node name="TpSpot" type="Node2D" parent="." groups=["bossTP"]]
 position = Vector2(600, 264)
