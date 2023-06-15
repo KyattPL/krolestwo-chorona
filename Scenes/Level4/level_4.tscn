@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://djcpa5crrgfe1"]
+[gd_scene load_steps=9 format=3 uid="uid://djcpa5crrgfe1"]
 
 [ext_resource type="Texture2D" uid="uid://7kkp3meldv4e" path="res://Assets/tiles/darkForest/mainlevbuild.png" id="1_l2r54"]
+[ext_resource type="Script" path="res://Scripts/load_save.gd" id="1_qsvr3"]
 [ext_resource type="PackedScene" uid="uid://dqtuqb2q0o8j4" path="res://Scenes/Boss/boss.tscn" id="2_tc406"]
 [ext_resource type="PackedScene" uid="uid://5kd2hrg6rd08" path="res://Scenes/Player/player.tscn" id="3_an51t"]
+[ext_resource type="Texture2D" uid="uid://cs7yi2qnha1x2" path="res://Assets/tiles/castle/background.png" id="4_w448g"]
+[ext_resource type="AudioStream" uid="uid://c8mp1u63dkxxj" path="res://Assets/boss/boss theme.ogg" id="5_vpgqu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bjc2n"]
 texture = ExtResource("1_l2r54")
@@ -4255,7 +4258,8 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 61
 sources/1 = SubResource("TileSetAtlasSource_bjc2n")
 
-[node name="BossArena" type="Node2D"]
+[node name="Level4" type="Node2D"]
+script = ExtResource("1_qsvr3")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_4s58i")
@@ -4270,3 +4274,31 @@ scale = Vector2(0.25, 0.25)
 [node name="PlayerRoot" parent="." instance=ExtResource("3_an51t")]
 position = Vector2(458, 127)
 scale = Vector2(0.25, 0.25)
+
+[node name="Bg" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Bg"]
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bg/ParallaxLayer"]
+scale = Vector2(1, 1.5)
+texture = ExtResource("4_w448g")
+offset = Vector2(0, 100)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_vpgqu")
+autoplay = true
+bus = &"Music"
+
+[node name="TpNode" type="Node2D" parent="." groups=["bossTP"]]
+position = Vector2(192, 81)
+
+[node name="TpNode2" type="Node2D" parent="." groups=["bossTP"]]
+position = Vector2(592, 26)
+
+[node name="TpNode3" type="Node2D" parent="." groups=["bossTP"]]
+position = Vector2(682, 59)
+
+[node name="TpNode4" type="Node2D" parent="." groups=["bossTP"]]
+position = Vector2(399, 128)
