@@ -3418,6 +3418,7 @@ scale = Vector2(0.25, 0.25)
 
 [node name="hat_man_npc" parent="." instance=ExtResource("9_todq3")]
 position = Vector2(192, 103)
+dialogKey = "npc4"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

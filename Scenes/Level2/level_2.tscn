@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://nqmf5h8dcgrw"]
+[gd_scene load_steps=29 format=3 uid="uid://nqmf5h8dcgrw"]
 
 [ext_resource type="Script" path="res://Scripts/load_save.gd" id="1_05y7h"]
 [ext_resource type="Texture2D" uid="uid://1ht3pk03v28c" path="res://Assets/tiles/castle/ground.png" id="1_mpenf"]
@@ -12,8 +12,16 @@
 [ext_resource type="PackedScene" uid="uid://c3aexp56nb5oo" path="res://Scenes/ExitDoor/exit_door.tscn" id="9_60ae8"]
 [ext_resource type="PackedScene" uid="uid://bvp8op8lovkns" path="res://Scenes/Artifact/artifact.tscn" id="10_ls51g"]
 [ext_resource type="PackedScene" uid="uid://cpymtgbwlju1m" path="res://Scenes/Shop/shop.tscn" id="11_prbln"]
-[ext_resource type="PackedScene" uid="uid://dxyd1jc2vxjuv" path="res://Scenes/NPC/woman.tscn" id="12_rf0gk"]
+[ext_resource type="PackedScene" uid="uid://chwxtbvatqype" path="res://Scenes/NPC/hat_man.tscn" id="13_4rpux"]
 [ext_resource type="AudioStream" uid="uid://d25hapmpslvsj" path="res://Assets/background/castle/overworld theme.ogg" id="13_ot7dn"]
+[ext_resource type="Script" path="res://Scenes/NPC/npc.gd" id="14_157xv"]
+[ext_resource type="PackedScene" uid="uid://7l1x2iutuecr" path="res://Scenes/UI/ActionTooltip/action_tooltip.tscn" id="15_ovg2d"]
+[ext_resource type="PackedScene" uid="uid://cjvucf8hokg1n" path="res://Scenes/NPC/dialog_box.tscn" id="16_w47fq"]
+[ext_resource type="Texture2D" uid="uid://dg7lmlw61r6si" path="res://Assets/npc/store_man_idle/1.png" id="17_jb1be"]
+[ext_resource type="Texture2D" uid="uid://gayo5ufdw2xp" path="res://Assets/npc/store_man_idle/2.png" id="18_7gy6d"]
+[ext_resource type="Texture2D" uid="uid://bj4f7g2i7q48g" path="res://Assets/npc/store_man_idle/3.png" id="19_j5rco"]
+[ext_resource type="Texture2D" uid="uid://7xb232vkip68" path="res://Assets/npc/store_man_idle/4.png" id="20_gs57s"]
+[ext_resource type="Script" path="res://Scenes/NPC/npc_idle_animation_player.gd" id="21_ioglh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_frcpr"]
 texture = ExtResource("1_mpenf")
@@ -2130,6 +2138,29 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 61
 sources/0 = SubResource("TileSetAtlasSource_0embl")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_fxa58"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_jb1be")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_7gy6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_j5rco")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_gs57s")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmw37"]
+size = Vector2(22.5, 43.25)
+
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_05y7h")
 
@@ -2211,13 +2242,31 @@ scale = Vector2(0.1, 0.1)
 position = Vector2(1672, 911)
 scale = Vector2(0.32, 0.32)
 
-[node name="NPC" parent="." instance=ExtResource("12_rf0gk")]
-position = Vector2(1223, 2970)
-dialogKey = "npc2"
+[node name="hat_man_npc" parent="." instance=ExtResource("13_4rpux")]
+position = Vector2(1202, 2970)
 
-[node name="NPC2" parent="." instance=ExtResource("12_rf0gk")]
+[node name="NPC2" type="Node2D" parent="."]
 position = Vector2(1445, 1334)
+script = ExtResource("14_157xv")
 dialogKey = "npc3"
+
+[node name="ActionTooltip" parent="NPC2" instance=ExtResource("15_ovg2d")]
+visible = false
+
+[node name="DialogBox" parent="NPC2" instance=ExtResource("16_w47fq")]
+
+[node name="woman" type="AnimatedSprite2D" parent="NPC2"]
+position = Vector2(2, 8)
+scale = Vector2(0.565934, 0.565934)
+sprite_frames = SubResource("SpriteFrames_fxa58")
+animation = &"idle"
+script = ExtResource("21_ioglh")
+
+[node name="Area2D" type="Area2D" parent="NPC2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC2/Area2D"]
+position = Vector2(-0.25, 3.375)
+shape = SubResource("RectangleShape2D_bmw37")
 
 [node name="TpNode" type="Node2D" parent="." groups=["bossTP"]]
 position = Vector2(230, 202)
@@ -2235,3 +2284,6 @@ position = Vector2(522, 296)
 stream = ExtResource("13_ot7dn")
 autoplay = true
 bus = &"Music"
+
+[connection signal="body_entered" from="NPC2/Area2D" to="NPC2" method="_on_area_2d_body_entered" flags=18]
+[connection signal="body_exited" from="NPC2/Area2D" to="NPC2" method="_on_area_2d_body_exited" flags=18]

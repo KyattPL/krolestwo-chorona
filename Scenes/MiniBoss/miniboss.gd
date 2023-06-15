@@ -44,6 +44,7 @@ func patrol(delta):
 
 func shoot():
 	$AnimationPlayer.play("shoot")
+	await $AnimationPlayer.animation_finished
 	var playerObj: CharacterBody2D = get_node("../PlayerRoot/Player")
 	var bulletInstance: CharacterBody2D = bulletScene.instantiate()
 	var aimPlayerVec  = Vector2(playerObj.global_position.x - global_position.x, \
@@ -55,6 +56,12 @@ func shoot():
 	currentState = STATE.FIGHT_MOVE
 
 func fight_move(delta):
+	if !($AnimationPlayer.current_animation == "shoot" and $AnimationPlayer.is_playing()):
+		if fightVelocity == 0:
+			$AnimationPlayer.play("idle")
+		else:
+			$AnimationPlayer.play("move")
+	
 	velocity.x = fightVelocity
 	velocity.y += gravity * delta
 	var playerObj: CharacterBody2D = get_node("../PlayerRoot/Player")
