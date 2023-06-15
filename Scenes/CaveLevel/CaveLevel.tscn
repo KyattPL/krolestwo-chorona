@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://2gw65gnxjvn5"]
+[gd_scene load_steps=12 format=3 uid="uid://2gw65gnxjvn5"]
 
 [ext_resource type="Texture2D" uid="uid://w43nvh6efqtc" path="res://Assets/tiles/cave/CaveG.png" id="1_mxi7d"]
 [ext_resource type="PackedScene" uid="uid://5kd2hrg6rd08" path="res://Scenes/Player/player.tscn" id="2_0gfdv"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c3aexp56nb5oo" path="res://Scenes/ExitDoor/exit_door.tscn" id="5_kjimk"]
 [ext_resource type="PackedScene" uid="uid://bvp8op8lovkns" path="res://Scenes/Artifact/artifact.tscn" id="6_6j08t"]
 [ext_resource type="PackedScene" uid="uid://cf8263un4w57g" path="res://Scenes/MiniBoss/miniboss.tscn" id="7_wv38q"]
+[ext_resource type="PackedScene" uid="uid://chwxtbvatqype" path="res://Scenes/NPC/hat_man.tscn" id="9_todq3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vvp0b"]
 texture = ExtResource("1_mxi7d")
@@ -3404,3 +3405,6 @@ scale = Vector2(0.2, 0.2)
 [node name="PlayerRoot" parent="." instance=ExtResource("2_0gfdv")]
 position = Vector2(77, 79)
 scale = Vector2(0.25, 0.25)
+
+[node name="hat_man_npc" parent="." instance=ExtResource("9_todq3")]
+position = Vector2(192, 103)

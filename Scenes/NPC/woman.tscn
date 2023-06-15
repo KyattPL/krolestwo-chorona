@@ -1,0 +1,91 @@
+[gd_scene load_steps=15 format=3 uid="uid://dxyd1jc2vxjuv"]
+
+[ext_resource type="Texture2D" uid="uid://d3cohndo8rcx1" path="res://Assets/npc/woman-idle.png" id="1_4lea0"]
+[ext_resource type="Script" path="res://Scenes/NPC/npc.gd" id="1_hkwkf"]
+[ext_resource type="PackedScene" uid="uid://7l1x2iutuecr" path="res://Scenes/UI/ActionTooltip/action_tooltip.tscn" id="2_0p6sy"]
+[ext_resource type="PackedScene" uid="uid://cjvucf8hokg1n" path="res://Scenes/NPC/dialog_box.tscn" id="3_by0x4"]
+[ext_resource type="Script" path="res://Scenes/NPC/npc_idle_animation_player.gd" id="5_kbpsc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oamf8"]
+atlas = ExtResource("1_4lea0")
+region = Rect2(0, 0, 37, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3i0m"]
+atlas = ExtResource("1_4lea0")
+region = Rect2(37, 0, 37, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnejq"]
+atlas = ExtResource("1_4lea0")
+region = Rect2(74, 0, 37, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4a4g"]
+atlas = ExtResource("1_4lea0")
+region = Rect2(111, 0, 37, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kmnu"]
+atlas = ExtResource("1_4lea0")
+region = Rect2(148, 0, 37, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgven"]
+atlas = ExtResource("1_4lea0")
+region = Rect2(185, 0, 37, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rxgj"]
+atlas = ExtResource("1_4lea0")
+region = Rect2(222, 0, 37, 46)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1tesb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oamf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3i0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnejq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4a4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kmnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgven")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rxgj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmw37"]
+size = Vector2(22.5, 43.25)
+
+[node name="woman_npc" type="Node2D"]
+position = Vector2(0, -1)
+script = ExtResource("1_hkwkf")
+dialogKey = "npc1"
+
+[node name="ActionTooltip" parent="." instance=ExtResource("2_0p6sy")]
+visible = false
+
+[node name="DialogBox" parent="." instance=ExtResource("3_by0x4")]
+
+[node name="woman" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1tesb")
+animation = &"idle"
+script = ExtResource("5_kbpsc")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.25, 3.375)
+shape = SubResource("RectangleShape2D_bmw37")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

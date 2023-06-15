@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=3 uid="uid://chwxtbvatqype"]
+
+[ext_resource type="Script" path="res://Scenes/NPC/npc.gd" id="1_s6h3t"]
+[ext_resource type="PackedScene" uid="uid://7l1x2iutuecr" path="res://Scenes/UI/ActionTooltip/action_tooltip.tscn" id="2_x7uda"]
+[ext_resource type="PackedScene" uid="uid://cjvucf8hokg1n" path="res://Scenes/NPC/dialog_box.tscn" id="3_6ng17"]
+[ext_resource type="Texture2D" uid="uid://ydh8p8uw8f3u" path="res://Assets/npc/hat-man-idle.png" id="4_rswn1"]
+[ext_resource type="Script" path="res://Scenes/NPC/npc_idle_animation_player.gd" id="5_igio1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdgjg"]
+atlas = ExtResource("4_rswn1")
+region = Rect2(0, 0, 39, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k375q"]
+atlas = ExtResource("4_rswn1")
+region = Rect2(39, 0, 39, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ak1dr"]
+atlas = ExtResource("4_rswn1")
+region = Rect2(78, 0, 39, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5b1d"]
+atlas = ExtResource("4_rswn1")
+region = Rect2(117, 0, 39, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1tesb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdgjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k375q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ak1dr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5b1d")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmw37"]
+size = Vector2(22.5, 43.25)
+
+[node name="hat_man_npc" type="Node2D"]
+position = Vector2(0, -1)
+script = ExtResource("1_s6h3t")
+dialogKey = "npc2"
+
+[node name="ActionTooltip" parent="." instance=ExtResource("2_x7uda")]
+visible = false
+
+[node name="DialogBox" parent="." instance=ExtResource("3_6ng17")]
+
+[node name="hat_man" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1tesb")
+animation = &"idle"
+frame_progress = 0.240778
+script = ExtResource("5_igio1")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.25, 3.375)
+shape = SubResource("RectangleShape2D_bmw37")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
