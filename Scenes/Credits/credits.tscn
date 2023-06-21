@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://7wi5jmynhpba"]
+
+[ext_resource type="Texture2D" uid="uid://c34awe16d63ok" path="res://Assets/background/menu/DreamShaper_v6_A_calm_forest_background_pixel_art_video_game_t_0.jpg" id="1_8ntq8"]
+[ext_resource type="Script" path="res://Scenes/Credits/credits.gd" id="1_we1qu"]
+[ext_resource type="FontFile" uid="uid://dabu02j6atprm" path="res://Assets/fonts/MinimalPixel v2.ttf" id="2_bdugd"]
+[ext_resource type="Texture2D" uid="uid://p32xqg05l07s" path="res://Assets/button/button_bg.png" id="3_by604"]
+[ext_resource type="Texture2D" uid="uid://c7ltuw4cgptp1" path="res://Assets/button/button_pressed.png" id="4_3n3jh"]
+[ext_resource type="AudioStream" uid="uid://bg8ch0j2a1myl" path="res://Assets/button/misc_menu_3.wav" id="5_71vey"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qt0dy"]
+texture = ExtResource("3_by604")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ga2dt"]
+texture = ExtResource("3_by604")
+modulate_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3ahnl"]
+texture = ExtResource("4_3n3jh")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8t206"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_we1qu")
+
+[node name="BgRect" type="TextureRect" parent="."]
+modulate = Color(0.254902, 0.254902, 0.254902, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_8ntq8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -106.0
+offset_right = 200.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Thanks for playing!
+
+Sound & Art from itch.io and opengameart.org[/center]"
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(160, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_bdugd")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_qt0dy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ga2dt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3ahnl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8t206")
+text = "Continue"
+
+[node name="ButtonClickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_71vey")
+bus = &"SFX"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
