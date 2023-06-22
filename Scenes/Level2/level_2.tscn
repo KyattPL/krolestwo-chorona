@@ -2285,5 +2285,9 @@ stream = ExtResource("13_ot7dn")
 autoplay = true
 bus = &"Music"
 
+[connection signal="add_potions" from="Shop" to="PlayerRoot" method="_on_shop_add_potions"]
+[connection signal="change_coins" from="Shop" to="PlayerRoot" method="_on_shop_change_coins"]
+[connection signal="pause_game" from="Shop" to="PlayerRoot" method="_on_shop_pause_game"]
+[connection signal="resume_game" from="Shop" to="PlayerRoot" method="_on_shop_resume_game"]
 [connection signal="body_entered" from="NPC2/Area2D" to="NPC2" method="_on_area_2d_body_entered" flags=18]
 [connection signal="body_exited" from="NPC2/Area2D" to="NPC2" method="_on_area_2d_body_exited" flags=18]

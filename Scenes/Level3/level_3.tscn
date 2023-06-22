@@ -3472,3 +3472,8 @@ position = Vector2(1744, 947)
 stream = ExtResource("16_8ex18")
 autoplay = true
 bus = &"Music"
+
+[connection signal="add_potions" from="Shop" to="PlayerRoot" method="_on_shop_add_potions"]
+[connection signal="change_coins" from="Shop" to="PlayerRoot" method="_on_shop_change_coins"]
+[connection signal="pause_game" from="Shop" to="PlayerRoot" method="_on_shop_pause_game"]
+[connection signal="resume_game" from="Shop" to="PlayerRoot" method="_on_shop_resume_game"]
